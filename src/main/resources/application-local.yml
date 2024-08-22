@@ -15,6 +15,6 @@ logging:
 db:
     host: localhost
     port: 27017
-    database: reservation
+    database: reserva
     username: admin
     password: admin

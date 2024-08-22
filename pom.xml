@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.com.grupo27.tech.challenge</groupId>
-    <artifactId>reservation</artifactId>
+    <artifactId>reserva</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>reservation</name>
-    <description>reservation</description>
+    <name>reserva</name>
+    <description>reserva</description>
     <url/>
     <licenses>
         <license/>
