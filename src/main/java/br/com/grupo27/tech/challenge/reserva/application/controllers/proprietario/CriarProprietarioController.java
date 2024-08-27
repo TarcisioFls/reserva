@@ -23,7 +23,8 @@ public class CriarProprietarioController {
     private final ProprietarioPresenter proprietarioPresenter;
 
     @Autowired
-    public CriarProprietarioController(ProprietarioRepository proprietarioRepository, CriarProprietarioPresenter criarProprietarioPresenter,
+    public CriarProprietarioController(ProprietarioRepository proprietarioRepository,
+                                       CriarProprietarioPresenter criarProprietarioPresenter,
                                        ProprietarioPresenter proprietarioPresenter) {
         this.criarProprietarioUserCase = new CriarProprietarioUserCase(new CriarProprietarioAdapter(proprietarioRepository, proprietarioPresenter), criarProprietarioPresenter);
         this.criarProprietarioPresenter = criarProprietarioPresenter;
