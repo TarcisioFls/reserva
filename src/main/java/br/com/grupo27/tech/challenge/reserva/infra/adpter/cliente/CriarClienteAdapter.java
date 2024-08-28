@@ -26,4 +26,9 @@ public class CriarClienteAdapter implements CriarClienteGateway {
     public Optional<Cliente> buscaPorEmail(String email) {
         return clienteRepository.findByEmail(email).map(clientePresenter::clienteModelEmCliente);
     }
+
+    @Override
+    public Optional<Cliente> buscaPorCpf(String cpf) {
+        return clienteRepository.findByCpf(cpf).map(clientePresenter::clienteModelEmCliente);
+    }
 }

@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Cliente {
 
-    private Long id;
+    private String id;
     private String nome;
     private String email;
     private String senha;
@@ -19,7 +19,7 @@ public class Cliente {
 
     public Cliente() {};
 
-    public Cliente(Long id, String nome, String email, String senha, String telefone, String cpf, LocalDate dataNascimento) {
+    public Cliente(String id, String nome, String email, String senha, String telefone, String cpf, LocalDate dataNascimento) {
 
         if ( Objects.isNull(email) || email.isBlank() ) {
             throw new ExceptionAdvice(CodigoError.EMAIL_OBRIGATORIO);
@@ -33,7 +33,7 @@ public class Cliente {
             throw new ExceptionAdvice(CodigoError.CPF_OBRIGATORIO);
         }
 
-        if (!validaNome(nome)){
+        if (validaNome(nome)){
             throw new ExceptionAdvice(CodigoError.NOME_CLIENTE_VALIDO);
         }
 
@@ -46,11 +46,11 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -105,7 +105,7 @@ public class Cliente {
     public static boolean validaCpf(String cpf){
 
         //remove caracteres não numéricos
-        cpf = cpf.replace("[^0-9]","");
+        cpf = cpf.replaceAll("\\D","");
 
         if(cpf.length() != 11){
             return false;
@@ -115,25 +115,45 @@ public class Cliente {
             return false;
         }
 
-        int sum = 0;
-        for(int i=0; i< 9; i++ ){
-            sum += (cpf.charAt(i)-'0')*(10 -i);
-        }
-        int primeiroDigito = 11 - (sum%11);
-        if(primeiroDigito >= 10){
-            primeiroDigito = 0;
+        // Calcula os dígitos verificadores
+        char dig10, dig11;
+        int sm, i, r, num, peso;
+
+
+        // Calculo do 1º Digito Verificador
+        sm = 0;
+        peso = 10;
+        for (i = 0; i < 9; i++) {
+            num = (int) (cpf.charAt(i) - 48);
+            sm = sm + (num * peso);
+            peso = peso - 1;
         }
 
-        for(int i=0; i< 10; i++ ){
-            sum += (cpf.charAt(i)-'0')*(10 -i);
-        }
-        int segundoDigito = 11 - (sum%11);
-        if(segundoDigito >= 10){
-            segundoDigito = 0;
+        r = 11 - (sm % 11);
+        if ((r == 10) || (r == 11)) {
+            dig10 = '0';
+        } else {
+            dig10 = (char) (r + 48);
         }
 
-        return (primeiroDigito == (cpf.charAt(9) - '0')) && (segundoDigito == (cpf.charAt(10) - '0'));
+        // Calculo do 2º Digito Verificador
+        sm = 0;
+        peso = 11;
+        for (i = 0; i < 10; i++) {
+            num = (int) (cpf.charAt(i) - 48);
+            sm = sm + (num * peso);
+            peso = peso - 1;
+        }
 
+        r = 11 - (sm % 11);
+        if ((r == 10) || (r == 11)) {
+            dig11 = '0';
+        } else {
+            dig11 = (char) (r + 48);
+        }
+
+        // Verifica se os dígitos calculados conferem com os dígitos informados
+        return (dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10));
 
     }
 

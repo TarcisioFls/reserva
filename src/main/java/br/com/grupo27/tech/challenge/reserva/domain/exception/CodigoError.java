@@ -19,6 +19,7 @@ public enum CodigoError {
     EMAIL_OBRIGATORIO("Email é obrigatório", BAD_REQUEST, FALSE),
     EMAIL_JA_CADASTRADO("Email já cadastrado", BAD_REQUEST, FALSE),
     CPF_OBRIGATORIO("O cpf informado não é válido", INTERNAL_SERVER_ERROR, FALSE),
+    CPF_JA_CADASTRADO("Cpf já cadastrado", INTERNAL_SERVER_ERROR, FALSE),
     PROPRIETARIO_JA_CADASTRADO("Proprietário já cadastrado", BAD_REQUEST, FALSE),
     ERROR_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE),
     NOME_CLIENTE_VALIDO("O campo nome deve ser preenchido com o nome e sobrenome", INTERNAL_SERVER_ERROR, FALSE);

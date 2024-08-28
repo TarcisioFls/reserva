@@ -9,6 +9,7 @@ import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.CriarClie
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.CPF_JA_CADASTRADO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.EMAIL_JA_CADASTRADO;
 
 @Setter
@@ -21,6 +22,10 @@ public class CriarClienteUserCase {
     public CriarClienteOutput criar(CriarClienteInput criarClienteInput){
         criarClienteGateway.buscaPorEmail(criarClienteInput.getEmail()).ifPresent(cliente->{throw new ExceptionAdvice(EMAIL_JA_CADASTRADO);
         });
+
+        criarClienteGateway.buscaPorCpf(criarClienteInput.getCpf()).ifPresent(Cliente -> {
+                    throw new ExceptionAdvice(CPF_JA_CADASTRADO);
+                });
 
         var cliente = criarClientePresenter.criarClienteInputEmCliente(criarClienteInput);
         cliente = criarClienteGateway.criar(cliente);

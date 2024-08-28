@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class ClienteModel {
 
     @Id
-    private Long id;
+    private String id;
     private String nome;
     private String email;
     private String senha;

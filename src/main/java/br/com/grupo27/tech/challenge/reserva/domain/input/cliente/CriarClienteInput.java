@@ -3,6 +3,7 @@ package br.com.grupo27.tech.challenge.reserva.domain.input.cliente;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 
@@ -10,7 +11,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CriarClienteInput {
-    private Long id;
+
+    @Id
+    private String id;
     private String nome;
     private String email;
     private String senha;
