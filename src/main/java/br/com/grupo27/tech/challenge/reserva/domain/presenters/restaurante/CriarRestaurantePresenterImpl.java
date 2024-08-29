@@ -18,21 +18,33 @@ public class CriarRestaurantePresenterImpl implements CriarRestaurantePresenter 
 
     @Override
     public Restaurante criarRestauranteInputParaRestaurante(CriarRestauranteInput criarRestauranteInput) {
-        return null;
+        return new Restaurante(criarRestauranteInput.getNome(), criarRestauranteInput.getDescricao(),
+                criarRestauranteInput.getLocalizacao(), criarRestauranteInput.getHorarioFuncionamento(),
+                criarRestauranteInput.getCapacidade(), criarRestauranteInput.getTipoCozinha(),
+                criarRestauranteInput.getProprietario());
     }
 
     @Override
     public CriarRestauranteOutput restauranteParaCriarRestauranteOutput(Restaurante restaurante) {
-        return null;
+        return new CriarRestauranteOutput(restaurante.getNome(), restaurante.getDescricao(),
+                restaurante.getLocalizacao(), restaurante.getHorarioFuncionamento(),
+                restaurante.getCapacidade(), restaurante.getTipoCozinhaList(),
+                restaurante.getProprietario());
     }
 
     @Override
     public CriarRestauranteInput criarRestauranteParaCriarRestauranteInput(CriarRestauranteRequest request) {
-        return null;
+        return new CriarRestauranteInput(request.getNome(), request.getDescricao(),
+                request.getLocalizacao(), request.getHorarioFuncionamento(),
+                request.getCapacidade(), request.getTipoCozinha(),
+                request.getProprietario());
     }
 
     @Override
     public RestauranteResponse criarRestauranteOutputParaRestauranteResponse(CriarRestauranteOutput restauranteOutput) {
-        return null;
+        return new RestauranteResponse(restauranteOutput.getNome(), restauranteOutput.getDescricao(),
+                restauranteOutput.getLocalizacao(), restauranteOutput.getHorarioFuncionamento(),
+                restauranteOutput.getCapacidade(), restauranteOutput.getTipoCozinha(),
+                restauranteOutput.getProprietario());
     }
 }
