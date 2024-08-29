@@ -14,12 +14,13 @@ public enum CodigoError {
 
     PROPRIETARIO_NAO_ENCONTRADO("Proprietário não encontrado", NOT_FOUND, FALSE),
     TELEFONE_OBRIGATORIO("Telefone é obrigatório", BAD_REQUEST, FALSE),
-    PASSWORD_OBRIGATORIO("Password é obrigatório", BAD_REQUEST, FALSE),
+    CPF_OBRIGATORIO("CPF é obrigatório", BAD_REQUEST, FALSE),
+    SENHA_OBRIGATORIO("Senha é obrigatória", BAD_REQUEST, FALSE),
     NOME_OBRIGATORIO("Nome é obrigatório", BAD_REQUEST, FALSE),
     EMAIL_OBRIGATORIO("Email é obrigatório", BAD_REQUEST, FALSE),
     EMAIL_JA_CADASTRADO("Email já cadastrado", BAD_REQUEST, FALSE),
     PROPRIETARIO_JA_CADASTRADO("Proprietário já cadastrado", BAD_REQUEST, FALSE),
-    ERROR_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE);
+    ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE);
 
     private final String mensagem;
     private final HttpStatus httpStatus;
