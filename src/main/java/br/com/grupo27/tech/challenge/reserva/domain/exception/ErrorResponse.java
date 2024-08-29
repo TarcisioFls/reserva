@@ -7,13 +7,13 @@ import org.springframework.http.HttpStatus;
 public class ErrorResponse {
 
     private HttpStatus httpStatus;
-    private String message;
-    private int code;
+    private String mensagem;
+    private int codigo;
 
-    public ErrorResponse(HttpStatus httpStatus, String message) {
+    public ErrorResponse(HttpStatus httpStatus, String mensagem) {
         this.httpStatus = httpStatus;
-        this.message = message;
-        this.code = httpStatus.value();
+        this.mensagem = mensagem;
+        this.codigo = httpStatus.value();
     }
 
 }

@@ -19,7 +19,7 @@ public class CriarProprietarioPresenterImpl implements CriarProprietarioPresente
     public Proprietario criarProprietarioInputEmProprietario(CriarProprietarioInput criarProprietarioInput) {
 
         return new Proprietario(criarProprietarioInput.getId(), criarProprietarioInput.getNome(), criarProprietarioInput.getEmail(),
-                criarProprietarioInput.getPassword(), criarProprietarioInput.getTelefone());
+                criarProprietarioInput.getSenha(), criarProprietarioInput.getTelefone(), criarProprietarioInput.getCpf());
     }
 
     @Override

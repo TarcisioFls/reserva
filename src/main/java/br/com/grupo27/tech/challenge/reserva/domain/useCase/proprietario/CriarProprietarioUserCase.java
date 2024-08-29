@@ -5,13 +5,13 @@ import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.CriarPr
 import br.com.grupo27.tech.challenge.reserva.domain.input.proprietario.CriarProprietarioInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.proprietario.CriarProprietarioOutput;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.CriarProprietarioPresenter;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.EMAIL_JA_CADASTRADO;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CriarProprietarioUserCase {
 
     private final CriarProprietarioGateway criarProprietarioGateway;

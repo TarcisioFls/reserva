@@ -1,25 +1,28 @@
 package br.com.grupo27.tech.challenge.reserva.domain.entity;
 
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.CPF_OBRIGATORIO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.EMAIL_OBRIGATORIO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.NOME_OBRIGATORIO;
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.PASSWORD_OBRIGATORIO;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.SENHA_OBRIGATORIO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.TELEFONE_OBRIGATORIO;
 import static java.util.Objects.isNull;
 
+@Data
+@NoArgsConstructor
 public class Proprietario {
 
     private String id;
     private String nome;
     private String email;
-    private String password;
+    private String senha;
     private String telefone;
+    private String cpf;
 
-    public Proprietario() {
-    }
-
-    public Proprietario(String id, String nome, String email, String password, String telefone) {
+    public Proprietario(String id, String nome, String email, String senha, String telefone, String cpf) {
 
         if (isNull(email) || email.isBlank()) {
             throw new ExceptionAdvice(EMAIL_OBRIGATORIO);
@@ -29,63 +32,23 @@ public class Proprietario {
             throw new ExceptionAdvice(NOME_OBRIGATORIO);
         }
 
-        if (isNull(password) || password.isBlank()) {
-            throw new ExceptionAdvice(PASSWORD_OBRIGATORIO);
+        if (isNull(senha) || senha.isBlank()) {
+            throw new ExceptionAdvice(SENHA_OBRIGATORIO);
         }
 
         if (isNull(telefone) || telefone.isBlank()) {
             throw new ExceptionAdvice(TELEFONE_OBRIGATORIO);
         }
 
+        if (isNull(cpf) || cpf.isBlank()) {
+            throw new ExceptionAdvice(CPF_OBRIGATORIO);
+        }
+
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.password = password;
+        this.senha = senha;
         this.telefone = telefone;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public Proprietario setId(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public Proprietario setNome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Proprietario setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public Proprietario setPassword(String password) {
-        this.password = password;
-        return this;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public Proprietario setTelefone(String telefone) {
-        this.telefone = telefone;
-        return this;
+        this.cpf = cpf;
     }
 }

@@ -8,4 +8,10 @@ import lombok.EqualsAndHashCode;
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class CriarProprietarioRequest extends UsuarioRequest {}
+public class CriarProprietarioRequest extends UsuarioRequest {
+
+    public CriarProprietarioRequest(String nome, String email, String password, String telefone, String cpf) {
+        super(nome, email, password, telefone, cpf);
+    }
+
+}
