@@ -1,23 +1,40 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante;
 
+import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.request.CriarRestauranteRequest;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.CriarRestaurantePresenter;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.CriarRestauranteUserCase;
+import br.com.grupo27.tech.challenge.reserva.infra.adapter.restaurante.CriarCriarRestauranteAdapter;
+import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/restaurantes")
 public class CriarRestauranteController {
 
-//    private final CriarRestauranteUserCase criarRestauranteUserCase;
-//    private final CriarRestaurantePresenter criarRestaurantePresenter;
-//    private final RestaurantePresenter restaurantePresenter;
-//
-//    @Autowired
-//    public CriarRestauranteController(RestauranteRepository restauranteRepository, CriarRestaurantePresenter criarRestaurantePresenter,
-//                                      RestaurantePresenter restaurantePresenter) {
-//        this.criarRestauranteUserCase = new CriarRestauranteUserCase(new CriarRestauranteAdapter(restauranteRepository, restaurantePresenter), criarRestaurantePresenter);
-//        this.criarRestaurantePresenter = criarRestaurantePresenter;
-//        this.restaurantePresenter = restaurantePresenter;
-//    }
+    private final CriarRestaurantePresenter criarRestaurantePresenter;
+    private final RestaurantePresenter restaurantePresenter;
+    private final RestauranteRepository restauranteRepository;
+
+
+    @PostMapping
+    public ResponseEntity<RestauranteResponse> criar(@RequestBody CriarRestauranteRequest request) {
+        var criarRestauranteUserCase = new CriarRestauranteUserCase(
+                new CriarCriarRestauranteAdapter(
+                        restauranteRepository, restaurantePresenter), criarRestaurantePresenter
+        );
+
+        var criarRestauranteInput = criarRestaurantePresenter.criarRestauranteParaCriarRestauranteInput(request);
+        var criarRestauranteOutput = criarRestauranteUserCase.criar(criarRestauranteInput);
+        var restauranteResponse = criarRestaurantePresenter.criarRestauranteOutputParaRestauranteResponse(criarRestauranteOutput);
+
+        return ResponseEntity.ok(restauranteResponse);
+    }
 }
