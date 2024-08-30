@@ -1,21 +1,21 @@
 package br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario;
 
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
-import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.CriarProprietarioGateway;
+import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.AtualizarProprietarioGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
-@AllArgsConstructor
-public class CriarProprietarioAdapter implements CriarProprietarioGateway {
+@RequiredArgsConstructor
+public class AtualizarProprietarioAdapter implements AtualizarProprietarioGateway {
 
     private final ProprietarioRepository proprietarioRepository;
     private final ProprietarioPresenter proprietarioPresenter;
 
     @Override
-    public Proprietario criar(Proprietario proprietario) {
+    public Proprietario atualizar(Proprietario proprietario) {
         var proprietarioModel = proprietarioPresenter.proprietarioEmProprietarioModel(proprietario);
         proprietarioRepository.save(proprietarioModel);
         proprietario = proprietarioPresenter.proprietarioModelEmProprietario(proprietarioModel);
@@ -24,9 +24,14 @@ public class CriarProprietarioAdapter implements CriarProprietarioGateway {
     }
 
     @Override
-    public Optional<Proprietario> buscaPorEmail(String email) {
+    public Optional<Proprietario> buscarPorId(String id) {
+
+        return proprietarioRepository.findById(id).map(proprietarioPresenter::proprietarioModelEmProprietario);
+    }
+
+    @Override
+    public Optional<Proprietario> buscarPorEmail(String email) {
 
         return proprietarioRepository.findByEmail(email).map(proprietarioPresenter::proprietarioModelEmProprietario);
     }
-
 }
