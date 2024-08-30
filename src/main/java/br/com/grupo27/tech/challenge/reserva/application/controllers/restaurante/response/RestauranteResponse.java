@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RestauranteResponse {
 
+    private String id;
     private String nome;
     private String descricao;
     private String localizacao;
