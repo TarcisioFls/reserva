@@ -1,4 +1,4 @@
-package br.com.grupo27.tech.challenge.reserva.infra.adpter.proprietario;
+package br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario;
 
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
