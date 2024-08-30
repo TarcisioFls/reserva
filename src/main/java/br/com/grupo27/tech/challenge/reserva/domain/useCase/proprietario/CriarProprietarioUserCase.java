@@ -18,9 +18,9 @@ public class CriarProprietarioUserCase {
     private final CriarProprietarioPresenter criarProprietarioPresenter;
 
     public CriarProprietarioOutput criar(CriarProprietarioInput criarProprietarioInput) {
-        criarProprietarioGateway.buscaPorEmail(criarProprietarioInput.getEmail()).ifPresent(proprietario -> {
+        if (criarProprietarioGateway.buscaPorEmail(criarProprietarioInput.getEmail()).isPresent()) {
             throw new ExceptionAdvice(EMAIL_JA_CADASTRADO);
-        });
+        }
 
         var proprietario = criarProprietarioPresenter.criarProprietarioInputEmProprietario(criarProprietarioInput);
         proprietario = criarProprietarioGateway.criar(proprietario);
