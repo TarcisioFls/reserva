@@ -5,7 +5,7 @@ import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietari
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.CriarProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.CriarProprietarioUserCase;
-import br.com.grupo27.tech.challenge.reserva.infra.adpter.proprietario.CriarProprietarioAdapter;
+import br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario.CriarProprietarioAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
