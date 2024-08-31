@@ -17,34 +17,26 @@ public class CriarRestaurantePresenterImpl implements CriarRestaurantePresenter 
 
 
     @Override
-    public Restaurante criarRestauranteInputParaRestaurante(CriarRestauranteInput criarRestauranteInput) {
-        return new Restaurante(criarRestauranteInput.getNome(), criarRestauranteInput.getDescricao(),
-                criarRestauranteInput.getLocalizacao(), criarRestauranteInput.getHorarioFuncionamento(),
-                criarRestauranteInput.getCapacidade(), criarRestauranteInput.getTipoCozinha(),
-                criarRestauranteInput.getProprietario());
+    public Restaurante criarRestauranteInputParaRestaurante(CriarRestauranteInput input) {
+
+        return mapper.map(input, Restaurante.class);
     }
 
     @Override
     public CriarRestauranteOutput restauranteParaCriarRestauranteOutput(Restaurante restaurante) {
-        return new CriarRestauranteOutput(restaurante.getNome(), restaurante.getDescricao(),
-                restaurante.getLocalizacao(), restaurante.getHorarioFuncionamento(),
-                restaurante.getCapacidade(), restaurante.getTipoCozinhaList(),
-                restaurante.getProprietario());
+
+        return mapper.map(restaurante, CriarRestauranteOutput.class);
     }
 
     @Override
     public CriarRestauranteInput criarRestauranteParaCriarRestauranteInput(CriarRestauranteRequest request) {
-        return new CriarRestauranteInput(request.getNome(), request.getDescricao(),
-                request.getLocalizacao(), request.getHorarioFuncionamento(),
-                request.getCapacidade(), request.getTipoCozinha(),
-                request.getProprietario());
+
+        return mapper.map(request, CriarRestauranteInput.class);
     }
 
     @Override
-    public RestauranteResponse criarRestauranteOutputParaRestauranteResponse(CriarRestauranteOutput restauranteOutput) {
-        return new RestauranteResponse(restauranteOutput.getNome(), restauranteOutput.getDescricao(),
-                restauranteOutput.getLocalizacao(), restauranteOutput.getHorarioFuncionamento(),
-                restauranteOutput.getCapacidade(), restauranteOutput.getTipoCozinha(),
-                restauranteOutput.getProprietario());
+    public RestauranteResponse criarRestauranteOutputParaRestauranteResponse(CriarRestauranteOutput output) {
+
+        return mapper.map(output, RestauranteResponse.class);
     }
 }
