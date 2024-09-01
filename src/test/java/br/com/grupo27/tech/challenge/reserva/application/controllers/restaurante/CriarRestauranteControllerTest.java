@@ -9,6 +9,7 @@ import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.Resta
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.CriarRestauranteUserCase;
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.restaurante.CriarRestauranteAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,6 +25,8 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class CriarRestauranteControllerTest {
+
+    private AutoCloseable closeable;
 
     @Mock
     private CriarRestaurantePresenter criarRestaurantePresenter;
@@ -42,11 +45,16 @@ class CriarRestauranteControllerTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+      closeable = MockitoAnnotations.openMocks(this);
         criarRestauranteUserCase = new CriarRestauranteUserCase(
                 new CriarRestauranteAdapter(restauranteRepository, restaurantePresenter),
                 criarRestaurantePresenter
         );
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        closeable.close();
     }
 
     @Test
