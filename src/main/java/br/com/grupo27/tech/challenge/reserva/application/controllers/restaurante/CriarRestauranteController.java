@@ -5,7 +5,7 @@ import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.CriarRestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.CriarRestauranteUserCase;
-import br.com.grupo27.tech.challenge.reserva.infra.adapter.restaurante.CriarCriarRestauranteAdapter;
+import br.com.grupo27.tech.challenge.reserva.infra.adapter.restaurante.CriarRestauranteAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ public class CriarRestauranteController {
     @PostMapping
     public ResponseEntity<RestauranteResponse> criar(@RequestBody CriarRestauranteRequest request) {
         var criarRestauranteUserCase = new CriarRestauranteUserCase(
-                new CriarCriarRestauranteAdapter(
+                new CriarRestauranteAdapter(
                         restauranteRepository, restaurantePresenter), criarRestaurantePresenter
         );
 

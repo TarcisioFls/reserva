@@ -10,14 +10,18 @@ import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
-public class CriarCriarRestauranteAdapter implements CriarRestauranteGateway {
+public class CriarRestauranteAdapter implements CriarRestauranteGateway {
 
     private final RestauranteRepository restauranteRepository;
     private final RestaurantePresenter restaurantePresenter;
 
     @Override
     public Restaurante criar(Restaurante restaurante) {
-        return null;
+        var restauranteModel = restaurantePresenter.restauranteParaRestauranteModel(restaurante);
+        restauranteRepository.save(restauranteModel);
+        restaurante = restaurantePresenter.restauranteModelParaRestaurante(restauranteModel);
+
+        return restaurante;
     }
 
     @Override
