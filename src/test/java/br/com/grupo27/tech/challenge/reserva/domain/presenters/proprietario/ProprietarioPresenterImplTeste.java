@@ -37,4 +37,5 @@ class ProprietarioPresenterImplTeste extends TesteConfig {
 
         assertEquals(proprietarioEsperado, resultado);
     }
+
 }

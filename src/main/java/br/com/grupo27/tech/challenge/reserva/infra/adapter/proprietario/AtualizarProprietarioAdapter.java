@@ -18,9 +18,8 @@ public class AtualizarProprietarioAdapter implements AtualizarProprietarioGatewa
     public Proprietario atualizar(Proprietario proprietario) {
         var proprietarioModel = proprietarioPresenter.proprietarioEmProprietarioModel(proprietario);
         proprietarioRepository.save(proprietarioModel);
-        proprietario = proprietarioPresenter.proprietarioModelEmProprietario(proprietarioModel);
 
-        return proprietario;
+        return proprietarioPresenter.proprietarioModelEmProprietario(proprietarioModel);
     }
 
     @Override

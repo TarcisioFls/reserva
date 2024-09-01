@@ -34,9 +34,9 @@ public class AtualizarProprietarioController {
                 ), atualizarProprietarioPresenter
         );
 
-        var atualizarProprietarioInput = atualizarProprietarioPresenter.atualizarProprietarioEmAtualizarProprietarioInput(id, request);
+        var atualizarProprietarioInput = atualizarProprietarioPresenter.atualizarProprietarioRequestEmAtualizarProprietarioInput(id, request);
         var atualizarProprietarioOutput = atualizarProprietarioUserCase.atualizar(atualizarProprietarioInput);
-        var proprietarioResponse = proprietarioPresenter.atualizarProprietarioOutputEmProprietarioResponse(atualizarProprietarioOutput);
+        var proprietarioResponse = atualizarProprietarioPresenter.atualizarProprietarioOutputEmProprietarioResponse(atualizarProprietarioOutput);
 
         return ResponseEntity.ok(proprietarioResponse);
     }
