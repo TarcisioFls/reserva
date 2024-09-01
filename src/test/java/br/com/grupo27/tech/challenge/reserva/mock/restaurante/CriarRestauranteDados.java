@@ -48,6 +48,13 @@ public interface CriarRestauranteDados {
                 dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), proprietarioModel);
     }
 
+    static RestauranteModel getRestauranteModelSemId() {
+        var dados = getRestaurante();
+        var proprietarioModel = new ProprietarioModel();
+        return new RestauranteModel(null, dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), proprietarioModel);
+    }
+
     static Restaurante getRestaurante() {
         var tipoCozinhaList = new ArrayList<TipoCozinha>();
         tipoCozinhaList.add(JAPONESA);
