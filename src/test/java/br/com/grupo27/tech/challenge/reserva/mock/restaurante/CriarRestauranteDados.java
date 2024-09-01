@@ -7,6 +7,8 @@ import br.com.grupo27.tech.challenge.reserva.domain.entity.Restaurante;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha;
 import br.com.grupo27.tech.challenge.reserva.domain.input.restaurante.CriarRestauranteInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.CriarRestauranteOutput;
+import br.com.grupo27.tech.challenge.reserva.infra.model.ProprietarioModel;
+import br.com.grupo27.tech.challenge.reserva.infra.model.RestauranteModel;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -16,30 +18,37 @@ import static br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha.JA
 public interface CriarRestauranteDados {
 
     static CriarRestauranteRequest getCriarRestauranteRequest() {
-        var dados = getDadosRestaurante();
+        var dados = getRestaurante();
         return new CriarRestauranteRequest(dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
                 dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietario());
     }
 
     static CriarRestauranteInput getCriarRestauranteInput() {
-        var dados = getDadosRestaurante();
+        var dados = getRestaurante();
         return new CriarRestauranteInput(dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
                 dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietario());
     }
 
     static CriarRestauranteOutput getCriarRestauranteOutput() {
-        var dados = getDadosRestaurante();
+        var dados = getRestaurante();
         return new CriarRestauranteOutput(dados.getId(), dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
                 dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietario());
     }
 
     static RestauranteResponse getRestauranteResponse() {
-        var dados = getDadosRestaurante();
+        var dados = getRestaurante();
         return new RestauranteResponse(dados.getId(), dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
                 dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietario());
     }
 
-    private static Restaurante getDadosRestaurante() {
+    static RestauranteModel getRestauranteModel() {
+        var dados = getRestaurante();
+        var proprietarioModel = new ProprietarioModel();
+        return new RestauranteModel(dados.getId(), dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), proprietarioModel);
+    }
+
+    static Restaurante getRestaurante() {
         var tipoCozinhaList = new ArrayList<TipoCozinha>();
         tipoCozinhaList.add(JAPONESA);
         var proprietario = new Proprietario();
