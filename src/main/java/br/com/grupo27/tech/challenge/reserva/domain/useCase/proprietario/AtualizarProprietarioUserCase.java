@@ -22,9 +22,11 @@ public class AtualizarProprietarioUserCase {
                 () -> new ExceptionAdvice(CodigoError.PROPRIETARIO_NAO_ENCONTRADO)
         );
 
-        if (atualizarProprietarioGateway.buscarPorEmail(atualizarProprietarioInput.getEmail()).isPresent()) {
-            throw new ExceptionAdvice(CodigoError.EMAIL_JA_CADASTRADO);
-        }
+        atualizarProprietarioGateway.buscarPorEmail(atualizarProprietarioInput.getEmail()).ifPresent(result -> {
+            if (!result.getId().equals(atualizarProprietarioInput.getId())) {
+                throw new ExceptionAdvice(CodigoError.EMAIL_JA_CADASTRADO);
+            }
+        });
 
         proprietario = atualizarProprietarioPresenter.atualizarProprietarioInputEmProprietario(proprietario, atualizarProprietarioInput);
         proprietario = atualizarProprietarioGateway.atualizar(proprietario);

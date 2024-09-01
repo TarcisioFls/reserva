@@ -2,10 +2,10 @@ package br.com.grupo27.tech.challenge.reserva.domain.entity;
 
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
-import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
 import org.junit.jupiter.api.Test;
 
 import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioComCpfEmBranco;
 import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioComCpfNull;
 import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioComEmailEmBranco;
 import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioComEmailNull;
@@ -118,7 +118,7 @@ class ProprietarioTeste extends TesteConfig {
     @Test
     void testaProprietarioComCpfEmBranco() {
         var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> ProprietarioDados.getProprietarioComCpfEmBranco()
+                ExceptionAdvice.class, () -> getProprietarioComCpfEmBranco()
         );
 
         assertEquals("CPF é obrigatório", exceptionAdvice.getMessage());
