@@ -23,24 +23,4 @@ public class CriarRestauranteAdapter implements CriarRestauranteGateway {
 
         return restaurante;
     }
-
-    @Override
-    public Optional<Restaurante> buscar(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<Restaurante> listar() {
-        return List.of();
-    }
-
-    @Override
-    public Restaurante atualizar(String id, Restaurante restaurante) {
-        return null;
-    }
-
-    @Override
-    public void excluir(String id) {
-
-    }
 }
