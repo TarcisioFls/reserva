@@ -8,12 +8,4 @@ import java.util.Optional;
 public interface CriarRestauranteGateway {
 
     Restaurante criar(Restaurante restaurante);
-
-    Optional<Restaurante> buscar(String id);
-
-    List<Restaurante> listar();
-
-    Restaurante atualizar(String id, Restaurante restaurante);
-
-    void excluir(String id);
 }
