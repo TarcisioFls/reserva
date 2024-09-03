@@ -4,6 +4,7 @@ import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
 import br.com.grupo27.tech.challenge.reserva.infra.model.ProprietarioModel;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -22,6 +23,12 @@ public class ProprietarioPresenterImpl implements ProprietarioPresenter {
     public Proprietario proprietarioModelEmProprietario(ProprietarioModel proprietarioModel) {
 
         return mapper.map(proprietarioModel, Proprietario.class);
+    }
+
+    @Override
+    public Page<Proprietario> pageProprietarioModelListEmPageProprietarioList(Page<ProprietarioModel> pageProprietarioModelList) {
+
+        return pageProprietarioModelList.map(this::proprietarioModelEmProprietario);
     }
 
 }
