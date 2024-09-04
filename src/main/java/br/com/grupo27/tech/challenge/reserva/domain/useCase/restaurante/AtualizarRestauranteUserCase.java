@@ -19,9 +19,9 @@ public class AtualizarRestauranteUserCase {
         var restaurante = atualizarRestauranteGateway.buscarPorId(atualizarRestauranteInput.getId())
                 .orElseThrow(() -> new ExceptionAdvice(RESTAURANTE_NAO_ENCONTRADO));
 
-        restaurante = atualizarRestaurantePresenter.atualizarRestauranteInputParaRestaurante(restaurante, atualizarRestauranteInput);
+        restaurante = atualizarRestaurantePresenter.atualizarRestauranteInputEmRestaurante(atualizarRestauranteInput);
         restaurante = atualizarRestauranteGateway.atualizar(restaurante);
 
-        return atualizarRestaurantePresenter.restauranteParaAtualizarRestauranteOutput(restaurante);
+        return atualizarRestaurantePresenter.restauranteEmAtualizarRestauranteOutput(restaurante);
     }
 }

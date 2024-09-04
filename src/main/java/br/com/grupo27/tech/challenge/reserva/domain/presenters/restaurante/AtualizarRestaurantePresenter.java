@@ -8,11 +8,11 @@ import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.Atualizar
 
 public interface AtualizarRestaurantePresenter {
 
-    AtualizarRestauranteInput atualizarRestauranteRequestParaAtualizarRestauranteInput(String id, AtualizarRestauranteRequest atualizarRestauranteRequest);
+    AtualizarRestauranteInput atualizarRestauranteRequestEmAtualizarRestauranteInput(String id, AtualizarRestauranteRequest atualizarRestauranteRequest);
 
-    Restaurante atualizarRestauranteInputParaRestaurante(Restaurante restaurante, AtualizarRestauranteInput atualizarRestauranteInput);
+    Restaurante atualizarRestauranteInputEmRestaurante(AtualizarRestauranteInput atualizarRestauranteInput);
 
-    AtualizarRestauranteOutput restauranteParaAtualizarRestauranteOutput(Restaurante restaurante);
+    AtualizarRestauranteOutput restauranteEmAtualizarRestauranteOutput(Restaurante restaurante);
 
-    RestauranteResponse atualizarRestauranteOutputParaRestauranteResponse(AtualizarRestauranteOutput atualizarRestauranteOutput);
+    RestauranteResponse atualizarRestauranteOutputEmRestauranteResponse(AtualizarRestauranteOutput atualizarRestauranteOutput);
 }

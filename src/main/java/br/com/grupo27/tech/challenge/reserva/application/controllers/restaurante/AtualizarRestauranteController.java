@@ -27,9 +27,9 @@ public class AtualizarRestauranteController {
                 new AtualizarRestauranteAdapter(restauranteRepository, restaurantePresenter), atualizarRestaurantePresenter
         );
 
-        var atualizarRestauranteInput = atualizarRestaurantePresenter.atualizarRestauranteRequestParaAtualizarRestauranteInput(id, request);
+        var atualizarRestauranteInput = atualizarRestaurantePresenter.atualizarRestauranteRequestEmAtualizarRestauranteInput(id, request);
         var atualizarRestauranteOutput = atualizarRestauranteUserCase.atualizar(atualizarRestauranteInput);
-        var restauranteResponse = atualizarRestaurantePresenter.atualizarRestauranteOutputParaRestauranteResponse(atualizarRestauranteOutput);
+        var restauranteResponse = atualizarRestaurantePresenter.atualizarRestauranteOutputEmRestauranteResponse(atualizarRestauranteOutput);
 
         return ResponseEntity.ok(restauranteResponse);
     }
