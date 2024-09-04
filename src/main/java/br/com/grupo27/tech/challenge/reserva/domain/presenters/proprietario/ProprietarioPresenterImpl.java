@@ -5,6 +5,7 @@ import br.com.grupo27.tech.challenge.reserva.infra.model.ProprietarioModel;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.data.web.PagedModel;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -26,9 +27,10 @@ public class ProprietarioPresenterImpl implements ProprietarioPresenter {
     }
 
     @Override
-    public Page<Proprietario> pageProprietarioModelListEmPageProprietarioList(Page<ProprietarioModel> pageProprietarioModelList) {
+    public PagedModel<Proprietario> pageProprietarioModelListEmPageProprietarioList(Page<ProprietarioModel> pageProprietarioModelList) {
+        var proprietarios = pageProprietarioModelList.map(this::proprietarioModelEmProprietario);
 
-        return pageProprietarioModelList.map(this::proprietarioModelEmProprietario);
+        return new PagedModel<>(proprietarios);
     }
 
 }

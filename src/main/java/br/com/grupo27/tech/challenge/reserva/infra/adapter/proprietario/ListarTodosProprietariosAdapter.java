@@ -1,21 +1,21 @@
 package br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario;
 
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
-import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.TodosProprietariosGateway;
+import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.ListarTodosProprietariosGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.web.PagedModel;
 
 @RequiredArgsConstructor
-public class TodosProprietariosAdapter implements TodosProprietariosGateway {
+public class ListarTodosProprietariosAdapter implements ListarTodosProprietariosGateway {
 
     private final ProprietarioRepository proprietarioRepository;
     private final ProprietarioPresenter proprietarioPresenter;
 
     @Override
-    public Page<Proprietario> listarTodos(PageRequest paginacaoRequest) {
+    public PagedModel<Proprietario> listarTodos(PageRequest paginacaoRequest) {
 
         var pageProprietarioModelList = proprietarioRepository.findAll(paginacaoRequest);
 

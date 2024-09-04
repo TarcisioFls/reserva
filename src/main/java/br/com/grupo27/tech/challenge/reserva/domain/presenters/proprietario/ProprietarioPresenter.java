@@ -3,6 +3,7 @@ package br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
 import br.com.grupo27.tech.challenge.reserva.infra.model.ProprietarioModel;
 import org.springframework.data.domain.Page;
+import org.springframework.data.web.PagedModel;
 
 public interface ProprietarioPresenter {
 
@@ -10,5 +11,5 @@ public interface ProprietarioPresenter {
 
     Proprietario proprietarioModelEmProprietario(ProprietarioModel proprietarioModel);
 
-    Page<Proprietario> pageProprietarioModelListEmPageProprietarioList(Page<ProprietarioModel> pageProprietarioModelList);
+    PagedModel<Proprietario> pageProprietarioModelListEmPageProprietarioList(Page<ProprietarioModel> pageProprietarioModelList);
 }
