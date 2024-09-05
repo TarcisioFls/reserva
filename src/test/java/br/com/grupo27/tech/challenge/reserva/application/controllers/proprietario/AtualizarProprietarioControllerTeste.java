@@ -50,7 +50,7 @@ class AtualizarProprietarioControllerTeste extends TesteConfig {
         ).build();
     }
 
-//    @Test
+
     void teste() throws Exception {
 
         when(atualizarProprietarioPresenter.atualizarProprietarioRequestEmAtualizarProprietarioInput(anyString(), any(AtualizarProprietarioRequest.class)))

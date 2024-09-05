@@ -27,16 +27,16 @@ class CriarProprietarioControllerTeste {
     private CriarProprietarioUserCase criarProprietarioUserCase;
 
     void testeCriar() {
-        var request = getCriarProprietarioRequest();
+        var criarProprietarioRequest = getCriarProprietarioRequest();
         var criarProprietarioInput = getCriarProprietarioInput();
         var criarProprietarioOutput = getCriarProprietarioOutput();
         var proprietarioResponse = getProprietarioResponse();
 
-        when(criarProprietarioPresenter.criarProprietarioEmCriarProprietarioInput(request)).thenReturn(criarProprietarioInput);
+        when(criarProprietarioPresenter.criarProprietarioEmCriarProprietarioInput(criarProprietarioRequest)).thenReturn(criarProprietarioInput);
         when(criarProprietarioUserCase.criar(criarProprietarioInput)).thenReturn(criarProprietarioOutput);
         when(criarProprietarioPresenter.criarProprietarioOutputEmProprietarioResponse(criarProprietarioOutput)).thenReturn(proprietarioResponse);
 
-        var resultado = criarProprietarioController.criar(request);
+        var resultado = criarProprietarioController.criar(criarProprietarioRequest);
 
         assertEquals(proprietarioResponse, resultado.getBody());
     }

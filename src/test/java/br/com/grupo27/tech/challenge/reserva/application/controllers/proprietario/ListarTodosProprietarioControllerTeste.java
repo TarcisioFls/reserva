@@ -22,7 +22,7 @@ class ListarTodosProprietarioControllerTeste extends TesteConfig {
     @Mock
     private ListarTodosProprietariosPresenter listarTodosProprietariosPresenter;
 
-//    @Test
+
     void testListarTodos() {
         int pagina = 0;
         int tamanho = 10;

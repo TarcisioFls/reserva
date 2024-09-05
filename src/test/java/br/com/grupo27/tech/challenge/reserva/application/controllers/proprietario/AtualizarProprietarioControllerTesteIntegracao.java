@@ -52,37 +52,37 @@ public class AtualizarProprietarioControllerTesteIntegracao {
 
     @Test
     void testeAtualizarProprietario() {
-        var request = getAtualizarProprietarioRequest();
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
 
-        var response = atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var proprietarioResponseEntity = atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
 
-        assertEquals(200, response.getStatusCode().value());
-        assertTrue(nonNull(response.getBody()));
-        assertEquals("Maria", response.getBody().getNome());
+        assertEquals(200, proprietarioResponseEntity.getStatusCode().value());
+        assertTrue(nonNull(proprietarioResponseEntity.getBody()));
+        assertEquals("Maria", proprietarioResponseEntity.getBody().getNome());
     }
 
     @Test
     void testeAtualizarProprietarioMatendoOEmail() {
-        var request = getAtualizarProprietarioRequest();
-        request.setEmail("joao@teste.com");
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setEmail("joao@teste.com");
 
-        var response  = atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var proprietarioResponseEntity  = atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
 
-        assertEquals(200, response.getStatusCode().value());
-        assertTrue(nonNull(response.getBody()));
-        assertEquals("Maria", response.getBody().getNome());
+        assertEquals(200, proprietarioResponseEntity.getStatusCode().value());
+        assertTrue(nonNull(proprietarioResponseEntity.getBody()));
+        assertEquals("Maria", proprietarioResponseEntity.getBody().getNome());
     }
 
     @Test
     void testeAtualizarProprietarioComIdInexistente() {
-        var request = getAtualizarProprietarioRequest();
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("77b68aa035ed1f735450b9g9", request);
+        var proprietarioResponseEntity = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("77b68aa035ed1f735450b9g9", atualizarProprietarioRequest);
         });
 
-        assertEquals("Proprietário não encontrado", exceptionAdvice.getMessage());
-        assertEquals(404, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Proprietário não encontrado", proprietarioResponseEntity.getMessage());
+        assertEquals(404, proprietarioResponseEntity.getCodigoError().getCodigo());
     }
 
     @Test
@@ -92,145 +92,146 @@ public class AtualizarProprietarioControllerTesteIntegracao {
         proprietarioModel.setId("77b68aa035ed1f735450b7a2");
         proprietarioModel.setEmail("maria@teste.com");
         proprietarioRepository.save(proprietarioModel);
-        var request = getAtualizarProprietarioRequest();
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("Email já cadastrado", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Email já cadastrado", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
 
     }
 
     @Test
     void testeAtualizarProprietarioComNomeEmBranco() {
-        var request = getAtualizarProprietarioRequest();
-        request.setNome("");
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setNome("");
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Nome é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeAtualizarProprietarioComNomeNull() {
-        var request = getAtualizarProprietarioRequest();
-        request.setNome(null);
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setNome(null);
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Nome é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeAtualizarProprietarioComEmailEmBranco() {
-        var request = getAtualizarProprietarioRequest();
-        request.setEmail("");
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setEmail("");
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("Email é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Email é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeAtualizarProprietarioComEmailNull() {
-        var request = getAtualizarProprietarioRequest();
-        request.setEmail(null);
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setEmail(null);
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("Email é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Email é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeAtualizarProprietarioComSenhaEmBranco() {
-        var request = getAtualizarProprietarioRequest();
-        request.setSenha("");
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setSenha("");
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("Senha é obrigatória", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Senha é obrigatória", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeAtualizarProprietarioComSenhaNull() {
-        var request = getAtualizarProprietarioRequest();
-        request.setSenha(null);
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setSenha(null);
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("Senha é obrigatória", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Senha é obrigatória", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeAtualizarProprietarioComTelefoneEmBranco() {
-        var request = getAtualizarProprietarioRequest();
-        request.setTelefone("");
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setTelefone("");
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("Telefone é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Telefone é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeAtualizarProprietarioComTelefoneNull() {
-        var request = getAtualizarProprietarioRequest();
-        request.setTelefone(null);
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setTelefone(null);
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("Telefone é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Telefone é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeAtualizarProprietarioComCpfEmBranco() {
-        var request = getAtualizarProprietarioRequest();
-        request.setCpf("");
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setCpf("");
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("CPF é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("CPF é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeAtualizarProprietarioComCpfNull() {
-        var request = getAtualizarProprietarioRequest();
-        request.setCpf(null);
+        var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
+        atualizarProprietarioRequest.setCpf(null);
 
-        var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> {
-            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", request);
+        var resultado = assertThrows(ExceptionAdvice.class, () -> {
+            atualizarProprietarioController.atualizar("66c67aa035ed1f735450b7a2", atualizarProprietarioRequest);
         });
 
-        assertEquals("CPF é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("CPF é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
 }
