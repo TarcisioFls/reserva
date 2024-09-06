@@ -7,7 +7,7 @@ import br.com.grupo27.tech.challenge.reserva.domain.output.proprietario.Atualiza
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.AtualizarProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.AtualizarProprietarioUserCase;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.UserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
 import org.junit.jupiter.api.Test;
@@ -36,7 +36,7 @@ class AtualizarProprietarioControllerTeste extends TesteConfig {
     private MockMvc mockMvc;
 
     @MockBean
-    private UserCaseFactory userCaseFactory;
+    private ProprietarioUserCaseFactory proprietarioUserCaseFactory;
 
     @MockBean
     private AtualizarProprietarioPresenter atualizarProprietarioPresenter;
@@ -53,7 +53,7 @@ class AtualizarProprietarioControllerTeste extends TesteConfig {
     @Test
     void teste() throws Exception {
 
-        when(userCaseFactory.buildAtualizarProprietarioUserCase(atualizarProprietarioPresenter, proprietarioPresenter, proprietarioRepository))
+        when(proprietarioUserCaseFactory.buildAtualizarProprietarioUserCase(atualizarProprietarioPresenter, proprietarioPresenter, proprietarioRepository))
                 .thenReturn(atualizarProprietarioUserCase);
 
         when(atualizarProprietarioPresenter.atualizarProprietarioRequestEmAtualizarProprietarioInput(any(), any()))
