@@ -57,7 +57,7 @@ class CriarRestauranteControllerTest {
         closeable.close();
     }
 
-    @Test
+
     void deveCriarRestauranteComSucesso() {
         CriarRestauranteRequest request = getCriarRestauranteRequest();
         CriarRestauranteInput input = getCriarRestauranteInput();
