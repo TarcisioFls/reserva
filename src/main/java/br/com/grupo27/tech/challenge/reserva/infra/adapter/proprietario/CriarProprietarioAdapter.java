@@ -25,6 +25,7 @@ public class CriarProprietarioAdapter implements CriarProprietarioGateway {
 
     @Override
     public Optional<Proprietario> buscaPorEmail(String email) {
+
         return proprietarioRepository.findByEmail(email).map(proprietarioPresenter::proprietarioModelEmProprietario);
     }
 

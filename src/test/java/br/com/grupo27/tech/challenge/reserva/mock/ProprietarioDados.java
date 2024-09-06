@@ -10,6 +10,10 @@ public interface ProprietarioDados {
         return new ProprietarioResponse("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
     }
 
+    static ProprietarioResponse getProprietarioResponseAtualizado() {
+        return new ProprietarioResponse("66c67aa035ed1f735450b7a2", "Maria", ",maria@teste.com", "abcd", "11988888888", "11999999999");
+    }
+
     static ProprietarioModel getProprietarioModel() {
         return new ProprietarioModel("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
     }
@@ -20,6 +24,14 @@ public interface ProprietarioDados {
 
     static Proprietario getProprietario() {
         return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+    }
+
+    static Proprietario getProprietarioAtualizado() {
+        return new Proprietario("66c67aa035ed1f735450b7a2", "Maria", ",maria@teste.com", "abcd", "11988888888", "11999999999");
+    }
+
+    static Proprietario getProprietarioSemId() {
+        return new Proprietario(null, "João", "joao@teste.com", "123456", "11999999999", "11999999999");
     }
 
     static Proprietario getProprietarioComNomeNull() {
@@ -62,4 +74,7 @@ public interface ProprietarioDados {
         return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "");
     }
 
+    static ProprietarioModel getProprietarioModelAtualizado() {
+        return new ProprietarioModel("66c67aa035ed1f735450b7a2", "Maria", ",maria@teste.com", "abcd", "11988888888", "11999999999");
+    }
 }
