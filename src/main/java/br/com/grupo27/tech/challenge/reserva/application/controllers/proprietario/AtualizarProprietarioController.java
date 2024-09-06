@@ -4,8 +4,7 @@ import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietari
 import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario.response.ProprietarioResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.AtualizarProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.AtualizarProprietarioUserCase;
-import br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario.AtualizarProprietarioAdapter;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,20 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/proprietarios")
 public class AtualizarProprietarioController {
 
+    private final ProprietarioUserCaseFactory proprietarioUserCaseFactory;
     private final AtualizarProprietarioPresenter atualizarProprietarioPresenter;
     private final ProprietarioPresenter proprietarioPresenter;
     private final ProprietarioRepository proprietarioRepository;
 
-
     @PutMapping("/{id}")
     public ResponseEntity<ProprietarioResponse> atualizar(@PathVariable String id, @RequestBody AtualizarProprietarioRequest request) {
 
-        var atualizarProprietarioUserCase = new AtualizarProprietarioUserCase(
-                new AtualizarProprietarioAdapter(
-                        proprietarioRepository, proprietarioPresenter
-                ), atualizarProprietarioPresenter
-        );
-
+        var atualizarProprietarioUserCase = proprietarioUserCaseFactory.buildAtualizarProprietarioUserCase(atualizarProprietarioPresenter, proprietarioPresenter, proprietarioRepository);
         var atualizarProprietarioInput = atualizarProprietarioPresenter.atualizarProprietarioRequestEmAtualizarProprietarioInput(id, request);
         var atualizarProprietarioOutput = atualizarProprietarioUserCase.atualizar(atualizarProprietarioInput);
         var proprietarioResponse = atualizarProprietarioPresenter.atualizarProprietarioOutputEmProprietarioResponse(atualizarProprietarioOutput);
