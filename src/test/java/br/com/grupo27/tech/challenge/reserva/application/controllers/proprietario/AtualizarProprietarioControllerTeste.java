@@ -7,12 +7,14 @@ import br.com.grupo27.tech.challenge.reserva.domain.output.proprietario.Atualiza
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.AtualizarProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.AtualizarProprietarioUserCase;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
-import org.junit.jupiter.api.BeforeEach;
-import org.mockito.Mock;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -27,39 +29,40 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@WebMvcTest(AtualizarProprietarioController.class)
 class AtualizarProprietarioControllerTeste extends TesteConfig {
 
+    @Autowired
     private MockMvc mockMvc;
 
-    @Mock
+    @MockBean
+    private ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+
+    @MockBean
     private AtualizarProprietarioPresenter atualizarProprietarioPresenter;
 
-    @Mock
+    @MockBean
     private ProprietarioPresenter proprietarioPresenter;
 
-    @Mock
+    @MockBean
     private ProprietarioRepository proprietarioRepository;
 
-    @Mock
+    @MockBean
     private AtualizarProprietarioUserCase atualizarProprietarioUserCase;
 
-    @BeforeEach
-    void start() {
-        mockMvc = MockMvcBuilders.standaloneSetup(
-                new AtualizarProprietarioController(atualizarProprietarioPresenter, proprietarioPresenter, proprietarioRepository)
-        ).build();
-    }
-
-//    @Test
+    @Test
     void teste() throws Exception {
 
-        when(atualizarProprietarioPresenter.atualizarProprietarioRequestEmAtualizarProprietarioInput(anyString(), any(AtualizarProprietarioRequest.class)))
+        when(proprietarioUserCaseFactory.buildAtualizarProprietarioUserCase(atualizarProprietarioPresenter, proprietarioPresenter, proprietarioRepository))
+                .thenReturn(atualizarProprietarioUserCase);
+
+        when(atualizarProprietarioPresenter.atualizarProprietarioRequestEmAtualizarProprietarioInput(any(), any()))
                 .thenReturn(getAtualizarProprietarioInput());
 
-        when(atualizarProprietarioUserCase.atualizar(any(AtualizarProprietarioInput.class)))
+        when(atualizarProprietarioUserCase.atualizar(any()))
                 .thenReturn(getAtualizarProprietarioOutput());
 
-        when(atualizarProprietarioPresenter.atualizarProprietarioOutputEmProprietarioResponse(any(AtualizarProprietarioOutput.class)))
+        when(atualizarProprietarioPresenter.atualizarProprietarioOutputEmProprietarioResponse(any()))
                 .thenReturn(ProprietarioDados.getProprietarioResponseAtualizado());
 
         mockMvc.perform(put("/proprietarios/66c67aa035ed1f735450b7a2")
