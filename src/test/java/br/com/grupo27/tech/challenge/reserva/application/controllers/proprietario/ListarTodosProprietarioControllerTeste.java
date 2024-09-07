@@ -2,37 +2,93 @@ package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietar
 
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ListarTodosProprietariosPresenter;
+import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ListarTodosProprietariosUserCase;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
 
 import static br.com.grupo27.tech.challenge.reserva.mock.ListarTodosProprietariosDados.getPageProprietariosResponse;
 import static br.com.grupo27.tech.challenge.reserva.mock.ListarTodosProprietariosDados.getPageTodosProprietariosOutput;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@WebMvcTest(ListarTodosProprietarioController.class)
 class ListarTodosProprietarioControllerTeste extends TesteConfig {
 
-    @InjectMocks
-    private ListarTodosProprietarioController listarTodosProprietarioController;
+    @Autowired
+    private MockMvc mockMvc;
 
-    @Mock
+    @MockBean
+    private ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+
+    @MockBean
     private ListarTodosProprietariosUserCase listarTodosProprietariosUserCase;
 
-    @Mock
+    @MockBean
     private ListarTodosProprietariosPresenter listarTodosProprietariosPresenter;
 
+    @MockBean
+    private ProprietarioPresenter proprietarioPresenter;
 
-    void testListarTodos() {
-        int pagina = 0;
-        int tamanho = 10;
+    @MockBean
+    private ProprietarioRepository proprietarioRepository;
 
-        when(listarTodosProprietariosUserCase.listarTodos(pagina, tamanho)).thenReturn(getPageTodosProprietariosOutput());
-        when(listarTodosProprietariosPresenter.pageTodosProprietariosOutputEmPageProprietarioListResponse(getPageTodosProprietariosOutput())).thenReturn(getPageProprietariosResponse());
+    @Test
+    void testListarTodos() throws Exception {
 
-        var resultado = listarTodosProprietarioController.listarTodos(pagina, tamanho);
+        when(proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(listarTodosProprietariosPresenter, proprietarioPresenter, proprietarioRepository))
+                .thenReturn(listarTodosProprietariosUserCase);
 
-        assertEquals(getPageProprietariosResponse(), resultado.getBody());
+        when(listarTodosProprietariosUserCase.listarTodos(0, 10))
+                .thenReturn(getPageTodosProprietariosOutput());
+
+        when(listarTodosProprietariosPresenter.pageTodosProprietariosOutputEmPageProprietarioListResponse(getPageTodosProprietariosOutput()))
+                .thenReturn(getPageProprietariosResponse());
+
+        mockMvc.perform(get("/proprietarios")
+                        .param("pagina", "0")
+                        .param("tamanho", "10"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testListarTodosSemPagina() throws Exception {
+
+        when(proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(listarTodosProprietariosPresenter, proprietarioPresenter, proprietarioRepository))
+                .thenReturn(listarTodosProprietariosUserCase);
+
+        when(listarTodosProprietariosUserCase.listarTodos(0, 10))
+                .thenReturn(getPageTodosProprietariosOutput());
+
+        when(listarTodosProprietariosPresenter.pageTodosProprietariosOutputEmPageProprietarioListResponse(getPageTodosProprietariosOutput()))
+                .thenReturn(getPageProprietariosResponse());
+
+        mockMvc.perform(get("/proprietarios")
+                        .param("tamanho", "10"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testListarTodosSemTamanho() throws Exception {
+
+        when(proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(listarTodosProprietariosPresenter, proprietarioPresenter, proprietarioRepository))
+                .thenReturn(listarTodosProprietariosUserCase);
+
+        when(listarTodosProprietariosUserCase.listarTodos(0, 50))
+                .thenReturn(getPageTodosProprietariosOutput());
+
+        when(listarTodosProprietariosPresenter.pageTodosProprietariosOutputEmPageProprietarioListResponse(getPageTodosProprietariosOutput()))
+                .thenReturn(getPageProprietariosResponse());
+
+        mockMvc.perform(get("/proprietarios")
+                        .param("pagina", "0"))
+                .andExpect(status().isOk());
     }
 
 }
