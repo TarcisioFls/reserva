@@ -48,19 +48,21 @@ class BuscarProprietarioPorIdControllerTeste extends TesteConfig {
     @Test
     void testeBuscaPorId() throws Exception {
 
+        var id = "66c67aa035ed1f735450b7a2";
+
         when(proprietarioUserCaseFactory.buildBuscarProprietarioPorIdUserCase(buscarProprietarioPorIdPresenter, proprietarioPresenter, proprietarioRepository))
                 .thenReturn(buscarProprietarioPorIdUserCase);
 
-        when(buscarProprietarioPorIdUserCase.buscarPorId("66c67aa035ed1f735450b7a2"))
+        when(buscarProprietarioPorIdUserCase.buscarPorId(id))
                 .thenReturn(buscarProprietarioPorIdOutput());
 
         when(buscarProprietarioPorIdPresenter.proprietarioResponseEmBuscarProprietarioPorIdOutput(any()))
                 .thenReturn(getProprietarioResponse());
 
-        mockMvc.perform(get("/proprietario/{id}", "66c67aa035ed1f735450b7a2"))
+        mockMvc.perform(get("/proprietario/{id}", id))
                 .andExpect(status().isOk());
 
-        verify(buscarProprietarioPorIdUserCase, times(1)).buscarPorId("66c67aa035ed1f735450b7a2");
+        verify(buscarProprietarioPorIdUserCase, times(1)).buscarPorId(id);
         verify(buscarProprietarioPorIdPresenter, times(1)).proprietarioResponseEmBuscarProprietarioPorIdOutput(any());
 
     }
