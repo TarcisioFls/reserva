@@ -7,6 +7,8 @@ import br.com.grupo27.tech.challenge.reserva.domain.entity.Restaurante;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha;
 import br.com.grupo27.tech.challenge.reserva.domain.input.restaurante.AtualizarRestauranteInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.AtualizarRestauranteOutput;
+import br.com.grupo27.tech.challenge.reserva.infra.model.ProprietarioModel;
+import br.com.grupo27.tech.challenge.reserva.infra.model.RestauranteModel;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -35,6 +37,29 @@ public interface AtualizarRestauranteDados {
 
     static RestauranteResponse getRestauranteResponse() {
         return criaRestauranteResponse();
+    }
+
+    static RestauranteModel getRestauranteModel() {
+        return criaRestauranteModel();
+    }
+
+    private static RestauranteModel criaRestauranteModel() {
+        var restauranteModel = new RestauranteModel();
+        restauranteModel.setId(criaRestaurante().getId());
+        restauranteModel.setNome(criaRestaurante().getNome());
+        restauranteModel.setDescricao(criaRestaurante().getDescricao());
+        restauranteModel.setLocalizacao(criaRestaurante().getLocalizacao());
+        restauranteModel.setHoraAbertura(criaRestaurante().getHoraAbertura());
+        restauranteModel.setHoraFechamento(criaRestaurante().getHoraFechamento());
+        restauranteModel.setCapacidade(criaRestaurante().getCapacidade());
+        restauranteModel.setTipoCozinhaList(criaListaTpoCozinha());
+        restauranteModel.setProprietario(criaProprietarioModel());
+
+        return restauranteModel;
+    }
+
+    private static ProprietarioModel criaProprietarioModel() {
+        return new ProprietarioModel();
     }
 
     private static RestauranteResponse criaRestauranteResponse() {
