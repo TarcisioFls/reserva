@@ -1,8 +1,10 @@
 package br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante;
 
+import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Restaurante;
 import br.com.grupo27.tech.challenge.reserva.domain.input.restaurante.AtualizarRestauranteInput;
+import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.AtualizarRestauranteOutput;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -17,6 +19,8 @@ import static org.mockito.Mockito.*;
 class AtualizarRestaurantePresenterImplTest extends TesteConfig {
 
     private AtualizarRestauranteInput input;
+    private Restaurante restaurante;
+    private AtualizarRestauranteOutput output;
 
     @InjectMocks
     private AtualizarRestaurantePresenterImpl atualizarRestaurantePresenter;
@@ -27,6 +31,8 @@ class AtualizarRestaurantePresenterImplTest extends TesteConfig {
     @BeforeEach
     void inicia() {
         input = getAtualizarRestauranteInput();
+        output = getAtualizarRestauranteOutput();
+        restaurante = getRestaurante();
     }
 
     @Test
@@ -43,11 +49,30 @@ class AtualizarRestaurantePresenterImplTest extends TesteConfig {
 
     @Test
     void testAtualizarRestauranteInputEmRestaurante() {
-        var restaurante = getRestaurante();
 
         var resultado = atualizarRestaurantePresenter.atualizarRestauranteInputEmRestaurante(input);
 
         assertEquals(restaurante, resultado);
         verify(mapper, times(1)).map(input, Restaurante.class);
+    }
+
+    @Test
+    void testRestauranteEmAtualizarRestauranteOutput() {
+
+        var resultado = atualizarRestaurantePresenter.restauranteEmAtualizarRestauranteOutput(restaurante);
+
+        assertEquals(output, resultado);
+        verify(mapper, times(1)).map(restaurante, AtualizarRestauranteOutput.class);
+    }
+
+    @Test
+    void testAtualizarRestauranteOutputEmRestauranteResponse() {
+
+        var response = getRestauranteResponse();
+
+        var resultado = atualizarRestaurantePresenter.atualizarRestauranteOutputEmRestauranteResponse(output);
+
+        assertEquals(response, resultado);
+        verify(mapper, times(1)).map(output, RestauranteResponse.class);
     }
 }

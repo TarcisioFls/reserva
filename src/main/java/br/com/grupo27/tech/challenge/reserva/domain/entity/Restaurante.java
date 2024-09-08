@@ -1,6 +1,8 @@
 package br.com.grupo27.tech.challenge.reserva.domain.entity;
 
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +20,7 @@ import static java.util.Objects.isNull;
 
 @Getter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Restaurante {
 
     private String id;
@@ -105,6 +108,7 @@ public class Restaurante {
 
     public Restaurante setTipoCozinhaList(List<TipoCozinha> tipoCozinhaList) {
         if (isNull(tipoCozinhaList) || tipoCozinhaList.isEmpty()) {
+            throw new ExceptionAdvice(TIPO_COZINHA_OBRIGATORIO);
             throw new ExceptionAdvice(TIPO_COZINHA_OBRIGATORIO);
         }
         this.tipoCozinhaList = tipoCozinhaList;

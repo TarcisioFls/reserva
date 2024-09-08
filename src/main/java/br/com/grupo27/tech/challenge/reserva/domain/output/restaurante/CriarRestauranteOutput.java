@@ -21,6 +21,6 @@ public class CriarRestauranteOutput {
     private LocalTime horaAbertura;
     private LocalTime horaFechamento;
     private int capacidade;
-    private List<TipoCozinha> tipoCozinha;
+    private List<TipoCozinha> tipoCozinhaList;
     private Proprietario proprietario;
 }

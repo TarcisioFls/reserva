@@ -1,6 +1,7 @@
 package br.com.grupo27.tech.challenge.reserva.mock.restaurante;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.request.AtualizarRestauranteRequest;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Restaurante;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha;
@@ -32,9 +33,28 @@ public interface AtualizarRestauranteDados {
         return criaRestaurante();
     }
 
+    static RestauranteResponse getRestauranteResponse() {
+        return criaRestauranteResponse();
+    }
+
+    private static RestauranteResponse criaRestauranteResponse() {
+        var response = new RestauranteResponse();
+        response.setId(criaRestaurante().getId());
+        response.setNome(criaRestaurante().getNome());
+        response.setDescricao(criaRestaurante().getDescricao());
+        response.setLocalizacao(criaRestaurante().getLocalizacao());
+        response.setHoraAbertura(criaRestaurante().getHoraAbertura());
+        response.setHoraFechamento(criaRestaurante().getHoraFechamento());
+        response.setCapacidade(criaRestaurante().getCapacidade());
+        response.setTipoCozinhaList(criaListaTpoCozinha());
+        response.setProprietario(criaProprietario());
+
+        return response;
+    }
+
     private static AtualizarRestauranteOutput criaOutput() {
         var output = new AtualizarRestauranteOutput();
-        output.setId(ID_TESTE);
+        output.setId(criaRestaurante().getId());
         output.setNome(criaRestaurante().getNome());
         output.setDescricao(criaRestaurante().getDescricao());
         output.setLocalizacao(criaRestaurante().getLocalizacao());
@@ -49,7 +69,7 @@ public interface AtualizarRestauranteDados {
 
     private static AtualizarRestauranteInput criaInput() {
         var input = new AtualizarRestauranteInput();
-        input.setId(ID_TESTE);
+        input.setId(criaRestaurante().getId());
         input.setNome(criaRestaurante().getNome());
         input.setDescricao(criaRestaurante().getDescricao());
         input.setLocalizacao(criaRestaurante().getLocalizacao());
@@ -86,6 +106,7 @@ public interface AtualizarRestauranteDados {
 
     private static Restaurante criaRestaurante() {
         var restaurante = new Restaurante();
+        restaurante.setId(ID_TESTE);
         restaurante.setNome("Rikimaru");
         restaurante.setDescricao("Fica Inv, Roubadão");
         restaurante.setLocalizacao("Não sabemos, pq ta inv");
