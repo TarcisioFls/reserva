@@ -1,7 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.domain.entity;
 
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
