@@ -23,7 +23,7 @@ public class ExceptionAdviceHandler {
         if (e.getCodigoError().isExibirDescricaoError()) {
             log.error("Error", e);
         } else {
-            log.error("Error: {}", errorResponse.getMessage());
+            log.error("Error: {}", errorResponse.getMensagem());
         }
 
         return new ResponseEntity<>(errorResponse, e.getHttpStatus());
@@ -39,7 +39,7 @@ public class ExceptionAdviceHandler {
             errors.put(fieldName, errorMessage);
         });
         var errorMessage = new ErrorResponse(HttpStatus.BAD_REQUEST, errors.toString());
-        log.error("Error: {}", errorMessage.getMessage());
+        log.error("Error: {}", errorMessage.getMensagem());
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
     }
 

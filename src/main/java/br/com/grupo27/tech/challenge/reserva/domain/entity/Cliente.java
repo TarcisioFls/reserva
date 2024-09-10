@@ -2,10 +2,14 @@ package br.com.grupo27.tech.challenge.reserva.domain.entity;
 
 import br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.PASSWORD_OBRIGATORIO;
+import static java.util.Objects.isNull;
+@Data
 public class Cliente {
 
     private String id;
@@ -28,12 +32,15 @@ public class Cliente {
         if ( Objects.isNull(telefone) || telefone.isBlank() ) {
             throw new ExceptionAdvice(CodigoError.TELEFONE_OBRIGATORIO);
         }
+        if (isNull(senha) || senha.isBlank()) {
+            throw new ExceptionAdvice(PASSWORD_OBRIGATORIO);
+        }
 
         if (!validaCpf(cpf)){
             throw new ExceptionAdvice(CodigoError.CPF_OBRIGATORIO);
         }
 
-        if (validaNome(nome)){
+        if (!validaNome(nome)){
             throw new ExceptionAdvice(CodigoError.NOME_CLIENTE_VALIDO);
         }
 
@@ -104,6 +111,9 @@ public class Cliente {
 
     public static boolean validaCpf(String cpf){
 
+        if(Objects.isNull(cpf) || cpf.isEmpty()){
+            return false;
+        }
         //remove caracteres não numéricos
         cpf = cpf.replaceAll("\\D","");
 
@@ -162,7 +172,7 @@ public class Cliente {
             return false;
         }
 
-        return nome.matches("^\\p{L}+\\p{L}+$");
+        return nome.matches("^\\p{L}+ \\p{L}+$");
 
     }
 }

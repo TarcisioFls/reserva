@@ -10,7 +10,8 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 public class CriarClienteRequest {
-    private Long id;
+
+
     private String nome;
     private String email;
     private String senha;
