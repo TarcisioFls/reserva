@@ -5,7 +5,7 @@ import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.res
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.CriarClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.CriarClienteUserCase;
-import br.com.grupo27.tech.challenge.reserva.infra.adpter.cliente.CriarClienteAdapter;
+import br.com.grupo27.tech.challenge.reserva.infra.adapter.cliente.CriarClienteAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

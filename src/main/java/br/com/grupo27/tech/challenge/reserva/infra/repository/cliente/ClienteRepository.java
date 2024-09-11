@@ -10,4 +10,6 @@ public interface ClienteRepository extends MongoRepository<ClienteModel, Long> {
     Optional<ClienteModel> findByEmail(String email);
 
     Optional<ClienteModel> findByCpf(String cpf);
+
+    Optional<ClienteModel> findById(String id);
 }

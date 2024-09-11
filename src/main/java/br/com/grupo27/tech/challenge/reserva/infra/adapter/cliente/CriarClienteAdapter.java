@@ -1,4 +1,4 @@
-package br.com.grupo27.tech.challenge.reserva.infra.adpter.cliente;
+package br.com.grupo27.tech.challenge.reserva.infra.adapter.cliente;
 
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Cliente;
 import br.com.grupo27.tech.challenge.reserva.domain.gateway.cliente.CriarClienteGateway;

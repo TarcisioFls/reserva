@@ -3,7 +3,6 @@ package br.com.grupo27.tech.challenge.reserva.infra.adapter.cliente;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Cliente;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenterImpl;
-import br.com.grupo27.tech.challenge.reserva.infra.adpter.cliente.CriarClienteAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.model.ClienteModel;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import org.junit.jupiter.api.Test;
