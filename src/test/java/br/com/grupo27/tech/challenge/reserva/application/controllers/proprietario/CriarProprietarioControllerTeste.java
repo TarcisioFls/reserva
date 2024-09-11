@@ -1,44 +1,79 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario;
 
+import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.CriarProprietarioPresenter;
+import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.CriarProprietarioUserCase;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getCriarProprietarioInput;
 import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getCriarProprietarioOutput;
 import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getCriarProprietarioRequest;
 import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioResponse;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(MockitoExtension.class)
-class CriarProprietarioControllerTeste {
+@WebMvcTest(CriarProprietarioController.class)
+class CriarProprietarioControllerTeste extends TesteConfig {
 
-    @InjectMocks
-    private CriarProprietarioController criarProprietarioController;
+    @Autowired
+    private MockMvc mockMvc;
 
-    @Mock
+    @MockBean
     private CriarProprietarioPresenter criarProprietarioPresenter;
 
-    @Mock
+    @MockBean
+    private ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+
+    @MockBean
+    private ProprietarioPresenter proprietarioPresenter;
+
+    @MockBean
+    private ProprietarioRepository proprietarioRepository;
+
+    @MockBean
     private CriarProprietarioUserCase criarProprietarioUserCase;
 
-    void testeCriar() {
-        var request = getCriarProprietarioRequest();
-        var criarProprietarioInput = getCriarProprietarioInput();
-        var criarProprietarioOutput = getCriarProprietarioOutput();
-        var proprietarioResponse = getProprietarioResponse();
+    @Test
+    void testeCriar() throws Exception {
 
-        when(criarProprietarioPresenter.criarProprietarioEmCriarProprietarioInput(request)).thenReturn(criarProprietarioInput);
-        when(criarProprietarioUserCase.criar(criarProprietarioInput)).thenReturn(criarProprietarioOutput);
-        when(criarProprietarioPresenter.criarProprietarioOutputEmProprietarioResponse(criarProprietarioOutput)).thenReturn(proprietarioResponse);
+        when(proprietarioUserCaseFactory.buildCriarProprietarioUserCase(criarProprietarioPresenter, proprietarioPresenter, proprietarioRepository))
+                .thenReturn(criarProprietarioUserCase);
 
-        var resultado = criarProprietarioController.criar(request);
+        when(criarProprietarioPresenter.criarProprietarioEmCriarProprietarioInput(any()))
+                .thenReturn(getCriarProprietarioInput());
 
-        assertEquals(proprietarioResponse, resultado.getBody());
+        when(criarProprietarioUserCase.criar(any()))
+                .thenReturn(getCriarProprietarioOutput());
+
+        when(criarProprietarioPresenter.criarProprietarioOutputEmProprietarioResponse(any()))
+                .thenReturn(getProprietarioResponse());
+
+        mockMvc.perform(post("/proprietarios")
+                        .contentType("application/json")
+                        .content(asJsonString(getCriarProprietarioRequest())))
+                .andExpect(status().isOk());
+
+        verify(criarProprietarioPresenter, times(1)).criarProprietarioEmCriarProprietarioInput(getCriarProprietarioRequest());
+        verify(criarProprietarioUserCase, times(1)).criar(getCriarProprietarioInput());
+        verify(criarProprietarioPresenter, times(1)).criarProprietarioOutputEmProprietarioResponse(getCriarProprietarioOutput());
+    }
+
+    private static String asJsonString(final Object obj) throws JsonProcessingException {
+
+        return new ObjectMapper().writeValueAsString(obj);
     }
 
 }

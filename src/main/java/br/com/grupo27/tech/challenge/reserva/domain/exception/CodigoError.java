@@ -20,15 +20,14 @@ public enum CodigoError {
     EMAIL_OBRIGATORIO("Email é obrigatório", BAD_REQUEST, FALSE),
     EMAIL_JA_CADASTRADO("Email já cadastrado", BAD_REQUEST, FALSE),
     PROPRIETARIO_JA_CADASTRADO("Proprietário já cadastrado", BAD_REQUEST, FALSE),
-    
-    
     ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE),
-    DESCRICAO_OBRIGATORIA("Descrição é obrigatória", BAD_REQUEST, FALSE),
+    DESCRICAO_OBRIGATORIA("Descrição é obrigatória", BAD_REQUEST,FALSE),
     LOCALIZACAO_OBRIGATORIA("Localização é obrigatória", BAD_REQUEST, FALSE),
     CAPACIDADE_INVALIDA("Capacidade precisa ser maior que 0", BAD_REQUEST, FALSE),
-    TIPO_COZINHA_OBRIGATORIO("Tipo de Cozinha é obrigatório", BAD_REQUEST, FALSE),
+    TIPO_COZINHA_OBRIGATORIA("Tipo de Cozinha é obrigatório",BAD_REQUEST, FALSE),
     PROPRIETARIO_OBRIGATORIO("Proprietário é obrigatório", BAD_REQUEST, FALSE),
-    HORARIO_FUNCIONAMENTO_OBRIGATORIO("Horário de Funcionamento é obrigatório", BAD_REQUEST, FALSE);
+    HORARIO_FUNCIONAMENTO_OBRIGATORIO("Horário de Funcionamento é obrigatório", BAD_REQUEST, FALSE),
+    RESTAURANTE_NAO_ENCONTRADO("Restaurante não encontrado", NOT_FOUND, FALSE);
 
     private final String mensagem;
     private final HttpStatus httpStatus;

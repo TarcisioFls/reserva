@@ -29,5 +29,5 @@ public class RestauranteModel {
     private LocalTime horaFechamento;
     private int capacidade;
     private List<TipoCozinha> tipoCozinhaList;
-    private ProprietarioModel proprietario;
+    private String proprietarioId;
 }

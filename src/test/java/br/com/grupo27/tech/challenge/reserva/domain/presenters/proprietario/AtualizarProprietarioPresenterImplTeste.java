@@ -79,7 +79,7 @@ class AtualizarProprietarioPresenterImplTeste extends TesteConfig {
         var resultado = atualizarProprietarioPresenter.atualizarProprietarioOutputEmProprietarioResponse(atualizarProprietarioOutput);
 
         assertAll("teste",
-                () -> assertEquals("66c67aa035ed1f735450b7a2", resultado.getId()),
+                () -> assertEquals("77b11aa035ed1f735459a1p0", resultado.getId()),
                 () -> assertEquals("Maria", resultado.getNome()),
                 () -> assertEquals("maria@teste.com", resultado.getEmail()),
                 () -> assertEquals("abcd", resultado.getSenha()),

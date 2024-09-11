@@ -9,7 +9,6 @@ import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.Prop
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.AtualizarProprietarioUserCase;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
-import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,6 +20,7 @@ import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioInput;
 import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioOutput;
 import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioRequest;
+import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioResponseAtualizado;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
@@ -63,7 +63,7 @@ class AtualizarProprietarioControllerTeste extends TesteConfig {
                 .thenReturn(getAtualizarProprietarioOutput());
 
         when(atualizarProprietarioPresenter.atualizarProprietarioOutputEmProprietarioResponse(any()))
-                .thenReturn(ProprietarioDados.getProprietarioResponseAtualizado());
+                .thenReturn(getProprietarioResponseAtualizado());
 
         mockMvc.perform(put("/proprietarios/66c67aa035ed1f735450b7a2")
                 .contentType("application/json")
