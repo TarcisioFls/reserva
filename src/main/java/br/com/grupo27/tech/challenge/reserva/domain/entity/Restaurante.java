@@ -8,13 +8,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalTime;
 import java.util.List;
 
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.CAPACIDADE_INVALIDA;
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.DESCRICAO_OBRIGATORIA;
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.HORARIO_FUNCIONAMENTO_OBRIGATORIO;
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.LOCALIZACAO_OBRIGATORIA;
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.NOME_OBRIGATORIO;
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.PROPRIETARIO_OBRIGATORIO;
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.TIPO_COZINHA_OBRIGATORIO;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.*;
 import static java.util.Objects.isNull;
 
 @Getter
@@ -107,7 +101,7 @@ public class Restaurante {
 
     public Restaurante setTipoCozinhaList(List<TipoCozinha> tipoCozinhaList) {
         if (isNull(tipoCozinhaList) || tipoCozinhaList.isEmpty()) {
-            throw new ExceptionAdvice(TIPO_COZINHA_OBRIGATORIO);
+            throw new ExceptionAdvice(TIPO_COZINHA_OBRIGATORIA);
         }
         this.tipoCozinhaList = tipoCozinhaList;
         return this;
