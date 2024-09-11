@@ -108,7 +108,6 @@ public class Restaurante {
     public Restaurante setTipoCozinhaList(List<TipoCozinha> tipoCozinhaList) {
         if (isNull(tipoCozinhaList) || tipoCozinhaList.isEmpty()) {
             throw new ExceptionAdvice(TIPO_COZINHA_OBRIGATORIO);
-            throw new ExceptionAdvice(TIPO_COZINHA_OBRIGATORIO);
         }
         this.tipoCozinhaList = tipoCozinhaList;
         return this;
