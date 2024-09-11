@@ -3,6 +3,7 @@ package br.com.grupo27.tech.challenge.reserva.domain.exception;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import org.junit.jupiter.api.Test;
 
+
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.ERRO_DESCONHECIDO;
 import static org.junit.jupiter.api.Assertions.*;
 
