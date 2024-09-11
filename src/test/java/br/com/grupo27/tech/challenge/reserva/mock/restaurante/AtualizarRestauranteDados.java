@@ -18,6 +18,7 @@ import static br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha.CA
 public interface AtualizarRestauranteDados {
 
     String ID_TESTE = "66c67aa035ed1f735450b7a2";
+    String ID_PROPRIETARIO_TESTE = "99d95aa035ed1f735450b7b2";
 
     static AtualizarRestauranteRequest getAtualizarRestauranteRequest() {
         return criaRequest();
@@ -53,13 +54,15 @@ public interface AtualizarRestauranteDados {
         restauranteModel.setHoraFechamento(criaRestaurante().getHoraFechamento());
         restauranteModel.setCapacidade(criaRestaurante().getCapacidade());
         restauranteModel.setTipoCozinhaList(criaListaTpoCozinha());
-        restauranteModel.setProprietario(criaProprietarioModel());
+        restauranteModel.setProprietarioId(criaProprietarioModel().getId());
 
         return restauranteModel;
     }
 
     private static ProprietarioModel criaProprietarioModel() {
-        return new ProprietarioModel();
+        var proprietarioModel = new ProprietarioModel();
+        proprietarioModel.setId(ID_PROPRIETARIO_TESTE);
+        return proprietarioModel;
     }
 
     private static RestauranteResponse criaRestauranteResponse() {
@@ -72,7 +75,7 @@ public interface AtualizarRestauranteDados {
         response.setHoraFechamento(criaRestaurante().getHoraFechamento());
         response.setCapacidade(criaRestaurante().getCapacidade());
         response.setTipoCozinhaList(criaListaTpoCozinha());
-        response.setProprietario(criaProprietario());
+        response.setProprietarioId(criaProprietario());
 
         return response;
     }
@@ -87,7 +90,7 @@ public interface AtualizarRestauranteDados {
         output.setHoraFechamento(criaRestaurante().getHoraFechamento());
         output.setCapacidade(criaRestaurante().getCapacidade());
         output.setTipoCozinhaList(criaListaTpoCozinha());
-        output.setProprietario(criaProprietario());
+        output.setProprietarioId(criaProprietario());
 
         return output;
     }
@@ -102,7 +105,7 @@ public interface AtualizarRestauranteDados {
         input.setHoraFechamento(criaRestaurante().getHoraFechamento());
         input.setCapacidade(criaRestaurante().getCapacidade());
         input.setTipoCozinhaList(criaListaTpoCozinha());
-        input.setProprietario(criaProprietario());
+        input.setProprietarioId(criaProprietario());
 
         return input;
     }
@@ -116,7 +119,7 @@ public interface AtualizarRestauranteDados {
         request.setHoraFechamento(criaRestaurante().getHoraFechamento());
         request.setCapacidade(criaRestaurante().getCapacidade());
         request.setTipoCozinhaList(criaListaTpoCozinha());
-        request.setProprietario(criaProprietario());
+        request.setProprietarioId(criaProprietario());
 
         return request;
     }
@@ -125,8 +128,11 @@ public interface AtualizarRestauranteDados {
         return List.of(CASEIRA);
     }
 
-    private static Proprietario criaProprietario() {
-        return new Proprietario();
+    private static String criaProprietario() {
+        var proprietario = new ProprietarioModel();
+        proprietario.setId(ID_PROPRIETARIO_TESTE);
+
+        return proprietario.getId();
     }
 
     private static Restaurante criaRestaurante() {
@@ -139,7 +145,7 @@ public interface AtualizarRestauranteDados {
         restaurante.setHoraFechamento(LocalTime.of(19, 59));
         restaurante.setCapacidade(50);
         restaurante.setTipoCozinhaList(criaListaTpoCozinha());
-        restaurante.setProprietario(criaProprietario());
+        restaurante.setProprietarioId(criaProprietario());
 
         return restaurante;
     }

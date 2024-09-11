@@ -30,7 +30,7 @@ public class Restaurante {
     private LocalTime horaFechamento;
     private int capacidade;
     private List<TipoCozinha> tipoCozinhaList;
-    private Proprietario proprietario;
+    private String proprietarioId;
 
     public Restaurante(String nome,
                        String descricao,
@@ -39,7 +39,7 @@ public class Restaurante {
                        LocalTime horaFechamento,
                        int capacidade,
                        List<TipoCozinha> tipoCozinhas,
-                       Proprietario proprietario) {
+                       String proprietarioId) {
 
 
         this.setNome(nome);
@@ -49,7 +49,7 @@ public class Restaurante {
         this.setHoraFechamento(horaFechamento);
         this.setCapacidade(capacidade);
         this.setTipoCozinhaList(tipoCozinhas);
-        this.setProprietario(proprietario);
+        this.setProprietarioId(proprietarioId);
     }
 
     public Restaurante setId(String id) {
@@ -114,11 +114,11 @@ public class Restaurante {
         return this;
     }
 
-    public Restaurante setProprietario(Proprietario proprietario) {
-        if (isNull(proprietario)) {
+    public Restaurante setProprietarioId(String proprietarioId) {
+        if (isNull(proprietarioId)) {
             throw new ExceptionAdvice(PROPRIETARIO_OBRIGATORIO);
         }
-        this.proprietario = proprietario;
+        this.proprietarioId = proprietarioId;
         return this;
     }
 }

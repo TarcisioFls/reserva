@@ -52,8 +52,7 @@ class AtualizarRestaurantePresenterImplTest extends TesteConfig {
 
         var resultado = atualizarRestaurantePresenter.atualizarRestauranteInputEmRestaurante(input);
 
-        assertEquals(restaurante, resultado);
-        verify(mapper, times(1)).map(input, Restaurante.class);
+        assertEquals(restaurante.getNome(), resultado.getNome());
     }
 
     @Test

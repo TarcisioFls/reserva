@@ -19,7 +19,8 @@ public class CriarRestaurantePresenterImpl implements CriarRestaurantePresenter 
     @Override
     public Restaurante criarRestauranteInputParaRestaurante(CriarRestauranteInput input) {
 
-        return mapper.map(input, Restaurante.class);
+        return new Restaurante(input.getNome(), input.getDescricao(), input.getLocalizacao(), input.getHoraAbertura(),
+                input.getHoraFechamento(), input.getCapacidade(), input.getTipoCozinhaList(), input.getProprietarioId());
     }
 
     @Override

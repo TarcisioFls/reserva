@@ -16,10 +16,10 @@ public class AtualizarRestauranteAdapter implements AtualizarRestauranteGateway 
 
     @Override
     public Restaurante atualizar(Restaurante restaurante) {
-        var restaurantoModel = restaurantePresenter.restauranteParaRestauranteModel(restaurante);
-        restauranteRepository.save(restaurantoModel);
+        var restauranteModel = restaurantePresenter.restauranteParaRestauranteModel(restaurante);
+        restauranteRepository.save(restauranteModel);
 
-        return restaurantePresenter.restauranteModelParaRestaurante(restaurantoModel);
+        return restaurantePresenter.restauranteModelParaRestaurante(restauranteModel);
     }
 
     @Override

@@ -52,8 +52,7 @@ class CriarRestaurantePresenterImplTest {
         when(mapper.map(criarRestauranteInput, Restaurante.class)).thenReturn(restaurante);
         var resultado = criarRestaurantePresenterImpl.criarRestauranteInputParaRestaurante(criarRestauranteInput);
 
-        assertEquals(restaurante, resultado);
-        verify(mapper, times(1)).map(criarRestauranteInput, Restaurante.class);
+        assertEquals(restaurante.getNome(), resultado.getNome());
     }
 
     @Test

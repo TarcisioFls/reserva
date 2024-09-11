@@ -22,5 +22,5 @@ public class AtualizarRestauranteOutput {
     private LocalTime horaFechamento;
     private int capacidade;
     private List<TipoCozinha> tipoCozinhaList;
-    private Proprietario proprietario;
+    private String proprietarioId;
 }
