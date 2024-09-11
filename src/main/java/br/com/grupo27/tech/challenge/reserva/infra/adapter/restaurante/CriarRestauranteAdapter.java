@@ -6,9 +6,6 @@ import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.Resta
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import lombok.AllArgsConstructor;
 
-import java.util.List;
-import java.util.Optional;
-
 @AllArgsConstructor
 public class CriarRestauranteAdapter implements CriarRestauranteGateway {
 

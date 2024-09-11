@@ -3,8 +3,7 @@ package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurant
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.ListarTodosRestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.ListarTodosRestauranteUserCase;
-import br.com.grupo27.tech.challenge.reserva.infra.adapter.restaurante.ListarTodosRestauranteAdapter;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.ListarTodosRestauranteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.web.PagedModel;
@@ -19,21 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/restaurantes")
 public class ListarTodosRestauranteController {
 
+    private final ListarTodosRestauranteUserCaseFactory listarTodosRestauranteUserCaseFactory;
     private final RestauranteRepository restauranteRepository;
     private final RestaurantePresenter restaurantePresenter;
     private final ListarTodosRestaurantePresenter listarTodosRestaurantePresenter;
 
 
     @GetMapping
-    ResponseEntity<PagedModel<RestauranteResponse>> listarTodos(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "50") int tamanho) {
+    ResponseEntity<PagedModel<RestauranteResponse>> listarTodos(@RequestParam int pagina
+            , @RequestParam(defaultValue = "50") int tamanho) {
 
-        var listarTodosRestauranteUserCase = new ListarTodosRestauranteUserCase(
-                new ListarTodosRestauranteAdapter(
-                        restauranteRepository, restaurantePresenter), listarTodosRestaurantePresenter
-        );
+        var listarTodosRestauranteUserCase = listarTodosRestauranteUserCaseFactory
+                .buildListarTodosRestauranteUserCase(listarTodosRestaurantePresenter, restaurantePresenter, restauranteRepository);
 
         var todosRestaurantesOutput = listarTodosRestauranteUserCase.listarTodos(pagina, tamanho);
-        var restauranteResponses = listarTodosRestaurantePresenter.pageTodosRestaurantesOutputEmPageRestauranteResponse(todosRestaurantesOutput);
+        var restauranteResponses = listarTodosRestaurantePresenter
+                .pageTodosRestaurantesOutputEmPageRestauranteResponse(todosRestaurantesOutput);
 
         return ResponseEntity.ok(restauranteResponses);
 

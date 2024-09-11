@@ -35,8 +35,8 @@ public interface ListarTodosRestaurantesDados {
     }
 
     static PagedModel<RestauranteResponse> getPageRestauranteResponse() {
-        var restauranteAkira  = new RestauranteResponse("66c67aa035ed1f735450b7a2", "Restaurante Akira", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(JAPONESA), getProprietario());
-        var restauranteTacoTaca = new RestauranteResponse("66c67aa035ed1f735450b7a3", "Restaurante Taco Taca", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(MEXICANA), getProprietario());
+        var restauranteAkira  = new RestauranteResponse("66c67aa035ed1f735450b7a2", "Restaurante Akira", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(JAPONESA), getProprietarioModel().getId());
+        var restauranteTacoTaca = new RestauranteResponse("66c67aa035ed1f735450b7a3", "Restaurante Taco Taca", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(MEXICANA), getProprietarioModel().getId());
         var todosRestaurantesOutput = List.of(restauranteAkira, restauranteTacoTaca);
         var pageRequest = PageRequest.of(0, 10);
 
@@ -46,16 +46,16 @@ public interface ListarTodosRestaurantesDados {
     }
 
     static Page<RestauranteModel> getPageRestauranteModel() {
-        var restauranteAkira  = new RestauranteModel("66c67aa035ed1f735450b7a2", "Restaurante Akira", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(JAPONESA), getProprietarioModel());
-        var restauranteTacoTaca = new RestauranteModel("66c67aa035ed1f735450b7a3","Restaurante Taco Taca", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(MEXICANA), getProprietarioModelAtualizado());
+        var restauranteAkira  = new RestauranteModel("66c67aa035ed1f735450b7a2", "Restaurante Akira", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(JAPONESA), getProprietarioModel().getId());
+        var restauranteTacoTaca = new RestauranteModel("66c67aa035ed1f735450b7a3","Restaurante Taco Taca", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(MEXICANA), getProprietarioModelAtualizado().getId());
         var todosRestaurantesOutput = List.of(restauranteAkira, restauranteTacoTaca);
 
         return new PageImpl<>(todosRestaurantesOutput);
     }
 
     static PagedModel<Restaurante> getPageRestaurante() {
-        var restauranteAkira  = new Restaurante("66c67aa035ed1f735450b7a2", "Restaurante Akira", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(JAPONESA), getProprietario());
-        var restauranteTacoTaca = new Restaurante("66c67aa035ed1f735450b7a3", "Restaurante Taco Taca", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(MEXICANA), getProprietarioAtualizado());
+        var restauranteAkira  = new Restaurante("66c67aa035ed1f735450b7a2", "Restaurante Akira", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(JAPONESA), getProprietarioModel().getId());
+        var restauranteTacoTaca = new Restaurante("66c67aa035ed1f735450b7a3", "Restaurante Taco Taca", "descricao", "localizacao", LocalTime.of(8, 0), LocalTime.of(20, 0), 20, List.of(MEXICANA), getProprietarioModel().getId());
         var todosRestaurantesOutput = List.of(restauranteAkira, restauranteTacoTaca);
         var pageRequest = PageRequest.of(0, 10);
 
