@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AtualizarClienteOutput {
+
     private String id;
     private String nome;
     private String email;

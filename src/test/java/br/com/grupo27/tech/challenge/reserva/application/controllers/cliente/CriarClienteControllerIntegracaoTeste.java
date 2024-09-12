@@ -14,9 +14,9 @@ import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.getClienteModelSemId;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteModelSemId;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarClienteDados.*;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.*;
 import static com.mongodb.assertions.Assertions.assertTrue;
 import static java.util.Objects.nonNull;
 

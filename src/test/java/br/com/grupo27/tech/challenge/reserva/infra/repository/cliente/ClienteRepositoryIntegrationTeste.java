@@ -1,6 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.infra.repository.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.mock.ClienteDados;
+import br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package br.com.grupo27.tech.challenge.reserva.mock;
+package br.com.grupo27.tech.challenge.reserva.mock.cliente;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.request.CriarClienteRequest;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Cliente;
@@ -7,9 +7,9 @@ import br.com.grupo27.tech.challenge.reserva.domain.output.cliente.CriarClienteO
 
 import java.time.LocalDate;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.getCliente;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getCliente;
 
-public class CriarClienteDados {
+public interface CriarClienteDados {
 
     public static CriarClienteRequest getCriarClienteRequest(){
         return new CriarClienteRequest( "João Rodrigo", "joao@teste.com", "123456", "11999999999","896.271.990-87", LocalDate.of(1985,05,05));

@@ -11,8 +11,8 @@ import org.mockito.Mock;
 
 import java.util.Optional;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.getCliente;
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.getClienteModel;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getCliente;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteModel;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;

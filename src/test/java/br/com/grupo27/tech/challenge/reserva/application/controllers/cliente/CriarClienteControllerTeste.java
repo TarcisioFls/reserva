@@ -14,8 +14,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.getClienteResponse;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarClienteDados.*;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteResponse;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 

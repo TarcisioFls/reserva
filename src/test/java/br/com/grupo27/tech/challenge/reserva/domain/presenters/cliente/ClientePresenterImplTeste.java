@@ -1,14 +1,13 @@
 package br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente;
 
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
-import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenterImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.getCliente;
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.getClienteModel;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getCliente;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteModel;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ClientePresenterImplTeste extends TesteConfig {

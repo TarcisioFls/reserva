@@ -1,4 +1,4 @@
-package br.com.grupo27.tech.challenge.reserva.mock;
+package br.com.grupo27.tech.challenge.reserva.mock.cliente;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.response.ClienteResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Cliente;
@@ -12,6 +12,10 @@ public interface ClienteDados {
         return new ClienteResponse("66c67aa035ed1f735450b7a2", "João Rodrigo", "joao@teste.com", "123456", "11999999999","896.271.990-87", LocalDate.of(1985,05,05));
     }
 
+    static ClienteResponse getClienteAtualizadoResponse(){
+        return new ClienteResponse("66c67aa035ed1f735450b7a2", "João Rodrigo atualizado", "joaoatualizado@teste.com", "123456", "11999999999","896.271.990-87", LocalDate.of(1985,05,05));
+    }
+
     static ClienteModel getClienteModel(){
         return new ClienteModel("66c67aa035ed1f735450b7a2", "João Rodrigo", "joao@teste.com", "123456", "11999999999","896.271.990-87", LocalDate.of(1985,05,05));
     }
@@ -22,6 +26,10 @@ public interface ClienteDados {
 
     static Cliente getCliente(){
         return new Cliente("66c67aa035ed1f735450b7a2", "João Rodrigo", "joao@teste.com", "123456", "11999999999","896.271.990-87", LocalDate.of(1985,05,05));
+    }
+
+    static Cliente getClienteAtualizado(){
+        return new Cliente("66c67aa035ed1f735450b7a2", "joão atualizado", "joaoatualizado@teste.com", "123456", "11999999999","896.271.990-87", LocalDate.of(1985,05,05));
     }
 
     static Cliente getClienteComNomeNull(){
@@ -69,6 +77,10 @@ public interface ClienteDados {
     }
     static Cliente getClienteComCpfInvalido(){
         return new Cliente("66c67aa035ed1f735450b7a2", "João Rodrigo", "joao@teste.com", "123456", "11999999999","896.271.991-87", LocalDate.of(1985,05,05));
+    }
+
+    static ClienteModel getClienteModelAtualizado(){
+        return new ClienteModel("66c67aa035ed1f735450b7a2", "joão atualizado", "joaoatualizado@teste.com", "123456", "11999999999","896.271.990-87", LocalDate.of(1985,05,05));
     }
 
 

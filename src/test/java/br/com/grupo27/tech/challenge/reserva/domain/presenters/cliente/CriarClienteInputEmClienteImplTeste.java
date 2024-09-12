@@ -7,9 +7,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.getCliente;
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.getClienteResponse;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarClienteDados.*;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getCliente;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteResponse;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 

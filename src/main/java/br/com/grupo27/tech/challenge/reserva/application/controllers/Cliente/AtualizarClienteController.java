@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/Clientes")
+@RequestMapping("/clientes")
 public class AtualizarClienteController {
 
     private final ClienteUserCaseFactory clienteUserCaseFactory;

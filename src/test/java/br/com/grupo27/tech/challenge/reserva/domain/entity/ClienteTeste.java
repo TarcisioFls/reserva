@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ClienteDados.*;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ClienteTeste extends TesteConfig {
