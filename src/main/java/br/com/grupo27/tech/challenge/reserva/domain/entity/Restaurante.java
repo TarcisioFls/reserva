@@ -26,6 +26,26 @@ public class Restaurante {
     private List<TipoCozinha> tipoCozinhaList;
     private String proprietarioId;
 
+    public Restaurante(String nome,
+                       String descricao,
+                       String localizacao,
+                       LocalTime horaAbertura,
+                       LocalTime horaFechamento,
+                       int capacidade,
+                       List<TipoCozinha> tipoCozinhas,
+                       String proprietarioId) {
+
+
+        this.setNome(nome);
+        this.setDescricao(descricao);
+        this.setLocalizacao(localizacao);
+        this.setHoraAbertura(horaAbertura);
+        this.setHoraFechamento(horaFechamento);
+        this.setCapacidade(capacidade);
+        this.setTipoCozinhaList(tipoCozinhas);
+        this.setProprietarioId(proprietarioId);
+    }
+
     public Restaurante(String id,
                        String nome,
                        String descricao,
@@ -36,16 +56,8 @@ public class Restaurante {
                        List<TipoCozinha> tipoCozinhas,
                        String proprietarioId) {
 
-
+        this(nome, descricao, localizacao, horaAbertura, horaFechamento, capacidade, tipoCozinhas, proprietarioId);
         this.setId(id);
-        this.setNome(nome);
-        this.setDescricao(descricao);
-        this.setLocalizacao(localizacao);
-        this.setHoraAbertura(horaAbertura);
-        this.setHoraFechamento(horaFechamento);
-        this.setCapacidade(capacidade);
-        this.setTipoCozinhaList(tipoCozinhas);
-        this.setProprietarioId(proprietarioId);
     }
 
     public Restaurante setId(String id) {
