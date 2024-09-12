@@ -4,6 +4,8 @@ import br.com.grupo27.tech.challenge.reserva.domain.entity.Cliente;
 import br.com.grupo27.tech.challenge.reserva.infra.model.ClienteModel;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PagedModel;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,5 +25,13 @@ public class ClientePresenterImpl implements ClientePresenter{
     public Cliente clienteModelEmCliente(ClienteModel clienteModel) {
 
         return mapper.map(clienteModel, Cliente.class);
+    }
+
+    @Override
+    public PagedModel<Cliente> pageClienteModelListEmPageClienteList(Page<ClienteModel> pageClienteModelList) {
+
+        var clientes = pageClienteModelList.map(this::clienteModelEmCliente);
+
+        return new PagedModel<>(clientes);
     }
 }
