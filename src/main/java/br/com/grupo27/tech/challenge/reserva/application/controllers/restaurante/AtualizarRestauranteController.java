@@ -20,7 +20,7 @@ public class AtualizarRestauranteController {
     private final RestaurantePresenter restaurantePresenter;
     private final RestauranteRepository restauranteRepository;
 
-    @PutMapping("/{di}")
+    @PutMapping("/{id}")
     public ResponseEntity<RestauranteResponse> atualizar(@PathVariable String id, @RequestBody AtualizarRestauranteRequest request) {
 
         var atualizarRestauranteUserCase = atualizarRestauranteUserCaseFactory.buildAtualizarRestauranteUserCase(atualizarRestaurantePresenter, restaurantePresenter, restauranteRepository);

@@ -26,7 +26,8 @@ public class Restaurante {
     private List<TipoCozinha> tipoCozinhaList;
     private String proprietarioId;
 
-    public Restaurante(String nome,
+    public Restaurante(String id,
+                       String nome,
                        String descricao,
                        String localizacao,
                        LocalTime horaAbertura,
@@ -36,6 +37,7 @@ public class Restaurante {
                        String proprietarioId) {
 
 
+        this.setId(id);
         this.setNome(nome);
         this.setDescricao(descricao);
         this.setLocalizacao(localizacao);
