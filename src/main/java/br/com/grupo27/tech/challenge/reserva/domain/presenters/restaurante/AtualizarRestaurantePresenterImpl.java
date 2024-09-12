@@ -26,7 +26,7 @@ public class AtualizarRestaurantePresenterImpl implements AtualizarRestaurantePr
     @Override
     public Restaurante atualizarRestauranteInputEmRestaurante(AtualizarRestauranteInput atualizarRestauranteInput) {
 
-        return new Restaurante(atualizarRestauranteInput.getNome(), atualizarRestauranteInput.getDescricao(), atualizarRestauranteInput.getLocalizacao(), atualizarRestauranteInput.getHoraAbertura(),
+        return new Restaurante(atualizarRestauranteInput.getId(), atualizarRestauranteInput.getNome(), atualizarRestauranteInput.getDescricao(), atualizarRestauranteInput.getLocalizacao(), atualizarRestauranteInput.getHoraAbertura(),
                 atualizarRestauranteInput.getHoraFechamento(), atualizarRestauranteInput.getCapacidade(), atualizarRestauranteInput.getTipoCozinhaList(), atualizarRestauranteInput.getProprietarioId());
     }
 
