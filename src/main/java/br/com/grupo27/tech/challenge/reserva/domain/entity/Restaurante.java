@@ -64,7 +64,6 @@ public class Restaurante {
         this(nome, descricao, localizacao, horaAbertura, horaFechamento, capacidade, tipoCozinhaList, proprietarioId);
 
         this.setId(id);
-
     }
 
     public Restaurante setId(String id) {
