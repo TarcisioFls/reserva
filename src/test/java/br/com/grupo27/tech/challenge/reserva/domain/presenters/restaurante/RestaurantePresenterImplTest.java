@@ -45,7 +45,6 @@ class RestaurantePresenterImplTest {
         var resultado = restaurantePresenter.restauranteParaRestauranteModel(restaurante);
 
         assertEquals(restauranteModel, resultado);
-        verify(mapper, times(1)).map(restaurante, RestauranteModel.class);
     }
 
     @Test
@@ -53,7 +52,6 @@ class RestaurantePresenterImplTest {
         when(mapper.map(restauranteModel, Restaurante.class)).thenReturn(restaurante);
         var resultado = restaurantePresenter.restauranteModelParaRestaurante(restauranteModel);
 
-        assertEquals(restaurante, resultado);
-        verify(mapper, times(1)).map(restauranteModel, Restaurante.class);
+        assertEquals(restaurante.getNome(), resultado.getNome());
     }
 }

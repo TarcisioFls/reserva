@@ -1,6 +1,5 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.request;
 
-import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +19,6 @@ public class CriarRestauranteRequest {
     private LocalTime horaAbertura;
     private LocalTime horaFechamento;
     private int capacidade;
-    private List<TipoCozinha> tipoCozinha;
-    private Proprietario proprietario;
+    private List<TipoCozinha> tipoCozinhaList;
+    private String proprietarioId;
 }

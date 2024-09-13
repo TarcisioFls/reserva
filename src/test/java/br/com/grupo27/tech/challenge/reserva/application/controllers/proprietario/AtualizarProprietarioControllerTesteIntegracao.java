@@ -2,7 +2,6 @@ package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietar
 
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
-import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +14,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioRequest;
+import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioModel;
 import static java.util.Objects.nonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -41,7 +41,7 @@ public class AtualizarProprietarioControllerTesteIntegracao {
     @BeforeEach
     void setUp() {
         proprietarioRepository.deleteAll();
-        proprietarioRepository.save(ProprietarioDados.getProprietarioModel());
+        proprietarioRepository.save(getProprietarioModel());
     }
 
     @AfterEach
@@ -88,7 +88,7 @@ public class AtualizarProprietarioControllerTesteIntegracao {
     @Test
     void testeAtualizarProprietarioComEmailJaExistente() {
 
-        var proprietarioModel = ProprietarioDados.getProprietarioModel();
+        var proprietarioModel = getProprietarioModel();
         proprietarioModel.setId("77b68aa035ed1f735450b7a2");
         proprietarioModel.setEmail("maria@teste.com");
         proprietarioRepository.save(proprietarioModel);

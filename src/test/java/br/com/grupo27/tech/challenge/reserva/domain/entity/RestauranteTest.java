@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.AtualizarRestauranteDados.ID_PROPRIETARIO_TESTE;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RestauranteTest {
@@ -71,13 +72,12 @@ class RestauranteTest {
 
     @Test
     void testaProprietarioComSucesso() {
-        Proprietario proprietario = new Proprietario();
-        assertDoesNotThrow(() -> restaurante.setProprietario(proprietario));
+        assertDoesNotThrow(() -> restaurante.setProprietarioId(ID_PROPRIETARIO_TESTE));
     }
 
     @Test
     void testaProprietarioComFalha() {
-        var exception = assertThrows(ExceptionAdvice.class, () -> restaurante.setProprietario(null));
+        var exception = assertThrows(ExceptionAdvice.class, () -> restaurante.setProprietarioId(null));
         assertEquals("Proprietário é obrigatório", exception.getMessage());
     }
 

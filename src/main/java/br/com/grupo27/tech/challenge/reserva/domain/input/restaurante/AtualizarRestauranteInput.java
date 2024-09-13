@@ -1,4 +1,4 @@
-package br.com.grupo27.tech.challenge.reserva.domain.output.restaurante;
+package br.com.grupo27.tech.challenge.reserva.domain.input.restaurante;
 
 import br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CriarRestauranteOutput {
+public class AtualizarRestauranteInput {
 
     private String id;
     private String nome;
