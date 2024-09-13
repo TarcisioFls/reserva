@@ -15,11 +15,15 @@ public class RestaurantePresenterImpl implements RestaurantePresenter {
     @Override
     public RestauranteModel restauranteParaRestauranteModel(Restaurante restaurante) {
 
-        return mapper.map(restaurante, RestauranteModel.class);
+        return new RestauranteModel(restaurante.getId(), restaurante.getNome(), restaurante.getDescricao(),
+                restaurante.getLocalizacao(), restaurante.getHoraAbertura(), restaurante.getHoraFechamento(),
+                restaurante.getCapacidade(), restaurante.getTipoCozinhaList(), restaurante.getProprietarioId());
     }
 
     @Override
     public Restaurante restauranteModelParaRestaurante(RestauranteModel restauranteModel) {
-        return mapper.map(restauranteModel, Restaurante.class);
+        return new Restaurante(restauranteModel.getId(), restauranteModel.getNome(), restauranteModel.getDescricao(),
+                restauranteModel.getLocalizacao(), restauranteModel.getHoraAbertura(), restauranteModel.getHoraFechamento(),
+                restauranteModel.getCapacidade(), restauranteModel.getTipoCozinhaList(), restauranteModel.getProprietarioId());
     }
 }

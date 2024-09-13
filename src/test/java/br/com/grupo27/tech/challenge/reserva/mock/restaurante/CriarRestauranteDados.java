@@ -20,55 +20,58 @@ public interface CriarRestauranteDados {
     static CriarRestauranteRequest getCriarRestauranteRequest() {
         var dados = getRestaurante();
         return new CriarRestauranteRequest(dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
-                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietario());
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietarioId());
     }
 
     static CriarRestauranteInput getCriarRestauranteInput() {
         var dados = getRestaurante();
         return new CriarRestauranteInput(dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
-                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietario());
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietarioId());
     }
 
     static CriarRestauranteOutput getCriarRestauranteOutput() {
         var dados = getRestaurante();
         return new CriarRestauranteOutput(dados.getId(), dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
-                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietario());
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietarioId());
     }
 
     static RestauranteResponse getRestauranteResponse() {
         var dados = getRestaurante();
         return new RestauranteResponse(dados.getId(), dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
-                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietario());
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietarioId());
     }
 
     static RestauranteModel getRestauranteModel() {
         var dados = getRestaurante();
         var proprietarioModel = new ProprietarioModel();
+        proprietarioModel.setId("44c67aa035ed1f735450b72a");
         return new RestauranteModel(dados.getId(), dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
-                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), proprietarioModel);
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), proprietarioModel.getId());
     }
 
     static RestauranteModel getRestauranteModelSemId() {
         var dados = getRestaurante();
         var proprietarioModel = new ProprietarioModel();
         return new RestauranteModel(null, dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
-                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), proprietarioModel);
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), proprietarioModel.getId());
     }
 
     static Restaurante getRestaurante() {
+        var proprietario = new Proprietario();
+        proprietario.setId("44c67aa035ed1f735450b72a");
         var tipoCozinhaList = new ArrayList<TipoCozinha>();
         tipoCozinhaList.add(JAPONESA);
-        var proprietario = new Proprietario();
+        var proprietarioId = proprietario.getId();
         var restaurante = new Restaurante();
         restaurante.setId("66c67aa035ed1f735450b7a2");
-        restaurante.setNome("Nome");
-        restaurante.setDescricao("Descricao");
-        restaurante.setLocalizacao("Localizacao");
+        restaurante.setNome("Magina");
+        restaurante.setDescricao("Se deixar farmar é GG");
+        restaurante.setLocalizacao("do seu lado");
         restaurante.setHoraAbertura(LocalTime.of(7, 0));
         restaurante.setHoraFechamento(LocalTime.of(22, 0));
         restaurante.setCapacidade(100);
         restaurante.setTipoCozinhaList(tipoCozinhaList);
-        restaurante.setProprietario(proprietario);
+        restaurante.setProprietarioId(proprietarioId);
         return restaurante;
     }
 }
