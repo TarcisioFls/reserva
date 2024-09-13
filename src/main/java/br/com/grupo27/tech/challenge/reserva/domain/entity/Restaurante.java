@@ -1,6 +1,7 @@
 package br.com.grupo27.tech.challenge.reserva.domain.entity;
 
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,11 +14,12 @@ import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.LOCALIZACAO_OBRIGATORIA;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.NOME_OBRIGATORIO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.PROPRIETARIO_OBRIGATORIO;
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.TIPO_COZINHA_OBRIGATORIO;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.TIPO_COZINHA_OBRIGATORIA;
 import static java.util.Objects.isNull;
 
 @Getter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Restaurante {
 
     private String id;
@@ -28,7 +30,7 @@ public class Restaurante {
     private LocalTime horaFechamento;
     private int capacidade;
     private List<TipoCozinha> tipoCozinhaList;
-    private Proprietario proprietario;
+    private String proprietarioId;
 
     public Restaurante(String nome,
                        String descricao,
@@ -37,7 +39,7 @@ public class Restaurante {
                        LocalTime horaFechamento,
                        int capacidade,
                        List<TipoCozinha> tipoCozinhas,
-                       Proprietario proprietario) {
+                       String proprietarioId) {
 
 
         this.setNome(nome);
@@ -47,7 +49,22 @@ public class Restaurante {
         this.setHoraFechamento(horaFechamento);
         this.setCapacidade(capacidade);
         this.setTipoCozinhaList(tipoCozinhas);
-        this.setProprietario(proprietario);
+        this.setProprietarioId(proprietarioId);
+    }
+
+    public Restaurante (String id,
+                        String nome,
+                        String descricao,
+                        String localizacao,
+                        LocalTime horaAbertura,
+                        LocalTime horaFechamento,
+                        int capacidade,
+                        List<TipoCozinha> tipoCozinhaList,
+                        String proprietarioId) {
+        this(nome, descricao, localizacao, horaAbertura, horaFechamento, capacidade, tipoCozinhaList, proprietarioId);
+
+        this.setId(id);
+
     }
 
     public Restaurante setId(String id) {
@@ -105,17 +122,17 @@ public class Restaurante {
 
     public Restaurante setTipoCozinhaList(List<TipoCozinha> tipoCozinhaList) {
         if (isNull(tipoCozinhaList) || tipoCozinhaList.isEmpty()) {
-            throw new ExceptionAdvice(TIPO_COZINHA_OBRIGATORIO);
+            throw new ExceptionAdvice(TIPO_COZINHA_OBRIGATORIA);
         }
         this.tipoCozinhaList = tipoCozinhaList;
         return this;
     }
 
-    public Restaurante setProprietario(Proprietario proprietario) {
-        if (isNull(proprietario)) {
+    public Restaurante setProprietarioId(String proprietarioId) {
+        if (isNull(proprietarioId)) {
             throw new ExceptionAdvice(PROPRIETARIO_OBRIGATORIO);
         }
-        this.proprietario = proprietario;
+        this.proprietarioId = proprietarioId;
         return this;
     }
 }

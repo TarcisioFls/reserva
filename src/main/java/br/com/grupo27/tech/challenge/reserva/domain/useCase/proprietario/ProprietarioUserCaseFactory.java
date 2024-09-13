@@ -2,12 +2,16 @@ package br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario;
 
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario.DeletaProprietarioPorIdAdapter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.AtualizarProprietarioPresenter;
+
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.BuscarProprietarioPorIdPresenter;
+
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.CriarProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ListarTodosProprietariosPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario.AtualizarProprietarioAdapter;
+
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario.BuscarProprietarioPorIdAdapter;
+
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario.CriarProprietarioAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario.ListarTodosProprietariosAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;

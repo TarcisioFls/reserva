@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CriarRestauranteOutput {
+public class AtualizarRestauranteOutput {
 
     private String id;
     private String nome;
