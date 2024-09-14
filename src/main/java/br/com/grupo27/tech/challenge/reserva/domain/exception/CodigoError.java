@@ -27,7 +27,9 @@ public enum CodigoError {
     TIPO_COZINHA_OBRIGATORIA("Tipo de Cozinha é obrigatório",BAD_REQUEST, FALSE),
     PROPRIETARIO_OBRIGATORIO("Proprietário é obrigatório", BAD_REQUEST, FALSE),
     HORARIO_FUNCIONAMENTO_OBRIGATORIO("Horário de Funcionamento é obrigatório", BAD_REQUEST, FALSE),
-    RESTAURANTE_NAO_ENCONTRADO("Restaurante não encontrado", NOT_FOUND, FALSE);
+    RESTAURANTE_NAO_ENCONTRADO("Restaurante não encontrado", NOT_FOUND, FALSE),
+    HORARIO_FUNCIONAMENTO_INVALIDO("Horário de Funcionamento inválido", BAD_REQUEST, FALSE),
+    HORA_ABERTURA_RESTAURANTE_MAIOR_HORA_FECHAMENTO("Hora de abertura do restaurante não pode ser maior que a hora de fechamento", BAD_REQUEST, FALSE);
 
     private final String mensagem;
     private final HttpStatus httpStatus;

@@ -124,9 +124,32 @@ class RestauranteTest {
         assertEquals("Horário de Funcionamento é obrigatório", exception.getMessage());
     }
 
+    @Test
+    void testaHoraAberturaInvalida() {
+        var exception = assertThrows(ExceptionAdvice.class, () -> restaurante.setHoraAbertura("25:00"));
+        assertEquals("Horário de Funcionamento inválido", exception.getMessage());
+    }
+
+    @Test
+    void testaHoraFechamentoInvalida() {
+        var exception = assertThrows(ExceptionAdvice.class, () -> restaurante.setHoraFechamento("25:00"));
+        assertEquals("Horário de Funcionamento inválido", exception.getMessage());
+    }
+
+    @Test
+    void testaHoraAberturaMaiorQueHoraFechamento() {
+        var exception = assertThrows(ExceptionAdvice.class, this::setInvalidOpeningAndClosingHours);
+        assertEquals("Hora de abertura do restaurante não pode ser maior que a hora de fechamento", exception.getMessage());
+    }
+
     private void assertExceptionMessage(Executable executavel, String mensagemEsperada) {
         var exception = assertThrows(ExceptionAdvice.class, executavel);
         assertEquals(mensagemEsperada, exception.getMessage());
+    }
+
+    private void setInvalidOpeningAndClosingHours() {
+        restaurante.setHoraAbertura("22:00");
+        restaurante.setHoraFechamento("07:00");
     }
 
     static Stream<String> nomesInvalidos() {
