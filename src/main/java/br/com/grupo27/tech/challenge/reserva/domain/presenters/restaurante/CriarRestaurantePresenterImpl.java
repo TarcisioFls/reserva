@@ -32,7 +32,11 @@ public class CriarRestaurantePresenterImpl implements CriarRestaurantePresenter 
     @Override
     public CriarRestauranteInput criarRestauranteParaCriarRestauranteInput(CriarRestauranteRequest request) {
 
-        return mapper.map(request, CriarRestauranteInput.class);
+        var criarRestauranteInput = mapper.map(request, CriarRestauranteInput.class);
+        criarRestauranteInput.setHoraAbertura(request.getHoraAbertura());
+        criarRestauranteInput.setHoraFechamento(request.getHoraFechamento());
+
+        return criarRestauranteInput;
     }
 
     @Override

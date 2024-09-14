@@ -10,7 +10,6 @@ import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.CriarRest
 import br.com.grupo27.tech.challenge.reserva.infra.model.ProprietarioModel;
 import br.com.grupo27.tech.challenge.reserva.infra.model.RestauranteModel;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 import static br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha.JAPONESA;
@@ -19,8 +18,8 @@ public interface CriarRestauranteDados {
 
     static CriarRestauranteRequest getCriarRestauranteRequest() {
         var dados = getRestaurante();
-        return new CriarRestauranteRequest(dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
-                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietarioId());
+        return new CriarRestauranteRequest(dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura().toString(),
+                dados.getHoraFechamento().toString(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietarioId());
     }
 
     static CriarRestauranteInput getCriarRestauranteInput() {
@@ -67,8 +66,8 @@ public interface CriarRestauranteDados {
         restaurante.setNome("Magina");
         restaurante.setDescricao("Se deixar farmar é GG");
         restaurante.setLocalizacao("do seu lado");
-        restaurante.setHoraAbertura(LocalTime.of(7, 0));
-        restaurante.setHoraFechamento(LocalTime.of(22, 0));
+        restaurante.setHoraAbertura("07:00");
+        restaurante.setHoraFechamento("22:00");
         restaurante.setCapacidade(100);
         restaurante.setTipoCozinhaList(tipoCozinhaList);
         restaurante.setProprietarioId(proprietarioId);

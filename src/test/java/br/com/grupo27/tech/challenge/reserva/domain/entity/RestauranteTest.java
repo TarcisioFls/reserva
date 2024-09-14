@@ -8,13 +8,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.AtualizarRestauranteDados.ID_PROPRIETARIO_TESTE;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RestauranteTest {
 
@@ -102,8 +103,8 @@ class RestauranteTest {
 
     @Test
     void testaHorarioDeFuncionamentoComSucesso() {
-        var horaAbertura = LocalTime.of(7, 0);
-        var horaFechamento = LocalTime.of(22, 0);
+        var horaAbertura = "07:00";
+        var horaFechamento = "22:00";
 
         assertDoesNotThrow(() -> {
             restaurante.setHoraAbertura(horaAbertura);

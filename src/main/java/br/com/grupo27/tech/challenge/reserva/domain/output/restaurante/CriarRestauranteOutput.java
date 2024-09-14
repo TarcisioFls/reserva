@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalTime;
 import java.util.List;
 
 @Data
@@ -17,8 +16,8 @@ public class CriarRestauranteOutput {
     private String nome;
     private String descricao;
     private String localizacao;
-    private LocalTime horaAbertura;
-    private LocalTime horaFechamento;
+    private String horaAbertura;
+    private String horaFechamento;
     private int capacidade;
     private List<TipoCozinha> tipoCozinhaList;
     private String proprietarioId;

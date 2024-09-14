@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalTime;
 import java.util.List;
 
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.CAPACIDADE_INVALIDA;
@@ -26,8 +25,8 @@ public class Restaurante {
     private String nome;
     private String descricao;
     private String localizacao;
-    private LocalTime horaAbertura;
-    private LocalTime horaFechamento;
+    private String horaAbertura;
+    private String horaFechamento;
     private int capacidade;
     private List<TipoCozinha> tipoCozinhaList;
     private String proprietarioId;
@@ -35,8 +34,8 @@ public class Restaurante {
     public Restaurante(String nome,
                        String descricao,
                        String localizacao,
-                       LocalTime horaAbertura,
-                       LocalTime horaFechamento,
+                       String horaAbertura,
+                       String horaFechamento,
                        int capacidade,
                        List<TipoCozinha> tipoCozinhas,
                        String proprietarioId) {
@@ -56,8 +55,8 @@ public class Restaurante {
                         String nome,
                         String descricao,
                         String localizacao,
-                        LocalTime horaAbertura,
-                        LocalTime horaFechamento,
+                        String horaAbertura,
+                        String horaFechamento,
                         int capacidade,
                         List<TipoCozinha> tipoCozinhaList,
                         String proprietarioId) {
@@ -95,7 +94,7 @@ public class Restaurante {
         return this;
     }
 
-    public Restaurante setHoraAbertura(LocalTime horaAbertura) {
+    public Restaurante setHoraAbertura(String horaAbertura) {
         if (isNull(horaAbertura)) {
             throw new ExceptionAdvice(HORARIO_FUNCIONAMENTO_OBRIGATORIO);
         }
@@ -103,7 +102,7 @@ public class Restaurante {
         return this;
     }
 
-    public Restaurante setHoraFechamento(LocalTime horaFechamento) {
+    public Restaurante setHoraFechamento(String horaFechamento) {
         if (isNull(horaFechamento)) {
             throw new ExceptionAdvice(HORARIO_FUNCIONAMENTO_OBRIGATORIO);
         }
