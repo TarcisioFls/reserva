@@ -14,9 +14,9 @@ import java.util.List;
 
 import static br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha.JAPONESA;
 import static br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha.MEXICANA;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getProprietario;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioModel;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioModelAtualizado;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietarioModel;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietarioModelAtualizado;
 
 public interface ListarTodosRestaurantesDados {
 

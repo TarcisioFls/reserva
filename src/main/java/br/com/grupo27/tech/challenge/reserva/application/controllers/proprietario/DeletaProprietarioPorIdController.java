@@ -1,7 +1,7 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario;
 
+import br.com.grupo27.tech.challenge.reserva.application.factory.proprietario.DeletaProprietarioPorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +17,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 @RequestMapping("/proprietarios")
 public class DeletaProprietarioPorIdController {
 
-    private final ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+    private final DeletaProprietarioPorIdUserCaseFactory deletaProprietarioPorIdUserCaseFactory;
 
     private final ProprietarioRepository proprietarioRepository;
 
@@ -28,7 +28,7 @@ public class DeletaProprietarioPorIdController {
     @ResponseStatus(NO_CONTENT)
     public void deletePorId(@PathVariable String id) {
 
-         var deletaProprietarioPorIdUserCase = proprietarioUserCaseFactory.buildDeletaProprietarioPorIdUserCase(
+         var deletaProprietarioPorIdUserCase = deletaProprietarioPorIdUserCaseFactory.buildDeletaProprietarioPorIdUserCase(
                  proprietarioPresenter, proprietarioRepository
          );
 

@@ -1,14 +1,14 @@
 package br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario;
 
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
-import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
+import br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.BuscarProprietarioPorIdDados.buscarProprietarioPorIdOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.BuscarProprietarioPorIdDados.buscarProprietarioPorIdOutput;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class BuscarProprietarioPorIdPresenterImplTest extends TesteConfig {

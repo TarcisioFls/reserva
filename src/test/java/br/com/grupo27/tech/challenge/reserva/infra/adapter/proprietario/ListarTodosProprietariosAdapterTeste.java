@@ -3,7 +3,7 @@ package br.com.grupo27.tech.challenge.reserva.infra.adapter.proprietario;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
-import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
+import br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

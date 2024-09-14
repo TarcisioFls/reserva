@@ -19,7 +19,7 @@ class DeletaProprietarioPorIdAdapterTeste extends TesteConfig {
 
     @Test
     void deletaPorIdSuccessfullyDeletesProprietario() {
-        String id = "validId";
+        String id = "66c67aa035ed1f735450b7a2";
 
         deletaProprietarioPorIdAdapter.deletaPorId(id);
 

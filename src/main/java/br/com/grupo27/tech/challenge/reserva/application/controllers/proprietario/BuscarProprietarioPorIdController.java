@@ -1,9 +1,9 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario.response.ProprietarioResponse;
+import br.com.grupo27.tech.challenge.reserva.application.factory.proprietario.BuscarProprietarioPorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.BuscarProprietarioPorIdPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/proprietario")
+@RequestMapping("/proprietarios")
 public class BuscarProprietarioPorIdController {
 
-    private final ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+    private final BuscarProprietarioPorIdUserCaseFactory buscarProprietarioPorIdUserCaseFactory;
 
     private final BuscarProprietarioPorIdPresenter buscarProprietarioPorIdPresenter;
 
@@ -28,7 +28,7 @@ public class BuscarProprietarioPorIdController {
     @GetMapping("/{id}")
     public ResponseEntity<ProprietarioResponse> buscaPorId(@PathVariable String id) {
 
-       var buscarProprietarioPorIdUserCase = proprietarioUserCaseFactory.buildBuscarProprietarioPorIdUserCase(buscarProprietarioPorIdPresenter, proprietarioPresenter, proprietarioRepository);
+       var buscarProprietarioPorIdUserCase = buscarProprietarioPorIdUserCaseFactory.buildBuscarProprietarioPorIdUserCase(buscarProprietarioPorIdPresenter, proprietarioPresenter, proprietarioRepository);
 
         var buscarProprietarioPorIdOutput = buscarProprietarioPorIdUserCase.buscarPorId(id);
         var proprietarioResponse = buscarProprietarioPorIdPresenter.proprietarioResponseEmBuscarProprietarioPorIdOutput(buscarProprietarioPorIdOutput);

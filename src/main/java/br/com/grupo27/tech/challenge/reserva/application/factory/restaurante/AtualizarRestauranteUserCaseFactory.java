@@ -1,7 +1,8 @@
-package br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante;
+package br.com.grupo27.tech.challenge.reserva.application.factory.restaurante;
 
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.AtualizarRestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.AtualizarRestauranteUserCase;
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.restaurante.AtualizarRestauranteAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import lombok.NoArgsConstructor;

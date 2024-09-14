@@ -6,12 +6,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getCriarProprietarioInput;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getCriarProprietarioOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getCriarProprietarioRequest;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getProprieatarioResponse;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getProprietario;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getProprietarioDepoisDeSalvar;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getCriarProprietarioInput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getCriarProprietarioOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getCriarProprietarioRequest;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getProprieatarioResponse;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getProprietarioDepoisDeSalvar;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CriarProprietarioPresenterImplTeste extends TesteConfig {

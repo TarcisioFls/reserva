@@ -1,4 +1,4 @@
-package br.com.grupo27.tech.challenge.reserva.mock;
+package br.com.grupo27.tech.challenge.reserva.mock.proprietario;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario.request.CriarProprietarioRequest;
 import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario.response.ProprietarioResponse;

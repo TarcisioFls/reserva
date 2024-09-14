@@ -8,8 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.data.domain.PageRequest;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ListarTodosProprietariosDados.getPageProprietario;
-import static br.com.grupo27.tech.challenge.reserva.mock.ListarTodosProprietariosDados.getPageTodosProprietariosOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ListarTodosProprietariosDados.getPageProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ListarTodosProprietariosDados.getPageTodosProprietariosOutput;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;

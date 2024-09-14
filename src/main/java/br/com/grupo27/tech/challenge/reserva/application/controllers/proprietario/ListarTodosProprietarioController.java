@@ -1,9 +1,9 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario.response.ProprietarioResponse;
+import br.com.grupo27.tech.challenge.reserva.application.factory.proprietario.ListarTodosProprietariosUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ListarTodosProprietariosPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.web.PagedModel;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/proprietarios")
 public class ListarTodosProprietarioController {
 
-    private final ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+    private final ListarTodosProprietariosUserCaseFactory listarTodosProprietariosUserCaseFactory;
     private final ListarTodosProprietariosPresenter listarTodosProprietariosPresenter;
     private final ProprietarioPresenter proprietarioPresenter;
     private final ProprietarioRepository proprietarioRepository;
@@ -27,7 +27,7 @@ public class ListarTodosProprietarioController {
     @GetMapping
     public ResponseEntity<PagedModel<ProprietarioResponse>> listarTodos(@RequestParam int pagina,@RequestParam(defaultValue = "50") int tamanho) {
 
-        var listarTodosProprietariosUserCase = proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(
+        var listarTodosProprietariosUserCase = listarTodosProprietariosUserCaseFactory.buildListarTodosProprietariosUserCase(
                 listarTodosProprietariosPresenter, proprietarioPresenter, proprietarioRepository
         );
 

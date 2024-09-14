@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.PROPRIETARIO_NAO_ENCONTRADO;
 
 @RequiredArgsConstructor
-public class DeleteProprietarioPorIdUserCase {
+public class DeletaProprietarioPorIdUserCase {
 
     private final DeletaProprietarioPorIdGateway deletaProprietarioPorIdGateway;
     private final BuscarProprietarioPorIdGateway buscarProprietarioPorIdGateway;
