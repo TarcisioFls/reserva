@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @NoArgsConstructor
-public class BuscarPorIdRestauranteUserCaseFactory {
+public class BuscarRestaurantePorIdUserCaseFactory {
 
     public BuscarRestaurantePorIdUserCase buildBuscarRestaurantePorIdUserCase(BuscarRestaurantePorIdPresenter buscarRestaurantePorIdPresenter,
                                                                               RestaurantePresenter restaurantePresenter,

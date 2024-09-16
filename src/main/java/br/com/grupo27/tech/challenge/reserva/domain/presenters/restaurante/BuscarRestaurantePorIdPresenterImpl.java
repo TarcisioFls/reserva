@@ -21,7 +21,7 @@ public class BuscarRestaurantePorIdPresenterImpl implements BuscarRestaurantePor
     }
 
     @Override
-    public RestauranteResponse buscarRestaurantePorIdEmRestauranteResponse(BuscarRestaurantePorIdOutput buscarRestaurantePorIdOutput) {
+    public RestauranteResponse buscarRestaurantePorIdOutputEmRestauranteResponse(BuscarRestaurantePorIdOutput buscarRestaurantePorIdOutput) {
 
         return mapper.map(buscarRestaurantePorIdOutput, RestauranteResponse.class);
     }

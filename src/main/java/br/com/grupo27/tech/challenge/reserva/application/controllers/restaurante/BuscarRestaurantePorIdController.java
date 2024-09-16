@@ -3,7 +3,7 @@ package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurant
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.BuscarRestaurantePorIdPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.BuscarPorIdRestauranteUserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.BuscarRestaurantePorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("restaurante")
 public class BuscarRestaurantePorIdController {
 
-    private final BuscarPorIdRestauranteUserCaseFactory buscarPorIdRestauranteUserCaseFactory;
+    private final BuscarRestaurantePorIdUserCaseFactory buscarRestaurantePorIdUserCaseFactory;
 
     private final BuscarRestaurantePorIdPresenter buscarRestaurantePorIdPresenter;
 
@@ -28,9 +28,9 @@ public class BuscarRestaurantePorIdController {
     @GetMapping("/{id}")
     public ResponseEntity<RestauranteResponse> buscarPorId(@PathVariable String id) {
 
-        var buscarRestaurantePorIdUserCase = buscarPorIdRestauranteUserCaseFactory.buildBuscarRestaurantePorIdUserCase(buscarRestaurantePorIdPresenter, restaurantePresenter, restauranteRepository);
+        var buscarRestaurantePorIdUserCase = buscarRestaurantePorIdUserCaseFactory.buildBuscarRestaurantePorIdUserCase(buscarRestaurantePorIdPresenter, restaurantePresenter, restauranteRepository);
         var buscarRestaurantePorIdOutput = buscarRestaurantePorIdUserCase.buscarPorId(id);
-        var restauranteResponse = buscarRestaurantePorIdPresenter.buscarRestaurantePorIdEmRestauranteResponse(buscarRestaurantePorIdOutput);
+        var restauranteResponse = buscarRestaurantePorIdPresenter.buscarRestaurantePorIdOutputEmRestauranteResponse(buscarRestaurantePorIdOutput);
 
         return ResponseEntity.ok(restauranteResponse);
     }

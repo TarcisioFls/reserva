@@ -8,5 +8,5 @@ public interface BuscarRestaurantePorIdPresenter {
 
     BuscarRestaurantePorIdOutput restauranteEmBuscarRestaurantePorIdOutput(Restaurante restaurante);
 
-    RestauranteResponse buscarRestaurantePorIdEmRestauranteResponse(BuscarRestaurantePorIdOutput buscarRestaurantePorIdOutput);
+    RestauranteResponse buscarRestaurantePorIdOutputEmRestauranteResponse(BuscarRestaurantePorIdOutput buscarRestaurantePorIdOutput);
 }
