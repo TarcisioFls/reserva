@@ -11,8 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AtualizarRestauranteOutput {
-
+public class BuscarRestaurantePorIdOutput {
     private String id;
     private String nome;
     private String descricao;
