@@ -26,70 +26,70 @@ class RestauranteTest {
     }
 
     @Test
-    void testaNomeComSucesso() {
+    void testeNomeComSucesso() {
         assertDoesNotThrow(() -> restaurante.setNome("Restaurante Gourmet"));
     }
 
     @ParameterizedTest
     @MethodSource("nomesInvalidos")
-    void testaNomeComFalha(String nome) {
+    void testeNomeComFalha(String nome) {
         assertExceptionMessage(() -> restaurante.setNome(nome), "Nome é obrigatório");
     }
 
     @Test
-    void testaLocalizacaoComSucesso() {
+    void testeLocalizacaoComSucesso() {
         assertDoesNotThrow(() -> restaurante.setLocalizacao("123 Rua B"));
     }
 
     @ParameterizedTest
     @MethodSource("nomesInvalidos")
-    void testaLocalizacaoComFalha(String localizacao) {
+    void testeLocalizacaoComFalha(String localizacao) {
         assertExceptionMessage(() -> restaurante.setLocalizacao(localizacao), "Localização é obrigatória");
     }
 
     @Test
-    void testaDescricaoComSucesso() {
+    void testeDescricaoComSucesso() {
         assertDoesNotThrow(() -> restaurante.setDescricao("barato, mano, só vem!"));
     }
 
     @ParameterizedTest
     @MethodSource("nomesInvalidos")
-    void testaDescricaoComFalha(String descricao) {
+    void testeDescricaoComFalha(String descricao) {
         assertExceptionMessage(() -> restaurante.setDescricao(descricao), "Descrição é obrigatória");
     }
 
     @Test
-    void testaCapacidadeComSucesso() {
+    void testeCapacidadeComSucesso() {
         assertDoesNotThrow(() -> restaurante.setCapacidade(300));
 
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, -1, -100000})
-    void testaCapacidadeComFalha(int capacidade) {
+    void testeCapacidadeComFalha(int capacidade) {
         assertExceptionMessage(() -> restaurante.setCapacidade(capacidade), "Capacidade precisa ser maior que 0");
     }
 
     @Test
-    void testaProprietarioComSucesso() {
+    void testeProprietarioComSucesso() {
         assertDoesNotThrow(() -> restaurante.setProprietarioId(ID_PROPRIETARIO_TESTE));
     }
 
     @Test
-    void testaProprietarioComFalha() {
+    void testeProprietarioComFalha() {
         var exception = assertThrows(ExceptionAdvice.class, () -> restaurante.setProprietarioId(null));
         assertEquals("Proprietário é obrigatório", exception.getMessage());
     }
 
     @Test
-    void testaTipoCozinhaComSucesso() {
+    void testeTipoCozinhaComSucesso() {
         List<TipoCozinha> tipoCozinhaList = new ArrayList<>();
         tipoCozinhaList.add(TipoCozinha.JAPONESA);
         assertDoesNotThrow(() -> restaurante.setTipoCozinhaList(tipoCozinhaList));
     }
 
     @Test
-    void testaTipoCozinhaComFalha() {
+    void testeTipoCozinhaComFalha() {
         ExceptionAdvice exception;
         List<TipoCozinha> tipoCozinhaList = new ArrayList<>();
 
@@ -101,7 +101,7 @@ class RestauranteTest {
     }
 
     @Test
-    void testaHorarioDeFuncionamentoComSucesso() {
+    void testeHorarioDeFuncionamentoComSucesso() {
         var horaAbertura = LocalTime.of(7, 0);
         var horaFechamento = LocalTime.of(22, 0);
 
@@ -112,13 +112,13 @@ class RestauranteTest {
     }
 
     @Test
-    void testaHoraDeFechamentoNula() {
+    void testeHoraDeFechamentoNula() {
         var exception = assertThrows(ExceptionAdvice.class, () -> restaurante.setHoraFechamento(null));
         assertEquals("Horário de Funcionamento é obrigatório", exception.getMessage());
     }
 
     @Test
-    void testaHoraDeAberturaNula() {
+    void testeHoraDeAberturaNula() {
         var exception = assertThrows(ExceptionAdvice.class, () -> restaurante.setHoraAbertura(null));
         assertEquals("Horário de Funcionamento é obrigatório", exception.getMessage());
     }

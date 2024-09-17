@@ -37,7 +37,7 @@ class AtualizarRestauranteAdapterTest extends TesteConfig {
     }
 
     @Test
-    void testAtualizarComSucesso() {
+    void testeAtualizarComSucesso() {
 
         when(restaurantePresenter.restauranteParaRestauranteModel(restaurante)).thenReturn(restauranteModel);
         when(restauranteRepository.save(restauranteModel)).thenReturn(restauranteModel);
@@ -52,7 +52,7 @@ class AtualizarRestauranteAdapterTest extends TesteConfig {
     }
 
     @Test
-    void testBuscarPorIdComSucesso() {
+    void testeBuscarPorIdComSucesso() {
 
         when(restauranteRepository.findById(ID_TESTE)).thenReturn(Optional.of(restauranteModel));
         when(restaurantePresenter.restauranteModelParaRestaurante(restauranteModel)).thenReturn(restaurante);
@@ -66,7 +66,7 @@ class AtualizarRestauranteAdapterTest extends TesteConfig {
     }
 
     @Test
-    void testBuscarPorIdNaoEncontrado() {
+    void testeBuscarPorIdNaoEncontrado() {
 
         when(restauranteRepository.findById(ID_TESTE)).thenReturn(Optional.empty());
 

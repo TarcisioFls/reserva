@@ -2,7 +2,6 @@ package br.com.grupo27.tech.challenge.reserva.mock.restaurante;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.request.AtualizarRestauranteRequest;
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
-import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Restaurante;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha;
 import br.com.grupo27.tech.challenge.reserva.domain.input.restaurante.AtualizarRestauranteInput;

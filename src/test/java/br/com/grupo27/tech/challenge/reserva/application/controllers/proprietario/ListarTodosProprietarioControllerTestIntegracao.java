@@ -55,23 +55,23 @@ class ListarTodosProprietarioControllerTestIntegracao {
         int pagina = 0;
         int tamanho = 10;
 
-        var response = listarTodosProprietarioController.listarTodos(pagina, tamanho);
+        var resultado = listarTodosProprietarioController.listarTodos(pagina, tamanho);
 
-        assertEquals(200, response.getStatusCode().value());
-        assertNotNull(response.getBody());
+        assertEquals(200, resultado.getStatusCode().value());
+        assertNotNull(resultado.getBody());
 
         assertAll("Teste metadata",
-                () -> assertEquals(0, requireNonNull(response.getBody().getMetadata()).number()),
-                () -> assertEquals(10, requireNonNull(response.getBody().getMetadata()).size()),
-                () -> assertEquals(2, requireNonNull(response.getBody().getMetadata()).totalElements()),
-                () -> assertEquals(1, requireNonNull(response.getBody().getMetadata()).totalPages())
+                () -> assertEquals(0, requireNonNull(resultado.getBody().getMetadata()).number()),
+                () -> assertEquals(10, requireNonNull(resultado.getBody().getMetadata()).size()),
+                () -> assertEquals(2, requireNonNull(resultado.getBody().getMetadata()).totalElements()),
+                () -> assertEquals(1, requireNonNull(resultado.getBody().getMetadata()).totalPages())
         );
 
         assertAll("Teste Conteúdo",
-                () -> assertEquals("66c67aa035ed1f735450b7a2", response.getBody().getContent().get(0).getId()),
-                () -> assertEquals("77b11aa035ed1f735459a1p0", response.getBody().getContent().get(1).getId()),
-                () -> assertEquals("João", response.getBody().getContent().get(0).getNome()),
-                () -> assertEquals("Maria", response.getBody().getContent().get(1).getNome())
+                () -> assertEquals("66c67aa035ed1f735450b7a2", resultado.getBody().getContent().get(0).getId()),
+                () -> assertEquals("77b11aa035ed1f735459a1p0", resultado.getBody().getContent().get(1).getId()),
+                () -> assertEquals("João", resultado.getBody().getContent().get(0).getNome()),
+                () -> assertEquals("Maria", resultado.getBody().getContent().get(1).getNome())
         );
 
     }
@@ -82,20 +82,20 @@ class ListarTodosProprietarioControllerTestIntegracao {
         int pagina = 1;
         int tamanho = 10;
 
-        var response = listarTodosProprietarioController.listarTodos(pagina, tamanho);
+        var resultado = listarTodosProprietarioController.listarTodos(pagina, tamanho);
 
-        assertEquals(200, response.getStatusCode().value());
-        assertNotNull(response.getBody());
+        assertEquals(200, resultado.getStatusCode().value());
+        assertNotNull(resultado.getBody());
 
         assertAll("Teste metadata",
-                () -> assertEquals(1, requireNonNull(response.getBody().getMetadata()).number()),
-                () -> assertEquals(10, requireNonNull(response.getBody().getMetadata()).size()),
-                () -> assertEquals(2, requireNonNull(response.getBody().getMetadata()).totalElements()),
-                () -> assertEquals(1, requireNonNull(response.getBody().getMetadata()).totalPages()),
-                () -> assertEquals(0, response.getBody().getContent().size())
+                () -> assertEquals(1, requireNonNull(resultado.getBody().getMetadata()).number()),
+                () -> assertEquals(10, requireNonNull(resultado.getBody().getMetadata()).size()),
+                () -> assertEquals(2, requireNonNull(resultado.getBody().getMetadata()).totalElements()),
+                () -> assertEquals(1, requireNonNull(resultado.getBody().getMetadata()).totalPages()),
+                () -> assertEquals(0, resultado.getBody().getContent().size())
         );
 
-        assertTrue(response.getBody().getContent().isEmpty());
+        assertTrue(resultado.getBody().getContent().isEmpty());
 
     }
 

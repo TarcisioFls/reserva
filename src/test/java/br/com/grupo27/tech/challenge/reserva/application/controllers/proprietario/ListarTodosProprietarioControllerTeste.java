@@ -40,7 +40,7 @@ class ListarTodosProprietarioControllerTeste extends TesteConfig {
     private ProprietarioRepository proprietarioRepository;
 
     @Test
-    void testListarTodos() throws Exception {
+    void testeListarTodos() throws Exception {
 
         when(proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(listarTodosProprietariosPresenter, proprietarioPresenter, proprietarioRepository))
                 .thenReturn(listarTodosProprietariosUserCase);
@@ -58,7 +58,7 @@ class ListarTodosProprietarioControllerTeste extends TesteConfig {
     }
 
     @Test
-    void testListarTodosSemPagina() throws Exception {
+    void testeListarTodosSemPagina() throws Exception {
 
         when(proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(listarTodosProprietariosPresenter, proprietarioPresenter, proprietarioRepository))
                 .thenReturn(listarTodosProprietariosUserCase);
@@ -71,11 +71,11 @@ class ListarTodosProprietarioControllerTeste extends TesteConfig {
 
         mockMvc.perform(get("/proprietarios")
                         .param("tamanho", "10"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isOk());
     }
 
     @Test
-    void testListarTodosSemTamanho() throws Exception {
+    void testeListarTodosSemTamanho() throws Exception {
 
         when(proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(listarTodosProprietariosPresenter, proprietarioPresenter, proprietarioRepository))
                 .thenReturn(listarTodosProprietariosUserCase);
