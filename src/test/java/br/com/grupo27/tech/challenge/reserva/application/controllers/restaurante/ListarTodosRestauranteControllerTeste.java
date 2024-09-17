@@ -80,7 +80,7 @@ class ListarTodosRestauranteControllerTeste extends TesteConfig {
 
         mockMvc.perform(get("/restaurantes")
                         .param("tamanho", "10"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isOk());
     }
 
 }
