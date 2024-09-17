@@ -37,7 +37,7 @@ class AtualizarProprietarioUserCaseTeste extends TesteConfig {
     private AtualizarProprietarioPresenter atualizarProprietarioPresenter;
 
     @Test
-    void testaAtualizarProprietarioComSucesso() {
+    void testeAtualizarProprietarioComSucesso() {
 
         var proprietario = getProprietario();
         var atualizarProprietarioInput = getAtualizarProprietarioInput();
@@ -60,7 +60,7 @@ class AtualizarProprietarioUserCaseTeste extends TesteConfig {
     }
 
     @Test
-    void testatestaAtualizarProprietarioComProprietarioNaoEncontrado() {
+    void testeAtualizarProprietarioComProprietarioNaoEncontrado() {
 
         var atualizarProprietarioInput = AtualizarProprietarioDados.getAtualizarProprietarioInput();
 
@@ -76,7 +76,7 @@ class AtualizarProprietarioUserCaseTeste extends TesteConfig {
     }
 
     @Test
-    void testaAtualizarProprietarioComEmailJaCadastrado() {
+    void testeAtualizarProprietarioComEmailJaCadastrado() {
 
         var atualizarProprietarioInput = AtualizarProprietarioDados.getAtualizarProprietarioInput();
         var proprietario = ProprietarioDados.getProprietario();

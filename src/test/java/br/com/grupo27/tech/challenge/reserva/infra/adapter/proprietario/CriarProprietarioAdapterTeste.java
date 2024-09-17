@@ -31,7 +31,7 @@ class CriarProprietarioAdapterTeste extends TesteConfig {
     private ProprietarioPresenterImpl proprietarioPresenter;
 
     @Test
-    void testarCriar() {
+    void testeCriar() {
         var proprietarioModel = getProprietarioModel();
         var proprietario = getProprietario();
         var proprietarioEsperado = getProprietarioDepoisDeSalvar();
@@ -50,7 +50,7 @@ class CriarProprietarioAdapterTeste extends TesteConfig {
     }
 
     @Test
-    void testaBuscaPorEmailExistente() {
+    void testeBuscaPorEmailExistente() {
         var email = "joao@teste.com";
         var proprietarioModel = getProprietarioModel();
         var proprietario = getProprietario();
@@ -64,7 +64,7 @@ class CriarProprietarioAdapterTeste extends TesteConfig {
     }
 
     @Test
-    void testaBuscaPorEmailRetornaVazioQuandoEmailNaoExiste() {
+    void testeBuscaPorEmailRetornaVazioQuandoEmailNaoExiste() {
         var email = "teste@teste.com";
 
         when(proprietarioRepository.findByEmail(email)).thenReturn(Optional.empty());

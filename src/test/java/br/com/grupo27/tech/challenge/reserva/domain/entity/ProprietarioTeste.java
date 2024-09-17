@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class ProprietarioTeste extends TesteConfig {
 
     @Test
-    void testaProprietarioComSucesso() {
+    void testeProprietarioComSucesso() {
         var proprietario = getProprietario();
         assertAll("teste",
                 () -> assertEquals("66c67aa035ed1f735450b7a2", proprietario.getId()),
@@ -35,7 +35,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComNomeNull() {
+    void testeProprietarioComNomeNull() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComNomeNull()
         );
@@ -44,7 +44,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComNomeEmBranco() {
+    void testeProprietarioComNomeEmBranco() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComNomeEmBranco()
         );
@@ -53,7 +53,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComEmailNull() {
+    void testeProprietarioComEmailNull() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComEmailNull()
         );
@@ -62,7 +62,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComEmailEmBranco() {
+    void testeProprietarioComEmailEmBranco() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComEmailEmBranco()
         );
@@ -71,7 +71,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComPasswordNull() {
+    void testeProprietarioComPasswordNull() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComSenhadNull()
         );
@@ -80,7 +80,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComPasswordEmBranco() {
+    void testeProprietarioComPasswordEmBranco() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComSenhaEmBranco()
         );
@@ -89,7 +89,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComTelefoneNull() {
+    void testeProprietarioComTelefoneNull() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComTelefoneNull()
         );
@@ -98,7 +98,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComTelefoneEmBranco() {
+    void testeProprietarioComTelefoneEmBranco() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComTelefoneEmBranco()
         );
@@ -107,7 +107,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComCpfNull() {
+    void testeProprietarioComCpfNull() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComCpfNull()
         );
@@ -116,7 +116,7 @@ class ProprietarioTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioComCpfEmBranco() {
+    void testeProprietarioComCpfEmBranco() {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getProprietarioComCpfEmBranco()
         );

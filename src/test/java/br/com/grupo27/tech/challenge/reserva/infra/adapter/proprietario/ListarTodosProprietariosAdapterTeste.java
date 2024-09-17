@@ -27,7 +27,7 @@ class ListarTodosProprietariosAdapterTeste extends TesteConfig {
     private ProprietarioPresenter proprietarioPresenter;
 
     @Test
-    void testaListarTodos() {
+    void testeListarTodos() {
         var paginacaoRequest = PageRequest.of(0, 10);
         var pageProprietarioModel = ProprietarioDados.getPageProprietarioModel();
 

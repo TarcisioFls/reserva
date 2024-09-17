@@ -22,7 +22,7 @@ class AtualizarProprietarioPresenterImplTeste extends TesteConfig {
     private ModelMapper mapper;
 
     @Test
-    void testaAtualizarProprietarioRequestEmAtualizarProprietarioInput() {
+    void testeAtualizarProprietarioRequestEmAtualizarProprietarioInput() {
 
         var id = "66c67aa035ed1f735450b7a2";
         var atualizarProprietarioRequest = getAtualizarProprietarioRequest();
@@ -39,7 +39,7 @@ class AtualizarProprietarioPresenterImplTeste extends TesteConfig {
     }
 
     @Test
-    void testaAtualizarProprietarioInputEmProprietario() {
+    void testeAtualizarProprietarioInputEmProprietario() {
 
         var atualizarProprietarioInput = getAtualizarProprietarioInput();
         var proprietario = getProprietario();
@@ -57,7 +57,7 @@ class AtualizarProprietarioPresenterImplTeste extends TesteConfig {
     }
 
     @Test
-    void testaProprietarioEmAtualizarProprietarioOutput() {
+    void testeProprietarioEmAtualizarProprietarioOutput() {
 
         var proprietario = getProprietario();
         var resultado = atualizarProprietarioPresenter.proprietarioEmAtualizarProprietarioOutput(proprietario);
@@ -73,7 +73,7 @@ class AtualizarProprietarioPresenterImplTeste extends TesteConfig {
     }
 
     @Test
-    void testaAtualizarProprietarioOutputEmProprietarioResponse() {
+    void testeAtualizarProprietarioOutputEmProprietarioResponse() {
 
         var atualizarProprietarioOutput = getAtualizarProprietarioOutput();
         var resultado = atualizarProprietarioPresenter.atualizarProprietarioOutputEmProprietarioResponse(atualizarProprietarioOutput);

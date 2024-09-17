@@ -20,7 +20,7 @@ class BuscarProprietarioPorIdPresenterImplTest extends TesteConfig {
     private ModelMapper mapper;
 
     @Test
-    void testaProprietarioEmBuscarProprietarioPorIdOutput() {
+    void testeProprietarioEmBuscarProprietarioPorIdOutput() {
 
         var buscarProprietarioPorIdOutput = buscarProprietarioPorIdPresenter.proprietarioEmBuscarProprietarioPorIdOutput(ProprietarioDados.getProprietario());
 
@@ -35,7 +35,7 @@ class BuscarProprietarioPorIdPresenterImplTest extends TesteConfig {
     }
 
     @Test
-    void proprietarioResponseEmBuscarProprietarioPorIdOutput() {
+    void testeProprietarioResponseEmBuscarProprietarioPorIdOutput() {
 
         var buscarProprietarioPorIdOutput = buscarProprietarioPorIdPresenter.proprietarioResponseEmBuscarProprietarioPorIdOutput(buscarProprietarioPorIdOutput());
 
