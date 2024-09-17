@@ -1,10 +1,10 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante;
 
-import br.com.grupo27.tech.challenge.reserva.application.factory.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaUserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.application.factory.restaurante.BuscarRestaurantesUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
-import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaPresenter;
+import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.BuscarRestaurantesPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaUserCase;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.BuscarRestaurantesUserCase;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +14,22 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.web.PagedModel;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaDados.buscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaDados.buscarRestaurantesResponseList;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesDados.buscarRestaurantesOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesDados.buscarRestaurantesResponseList;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaController.class)
-class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaControllerTeste extends TesteConfig {
+@WebMvcTest(BuscarRestaurantesController.class)
+class BuscarRestaurantesControllerTeste extends TesteConfig {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaUserCaseFactory buscarRestaurantesUserCaseFactory;
+    private BuscarRestaurantesUserCaseFactory buscarRestaurantesUserCaseFactory;
 
     @MockBean
     private RestauranteRepository restauranteRepository;
@@ -38,16 +38,16 @@ class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaControllerTeste extends
     private RestaurantePresenter restaurantePresenter;
 
     @MockBean
-    private BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaPresenter buscarRestaurantesPresenter;
+    private BuscarRestaurantesPresenter buscarRestaurantesPresenter;
 
     @MockBean
-    private BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaUserCase buscarRestaurantesUserCase;
+    private BuscarRestaurantesUserCase buscarRestaurantesUserCase;
 
     @Test
     void testeBuscarRestaurantes() throws Exception {
 
         var buscar = "Aki";
-        var buscarRestauranteOutputList = buscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput();
+        var buscarRestauranteOutputList = buscarRestaurantesOutput();
 
         when(buscarRestaurantesUserCaseFactory.buildBuscarRestauranteUserCase(
                 restauranteRepository,

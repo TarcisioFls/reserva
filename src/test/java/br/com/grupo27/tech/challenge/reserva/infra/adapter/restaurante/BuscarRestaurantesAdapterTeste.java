@@ -11,18 +11,18 @@ import org.springframework.data.domain.PageRequest;
 
 import java.util.Optional;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaDados.getRestaurante;
-import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaDados.getRestaurantePage;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesDados.getRestaurante;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesDados.getRestaurantePage;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaAdapterTeste extends TesteConfig {
+class BuscarRestaurantesAdapterTeste extends TesteConfig {
 
     @InjectMocks
-    private BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaAdapter buscarRestaurantesAdapter;
+    private BuscarRestaurantesAdapter buscarRestaurantesAdapter;
 
     @Mock
     private RestauranteRepository restauranteRepository;

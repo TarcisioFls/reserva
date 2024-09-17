@@ -2,7 +2,7 @@ package br.com.grupo27.tech.challenge.reserva.mock.restaurante;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Restaurante;
-import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput;
+import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.BuscarRestaurantesOutput;
 import br.com.grupo27.tech.challenge.reserva.infra.model.RestauranteModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -13,10 +13,10 @@ import java.util.List;
 
 import static br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha.JAPONESA;
 
-public interface BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaDados {
+public interface BuscarRestaurantesDados {
 
-    static PagedModel<BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput> buscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput() {
-        var buscarRestaurantesOutput = new BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput("77b87aa035ed1f735450b9d6", "Akira", "Restaurante", "Rua 1", "08:00", "22:00", 30, List.of(JAPONESA), "66c67aa035ed1f735450b7a2");
+    static PagedModel<BuscarRestaurantesOutput> buscarRestaurantesOutput() {
+        var buscarRestaurantesOutput = new BuscarRestaurantesOutput("77b87aa035ed1f735450b9d6", "Akira", "Restaurante", "Rua 1", "08:00", "22:00", 30, List.of(JAPONESA), "66c67aa035ed1f735450b7a2");
         var buscarRestaurantesOutputList = List.of(buscarRestaurantesOutput);
         var pageRequest = PageRequest.of(0, 10);
 

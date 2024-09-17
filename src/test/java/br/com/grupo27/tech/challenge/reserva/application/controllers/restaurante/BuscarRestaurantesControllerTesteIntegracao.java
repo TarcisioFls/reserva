@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @Testcontainers
-public class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaControllerTesteIntegracao {
+public class BuscarRestaurantesControllerTesteIntegracao {
 
     @Container
     public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:6.0.9");
@@ -34,7 +34,7 @@ public class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaControllerTesteI
     }
 
     @Autowired
-    private BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaController buscarRestaurantesController;
+    private BuscarRestaurantesController buscarRestaurantesController;
 
     @Autowired
     private RestauranteRepository restauranteRepository;

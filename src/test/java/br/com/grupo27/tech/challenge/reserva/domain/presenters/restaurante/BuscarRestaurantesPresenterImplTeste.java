@@ -9,17 +9,17 @@ import org.modelmapper.ModelMapper;
 import java.util.List;
 
 import static br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha.JAPONESA;
-import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaDados.buscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaDados.getRestaurante;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesDados.buscarRestaurantesOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesDados.getRestaurante;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaPresenterImplTeste extends TesteConfig {
+class BuscarRestaurantesPresenterImplTeste extends TesteConfig {
 
     @InjectMocks
-    private BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaPresenterImpl buscarRestaurantesPresenter;
+    private BuscarRestaurantesPresenterImpl buscarRestaurantesPresenter;
 
     @Spy
     private ModelMapper mapper;
@@ -27,7 +27,7 @@ class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaPresenterImplTeste exte
     @Test
     void testeBuscarRestaurantesOutputEmRestaurantesResponse() {
 
-        var resultado = buscarRestaurantesPresenter.buscarRestaurantesOutputEmRestaurantesResponse(buscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput());
+        var resultado = buscarRestaurantesPresenter.buscarRestaurantesOutputEmRestaurantesResponse(buscarRestaurantesOutput());
 
         assertAll("Teste paginação",
                 () -> assertNotNull(resultado),
@@ -39,7 +39,7 @@ class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaPresenterImplTeste exte
                 () -> assertEquals(1, requireNonNull(resultado.getMetadata()).totalPages())
         );
 
-        assertAll("Teste BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput",
+        assertAll("Teste BuscarRestaurantesOutput",
                 () -> assertEquals("77b87aa035ed1f735450b9d6", requireNonNull(resultado.getContent().get(0).getId())),
                 () -> assertEquals("Akira", requireNonNull(resultado.getContent().get(0).getNome())),
                 () -> assertEquals("Rua 1", requireNonNull(resultado.getContent().get(0).getLocalizacao())),
@@ -62,7 +62,7 @@ class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaPresenterImplTeste exte
                 () -> assertEquals(1, requireNonNull(resultado.getMetadata()).totalPages())
         );
 
-        assertAll("Teste BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput",
+        assertAll("Teste BuscarRestaurantesOutput",
                 () -> assertEquals("77b87aa035ed1f735450b9d6", requireNonNull(resultado.getContent().get(0).getId())),
                 () -> assertEquals("Akira", requireNonNull(resultado.getContent().get(0).getNome())),
                 () -> assertEquals("Rua 1", requireNonNull(resultado.getContent().get(0).getLocalizacao())),

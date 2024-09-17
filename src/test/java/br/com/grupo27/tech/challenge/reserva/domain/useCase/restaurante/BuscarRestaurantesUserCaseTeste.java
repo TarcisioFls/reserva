@@ -1,14 +1,14 @@
 package br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante;
 
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
-import br.com.grupo27.tech.challenge.reserva.domain.gateway.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaGateway;
-import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaPresenter;
+import br.com.grupo27.tech.challenge.reserva.domain.gateway.restaurante.BuscarRestaurantesGateway;
+import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.BuscarRestaurantesPresenter;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaDados.buscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaDados.getRestaurante;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesDados.buscarRestaurantesOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.BuscarRestaurantesDados.getRestaurante;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -16,16 +16,16 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaUserCaseTeste extends TesteConfig {
+class BuscarRestaurantesUserCaseTeste extends TesteConfig {
 
     @InjectMocks
-    private BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaUserCase buscarRestaurantesUserCase;
+    private BuscarRestaurantesUserCase buscarRestaurantesUserCase;
 
     @Mock
-    private BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaGateway buscarRestaurantesGateway;
+    private BuscarRestaurantesGateway buscarRestaurantesGateway;
 
     @Mock
-    private BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaPresenter buscarRestaurantesPresenter;
+    private BuscarRestaurantesPresenter buscarRestaurantesPresenter;
 
 
     @Test
@@ -34,7 +34,7 @@ class BuscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaUserCaseTeste extends T
 
         when(buscarRestaurantesGateway.buscar(buscar)).thenReturn(getRestaurante());
 
-        when(buscarRestaurantesPresenter.restauranteEmBuscarRestauranteOutput(any())).thenReturn(buscarRestaurantesPorNomeOuLocalizacaoOuTipoCozinhaOutput());
+        when(buscarRestaurantesPresenter.restauranteEmBuscarRestauranteOutput(any())).thenReturn(buscarRestaurantesOutput());
 
         var resultado = buscarRestaurantesUserCase.buscarRestaurantes(buscar);
 
