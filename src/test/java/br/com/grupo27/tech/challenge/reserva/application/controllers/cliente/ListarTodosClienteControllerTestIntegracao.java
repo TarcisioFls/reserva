@@ -80,7 +80,7 @@ public class ListarTodosClienteControllerTestIntegracao {
     @Test
     void testeListarTodosPaginaInvalida(){
 
-        int pagina = 0;
+        int pagina = 1;
         int tamanho = 10;
 
         var response = listarTodosClienteController.listarTodos(pagina,tamanho);
