@@ -23,6 +23,7 @@ import static java.util.Objects.nonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+
 @SpringBootTest
 @Testcontainers(parallel = true)
 public class CriarClienteControllerIntegracaoTeste {
@@ -64,7 +65,6 @@ public class CriarClienteControllerIntegracaoTeste {
 
     @Test
     void testeCriarClienteEmailJaExistente(){
-        var clienteModel = getClienteModelSemId();
         var criarClienteRequest = getCriarClienteRequest();
 
         clienteRepository.save(getClienteModelSemId());
@@ -84,7 +84,7 @@ public class CriarClienteControllerIntegracaoTeste {
         );
 
         assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
-        assertEquals(500, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 
     @Test
@@ -95,7 +95,7 @@ public class CriarClienteControllerIntegracaoTeste {
         );
 
         assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
-        assertEquals(500, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 
     @Test
@@ -127,7 +127,7 @@ public class CriarClienteControllerIntegracaoTeste {
                 ExceptionAdvice.class, () -> criarClienteController.criarCliente(request)
         );
 
-        assertEquals("Password é obrigatório", exceptionAdvice.getMessage());
+        assertEquals("Senha é obrigatória", exceptionAdvice.getMessage());
         assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 
@@ -138,7 +138,7 @@ public class CriarClienteControllerIntegracaoTeste {
                 ExceptionAdvice.class, () -> criarClienteController.criarCliente(request)
         );
 
-        assertEquals("Password é obrigatório", exceptionAdvice.getMessage());
+        assertEquals("Senha é obrigatória", exceptionAdvice.getMessage());
         assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 
@@ -171,8 +171,8 @@ public class CriarClienteControllerIntegracaoTeste {
                 ExceptionAdvice.class, () -> criarClienteController.criarCliente(request)
         );
 
-        assertEquals("O cpf informado não é válido", exceptionAdvice.getMessage());
-        assertEquals(500, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("CPF é obrigatório", exceptionAdvice.getMessage());
+        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 
     @Test
@@ -182,8 +182,8 @@ public class CriarClienteControllerIntegracaoTeste {
                 ExceptionAdvice.class, () -> criarClienteController.criarCliente(request)
         );
 
-        assertEquals("O cpf informado não é válido", exceptionAdvice.getMessage());
-        assertEquals(500, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("CPF é obrigatório", exceptionAdvice.getMessage());
+        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 
 

@@ -32,8 +32,8 @@ public class AtualizarClientePresenterImpTeste extends TesteConfig {
 
         assertAll( "teste",
                 () -> assertEquals(id, resultado.getId()),
-                () -> assertEquals("João Rodrigo", resultado.getNome()),
-                () -> assertEquals("joao@teste.com", resultado.getEmail()),
+                () -> assertEquals("João atualizado", resultado.getNome()),
+                () -> assertEquals("joaoatualizado@teste.com", resultado.getEmail()),
                 () -> assertEquals("123456", resultado.getSenha()),
                 () -> assertEquals("11999999999", resultado.getTelefone()),
                 () -> assertEquals("896.271.990-87", resultado.getCpf()),
@@ -53,8 +53,8 @@ public class AtualizarClientePresenterImpTeste extends TesteConfig {
 
         assertAll( "teste",
                 () -> assertEquals("66c67aa035ed1f735450b7a2", resultado.getId()),
-                () -> assertEquals("João Rodrigo", resultado.getNome()),
-                () -> assertEquals("joao@teste.com", resultado.getEmail()),
+                () -> assertEquals("joão atualizado", resultado.getNome()),
+                () -> assertEquals("joaoatualizado@teste.com", resultado.getEmail()),
                 () -> assertEquals("123456", resultado.getSenha()),
                 () -> assertEquals("11999999999", resultado.getTelefone()),
                 () -> assertEquals("896.271.990-87", resultado.getCpf()),
