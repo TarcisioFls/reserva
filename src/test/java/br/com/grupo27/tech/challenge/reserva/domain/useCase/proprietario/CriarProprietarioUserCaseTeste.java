@@ -36,7 +36,7 @@ class CriarProprietarioUserCaseTeste extends TesteConfig {
 
 
     @Test
-    void criarProprietarioComSucesso() {
+    void testeCriarProprietarioComSucesso() {
         var criarProprietarioInput = getCriarProprietarioInput();
         var proprietario = getProprietario();
         var criarProprietarioOutput = getCriarProprietarioOutput();
@@ -57,7 +57,7 @@ class CriarProprietarioUserCaseTeste extends TesteConfig {
     }
 
     @Test
-    void criarProprietarioComEmailJaCadastrado() {
+    void testeCriarProprietarioComEmailJaCadastrado() {
         var criarProprietarioInput = getCriarProprietarioInput();
         var proprietario = getProprietario();
 

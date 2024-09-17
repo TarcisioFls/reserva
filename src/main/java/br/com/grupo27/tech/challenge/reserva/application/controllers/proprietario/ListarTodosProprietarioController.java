@@ -25,7 +25,7 @@ public class ListarTodosProprietarioController {
 
 
     @GetMapping
-    public ResponseEntity<PagedModel<ProprietarioResponse>> listarTodos(@RequestParam int pagina,@RequestParam(defaultValue = "50") int tamanho) {
+    public ResponseEntity<PagedModel<ProprietarioResponse>> listarTodos(@RequestParam(defaultValue = "0") int pagina,@RequestParam(defaultValue = "50") int tamanho) {
 
         var listarTodosProprietariosUserCase = proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(
                 listarTodosProprietariosPresenter, proprietarioPresenter, proprietarioRepository
