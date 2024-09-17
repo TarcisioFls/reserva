@@ -12,6 +12,7 @@ public class ErrorResponse {
 
     public ErrorResponse(HttpStatus httpStatus, String mensagem) {
         this.httpStatus = httpStatus;
+        this.httpStatus = httpStatus;
         this.mensagem = mensagem;
         this.codigo = httpStatus.value();
     }
