@@ -27,9 +27,11 @@
         <url/>
     </scm>
     <properties>
-        <java.version>22</java.version>
+        <java.version>21</java.version>
         <modelMapper.version>3.2.0</modelMapper.version>
         <springdoc.version>2.5.0</springdoc.version>
+        <pitest.version>1.16.3</pitest.version>
+        <pitestSkip>true</pitestSkip>
     </properties>
     <dependencies>
 
@@ -82,10 +84,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>${pitest.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -100,6 +110,53 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>${pitest.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>1.2.1</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>pitest-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>mutationCoverage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>${pitestSkip}</skip>
+                    <outputFormats>
+                        <outputFormat>HTML</outputFormat>
+                    </outputFormats>
+                    <timestampedReports>true</timestampedReports>
+                    <targetClasses>
+                        <param>br.com.grupo27.tech.challenge.reserva.application.*</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.domain.*</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.infra.*</param>
+                    </targetClasses>
+                    <excludedClasses>
+                        <param>br.com.grupo27.tech.challenge.reserva.application.*Request</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.application.*Response</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.domain.exception.*</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.domain.gateway.*</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.domain.input.*</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.domain.output.*</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.infra.config.*</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.infra.model.*</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.infra.repository.*</param>
+                    </excludedClasses>
+                    <targetTests>
+                        <param>br.com.grupo27.tech.challenge.reserva.*</param>
+                    </targetTests>
                 </configuration>
             </plugin>
         </plugins>
