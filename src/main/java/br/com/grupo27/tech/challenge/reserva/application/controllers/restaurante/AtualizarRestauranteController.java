@@ -4,7 +4,7 @@ import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.AtualizarRestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.AtualizarRestauranteUserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.application.factory.restaurante.AtualizarRestauranteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -6,8 +6,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ListarTodosProprietariosDados.getPageProprietario;
-import static br.com.grupo27.tech.challenge.reserva.mock.ListarTodosProprietariosDados.getPageTodosProprietariosOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ListarTodosProprietariosDados.getPageProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ListarTodosProprietariosDados.getPageTodosProprietariosOutput;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;

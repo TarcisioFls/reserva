@@ -1,6 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario;
 
-import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
+import br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -4,7 +4,7 @@ import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.ListarTodosRestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.ListarTodosRestauranteUserCase;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.ListarTodosRestauranteUserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.application.factory.restaurante.ListarTodosRestauranteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +80,7 @@ class ListarTodosRestauranteControllerTeste extends TesteConfig {
 
         mockMvc.perform(get("/restaurantes")
                         .param("tamanho", "10"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isOk());
     }
 
 }

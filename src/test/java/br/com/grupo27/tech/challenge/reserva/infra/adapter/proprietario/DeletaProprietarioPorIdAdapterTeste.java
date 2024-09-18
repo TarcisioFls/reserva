@@ -18,8 +18,8 @@ class DeletaProprietarioPorIdAdapterTeste extends TesteConfig {
     private ProprietarioRepository proprietarioRepository;
 
     @Test
-    void testeDeletaPorIdSuccessfullyDeletesProprietario() {
-        String id = "validId";
+    void deletaPorIdSuccessfullyDeletesProprietario() {
+        String id = "66c67aa035ed1f735450b7a2";
 
         deletaProprietarioPorIdAdapter.deletaPorId(id);
 

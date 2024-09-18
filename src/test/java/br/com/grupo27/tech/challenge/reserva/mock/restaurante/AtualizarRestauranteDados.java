@@ -9,7 +9,6 @@ import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.Atualizar
 import br.com.grupo27.tech.challenge.reserva.infra.model.ProprietarioModel;
 import br.com.grupo27.tech.challenge.reserva.infra.model.RestauranteModel;
 
-import java.time.LocalTime;
 import java.util.List;
 
 import static br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha.CASEIRA;
@@ -140,8 +139,8 @@ public interface AtualizarRestauranteDados {
         restaurante.setNome("Rikimaru");
         restaurante.setDescricao("Fica Inv, Roubadão");
         restaurante.setLocalizacao("Não sabemos, pq ta inv");
-        restaurante.setHoraAbertura(LocalTime.of(1, 0));
-        restaurante.setHoraFechamento(LocalTime.of(19, 59));
+        restaurante.setHoraAbertura("01:00");
+        restaurante.setHoraFechamento("19:59");
         restaurante.setCapacidade(50);
         restaurante.setTipoCozinhaList(criaListaTpoCozinha());
         restaurante.setProprietarioId(criaProprietario());

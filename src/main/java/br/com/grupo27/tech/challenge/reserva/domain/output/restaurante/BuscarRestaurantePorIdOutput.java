@@ -16,8 +16,8 @@ public class BuscarRestaurantePorIdOutput {
     private String nome;
     private String descricao;
     private String localizacao;
-    private LocalTime horaAbertura;
-    private LocalTime horaFechamento;
+    private String horaAbertura;
+    private String horaFechamento;
     private int capacidade;
     private List<TipoCozinha> tipoCozinhaList;
     private String proprietarioId;

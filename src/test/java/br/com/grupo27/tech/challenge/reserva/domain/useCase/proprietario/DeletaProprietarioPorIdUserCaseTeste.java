@@ -10,7 +10,7 @@ import org.mockito.Mock;
 
 import java.util.Optional;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietario;
 import static java.util.Optional.empty;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -18,10 +18,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class DeleteProprietarioPorIdUserCaseTeste extends TesteConfig {
+class DeletaProprietarioPorIdUserCaseTeste extends TesteConfig {
 
     @InjectMocks
-    private DeleteProprietarioPorIdUserCase deleteProprietarioPorIdUserCase;
+    private DeletaProprietarioPorIdUserCase deletaProprietarioPorIdUserCase;
 
     @Mock
     private DeletaProprietarioPorIdGateway deletaProprietarioPorIdGateway;
@@ -35,7 +35,7 @@ class DeleteProprietarioPorIdUserCaseTeste extends TesteConfig {
 
         when(buscarProprietarioPorIdGateway.buscarPorId(id)).thenReturn(Optional.of(getProprietario()));
 
-        deleteProprietarioPorIdUserCase.deletaPorId(id);
+        deletaProprietarioPorIdUserCase.deletaPorId(id);
 
         verify(buscarProprietarioPorIdGateway, times(1)).buscarPorId(id);
         verify(deletaProprietarioPorIdGateway, times(1)).deletaPorId(id);
@@ -47,7 +47,7 @@ class DeleteProprietarioPorIdUserCaseTeste extends TesteConfig {
 
         when(buscarProprietarioPorIdGateway.buscarPorId(id)).thenReturn(empty());
 
-        var resultado = assertThrows(ExceptionAdvice.class, () -> deleteProprietarioPorIdUserCase.deletaPorId(id));
+        var resultado = assertThrows(ExceptionAdvice.class, () -> deletaProprietarioPorIdUserCase.deletaPorId(id));
 
         assertEquals("Proprietário não encontrado", resultado.getMessage());
 

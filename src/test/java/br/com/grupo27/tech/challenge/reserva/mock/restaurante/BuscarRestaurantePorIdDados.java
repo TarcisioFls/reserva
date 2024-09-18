@@ -88,8 +88,8 @@ public interface BuscarRestaurantePorIdDados {
         restaurante.setNome("Rikimaru");
         restaurante.setDescricao("Fica Inv, Roubadão");
         restaurante.setLocalizacao("Não sabemos, pq ta inv");
-        restaurante.setHoraAbertura(LocalTime.of(1, 0));
-        restaurante.setHoraFechamento(LocalTime.of(19, 59));
+        restaurante.setHoraAbertura("01:00");
+        restaurante.setHoraFechamento("19:59");
         restaurante.setCapacidade(50);
         restaurante.setTipoCozinhaList(criaListaTpoCozinha());
         restaurante.setProprietarioId(criaProprietarioModel());

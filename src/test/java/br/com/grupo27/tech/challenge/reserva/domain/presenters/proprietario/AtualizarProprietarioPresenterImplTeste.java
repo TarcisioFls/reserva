@@ -6,10 +6,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioInput;
-import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioRequest;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.AtualizarProprietarioDados.getAtualizarProprietarioInput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.AtualizarProprietarioDados.getAtualizarProprietarioOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.AtualizarProprietarioDados.getAtualizarProprietarioRequest;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietario;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

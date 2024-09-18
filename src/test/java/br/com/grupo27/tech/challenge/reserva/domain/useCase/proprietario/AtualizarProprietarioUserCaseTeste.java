@@ -5,18 +5,18 @@ import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
 import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.AtualizarProprietarioGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.input.proprietario.AtualizarProprietarioInput;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.AtualizarProprietarioPresenter;
-import br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados;
-import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
+import br.com.grupo27.tech.challenge.reserva.mock.proprietario.AtualizarProprietarioDados;
+import br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import java.util.Optional;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioInput;
-import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioAtualizado;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.AtualizarProprietarioDados.getAtualizarProprietarioInput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.AtualizarProprietarioDados.getAtualizarProprietarioOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietarioAtualizado;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietario;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;

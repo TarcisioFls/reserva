@@ -10,12 +10,15 @@ import java.util.List;
 
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.CAPACIDADE_INVALIDA;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.DESCRICAO_OBRIGATORIA;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.HORARIO_FUNCIONAMENTO_INVALIDO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.HORARIO_FUNCIONAMENTO_OBRIGATORIO;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.HORA_ABERTURA_RESTAURANTE_MAIOR_HORA_FECHAMENTO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.LOCALIZACAO_OBRIGATORIA;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.NOME_OBRIGATORIO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.PROPRIETARIO_OBRIGATORIO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.TIPO_COZINHA_OBRIGATORIA;
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 @Getter
 @NoArgsConstructor
@@ -26,8 +29,8 @@ public class Restaurante {
     private String nome;
     private String descricao;
     private String localizacao;
-    private LocalTime horaAbertura;
-    private LocalTime horaFechamento;
+    private String horaAbertura;
+    private String horaFechamento;
     private int capacidade;
     private List<TipoCozinha> tipoCozinhaList;
     private String proprietarioId;
@@ -35,8 +38,8 @@ public class Restaurante {
     public Restaurante(String nome,
                        String descricao,
                        String localizacao,
-                       LocalTime horaAbertura,
-                       LocalTime horaFechamento,
+                       String horaAbertura,
+                       String horaFechamento,
                        int capacidade,
                        List<TipoCozinha> tipoCozinhas,
                        String proprietarioId) {
@@ -56,8 +59,8 @@ public class Restaurante {
                         String nome,
                         String descricao,
                         String localizacao,
-                        LocalTime horaAbertura,
-                        LocalTime horaFechamento,
+                        String horaAbertura,
+                        String horaFechamento,
                         int capacidade,
                         List<TipoCozinha> tipoCozinhaList,
                         String proprietarioId) {
@@ -95,20 +98,40 @@ public class Restaurante {
         return this;
     }
 
-    public Restaurante setHoraAbertura(LocalTime horaAbertura) {
+    public Restaurante setHoraAbertura(String horaAbertura) {
         if (isNull(horaAbertura)) {
             throw new ExceptionAdvice(HORARIO_FUNCIONAMENTO_OBRIGATORIO);
         }
+
         this.horaAbertura = horaAbertura;
+
+        validandoHora(horaAbertura);
+
         return this;
     }
 
-    public Restaurante setHoraFechamento(LocalTime horaFechamento) {
+    public Restaurante setHoraFechamento(String horaFechamento) {
         if (isNull(horaFechamento)) {
             throw new ExceptionAdvice(HORARIO_FUNCIONAMENTO_OBRIGATORIO);
         }
+
         this.horaFechamento = horaFechamento;
+
+        validandoHora(horaFechamento);
         return this;
+    }
+
+    private void validandoHora(String hora) {
+        try {
+            LocalTime.parse(hora);
+        } catch (Exception e) {
+            throw new ExceptionAdvice(HORARIO_FUNCIONAMENTO_INVALIDO);
+        }
+
+        if (nonNull(this.horaAbertura) && nonNull(this.horaFechamento) && LocalTime.parse(this.horaAbertura).isAfter(LocalTime.parse(this.horaFechamento))) {
+            throw new ExceptionAdvice(HORA_ABERTURA_RESTAURANTE_MAIOR_HORA_FECHAMENTO);
+
+        }
     }
 
     public Restaurante setCapacidade(int capacidade) {

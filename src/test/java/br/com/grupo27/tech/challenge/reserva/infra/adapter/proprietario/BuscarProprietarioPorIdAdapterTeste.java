@@ -9,8 +9,8 @@ import org.mockito.Mock;
 
 import java.util.Optional;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietario;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioModel;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietarioModel;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;

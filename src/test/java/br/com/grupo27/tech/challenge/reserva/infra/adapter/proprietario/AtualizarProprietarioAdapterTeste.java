@@ -5,14 +5,14 @@ import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.infra.model.ProprietarioModel;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
-import br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados;
+import br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import java.util.Optional;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioAtualizado;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietarioAtualizado;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;

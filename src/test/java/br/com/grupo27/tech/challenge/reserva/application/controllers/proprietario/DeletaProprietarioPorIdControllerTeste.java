@@ -1,9 +1,9 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario;
 
+import br.com.grupo27.tech.challenge.reserva.application.factory.proprietario.DeletaProprietarioPorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.DeleteProprietarioPorIdUserCase;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.DeletaProprietarioPorIdUserCase;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +25,10 @@ class DeletaProprietarioPorIdControllerTeste extends TesteConfig {
     private MockMvc mockMvc;
 
     @MockBean
-    private ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+    private DeletaProprietarioPorIdUserCaseFactory deletaProprietarioPorIdUserCaseFactory;
 
     @MockBean
-    private DeleteProprietarioPorIdUserCase deleteProprietarioPorIdUserCase;
+    private DeletaProprietarioPorIdUserCase deletaProprietarioPorIdUserCase;
 
     @MockBean
     private ProprietarioRepository proprietarioRepository;
@@ -41,15 +41,16 @@ class DeletaProprietarioPorIdControllerTeste extends TesteConfig {
 
         var id = "66c67aa035ed1f735450b7a2";
 
-        when(proprietarioUserCaseFactory.buildDeletaProprietarioPorIdUserCase(proprietarioPresenter, proprietarioRepository))
-                .thenReturn(deleteProprietarioPorIdUserCase);
+        when(deletaProprietarioPorIdUserCaseFactory.buildDeletaProprietarioPorIdUserCase(proprietarioPresenter, proprietarioRepository))
+                .thenReturn(deletaProprietarioPorIdUserCase);
 
-        doNothing().when(deleteProprietarioPorIdUserCase).deletaPorId(id);
+        doNothing().when(deletaProprietarioPorIdUserCase).deletaPorId(id);
 
         mockMvc.perform(delete("/proprietarios/{id}", id))
                 .andExpect(status().isNoContent());
 
-        verify(deleteProprietarioPorIdUserCase, times(1)).deletaPorId(id);
+        verify(deletaProprietarioPorIdUserCaseFactory, times(1)).buildDeletaProprietarioPorIdUserCase(proprietarioPresenter, proprietarioRepository);
+        verify(deletaProprietarioPorIdUserCase, times(1)).deletaPorId(id);
 
     }
 

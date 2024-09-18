@@ -1,11 +1,11 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario;
 
+import br.com.grupo27.tech.challenge.reserva.application.factory.proprietario.BuscarProprietarioPorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.BuscarProprietarioPorIdPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.BuscarProprietarioPorIdUserCase;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.PROPRIETARIO_NAO_ENCONTRADO;
-import static br.com.grupo27.tech.challenge.reserva.mock.BuscarProprietarioPorIdDados.buscarProprietarioPorIdOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioResponse;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.BuscarProprietarioPorIdDados.buscarProprietarioPorIdOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietarioResponse;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -31,7 +31,7 @@ class BuscarProprietarioPorIdControllerTeste extends TesteConfig {
     private MockMvc mockMvc;
 
     @MockBean
-    private ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+    private BuscarProprietarioPorIdUserCaseFactory buscarProprietarioPorIdUserCaseFactory;
 
     @MockBean
     private BuscarProprietarioPorIdUserCase buscarProprietarioPorIdUserCase;
@@ -50,7 +50,7 @@ class BuscarProprietarioPorIdControllerTeste extends TesteConfig {
 
         var id = "66c67aa035ed1f735450b7a2";
 
-        when(proprietarioUserCaseFactory.buildBuscarProprietarioPorIdUserCase(buscarProprietarioPorIdPresenter, proprietarioPresenter, proprietarioRepository))
+        when(buscarProprietarioPorIdUserCaseFactory.buildBuscarProprietarioPorIdUserCase(buscarProprietarioPorIdPresenter, proprietarioPresenter, proprietarioRepository))
                 .thenReturn(buscarProprietarioPorIdUserCase);
 
         when(buscarProprietarioPorIdUserCase.buscarPorId(id))
@@ -59,7 +59,7 @@ class BuscarProprietarioPorIdControllerTeste extends TesteConfig {
         when(buscarProprietarioPorIdPresenter.proprietarioResponseEmBuscarProprietarioPorIdOutput(any()))
                 .thenReturn(getProprietarioResponse());
 
-        mockMvc.perform(get("/proprietario/{id}", id))
+        mockMvc.perform(get("/proprietarios/{id}", id))
                 .andExpect(status().isOk());
 
         verify(buscarProprietarioPorIdUserCase, times(1)).buscarPorId(id);
@@ -72,13 +72,13 @@ class BuscarProprietarioPorIdControllerTeste extends TesteConfig {
 
         var id = "teste";
 
-        when(proprietarioUserCaseFactory.buildBuscarProprietarioPorIdUserCase(buscarProprietarioPorIdPresenter, proprietarioPresenter, proprietarioRepository))
+        when(buscarProprietarioPorIdUserCaseFactory.buildBuscarProprietarioPorIdUserCase(buscarProprietarioPorIdPresenter, proprietarioPresenter, proprietarioRepository))
                 .thenReturn(buscarProprietarioPorIdUserCase);
 
         when(buscarProprietarioPorIdUserCase.buscarPorId(id))
                 .thenThrow(new ExceptionAdvice(PROPRIETARIO_NAO_ENCONTRADO));
 
-        mockMvc.perform(get("/proprietario/{id}", id))
+        mockMvc.perform(get("/proprietarios/{id}", id))
                 .andExpect(status().isNotFound());
 
         verify(buscarProprietarioPorIdUserCase, times(1)).buscarPorId(id);

@@ -1,10 +1,10 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario;
 
+import br.com.grupo27.tech.challenge.reserva.application.factory.proprietario.CriarProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.CriarProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.CriarProprietarioUserCase;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getCriarProprietarioInput;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getCriarProprietarioOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.CriarProprietarioDados.getCriarProprietarioRequest;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioResponse;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getCriarProprietarioInput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getCriarProprietarioOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getCriarProprietarioRequest;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietarioResponse;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -35,7 +35,7 @@ class CriarProprietarioControllerTeste extends TesteConfig {
     private CriarProprietarioPresenter criarProprietarioPresenter;
 
     @MockBean
-    private ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+    private CriarProprietarioUserCaseFactory criarProprietarioUserCaseFactory;
 
     @MockBean
     private ProprietarioPresenter proprietarioPresenter;
@@ -49,7 +49,7 @@ class CriarProprietarioControllerTeste extends TesteConfig {
     @Test
     void testeCriar() throws Exception {
 
-        when(proprietarioUserCaseFactory.buildCriarProprietarioUserCase(criarProprietarioPresenter, proprietarioPresenter, proprietarioRepository))
+        when(criarProprietarioUserCaseFactory.buildCriarProprietarioUserCase(criarProprietarioPresenter, proprietarioPresenter, proprietarioRepository))
                 .thenReturn(criarProprietarioUserCase);
 
         when(criarProprietarioPresenter.criarProprietarioEmCriarProprietarioInput(any()))

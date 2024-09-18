@@ -11,8 +11,8 @@ import org.mockito.Mockito;
 
 import java.util.Optional;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.BuscarProprietarioPorIdDados.buscarProprietarioPorIdOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietario;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.BuscarProprietarioPorIdDados.buscarProprietarioPorIdOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietario;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

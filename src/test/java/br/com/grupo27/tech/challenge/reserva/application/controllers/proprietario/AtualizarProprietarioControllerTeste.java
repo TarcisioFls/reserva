@@ -1,13 +1,13 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario.request.AtualizarProprietarioRequest;
+import br.com.grupo27.tech.challenge.reserva.application.factory.proprietario.AtualizarProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.input.proprietario.AtualizarProprietarioInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.proprietario.AtualizarProprietarioOutput;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.AtualizarProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.AtualizarProprietarioUserCase;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioInput;
-import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioOutput;
-import static br.com.grupo27.tech.challenge.reserva.mock.AtualizarProprietarioDados.getAtualizarProprietarioRequest;
-import static br.com.grupo27.tech.challenge.reserva.mock.ProprietarioDados.getProprietarioResponseAtualizado;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.AtualizarProprietarioDados.getAtualizarProprietarioInput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.AtualizarProprietarioDados.getAtualizarProprietarioOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.AtualizarProprietarioDados.getAtualizarProprietarioRequest;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados.getProprietarioResponseAtualizado;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
@@ -36,7 +36,7 @@ class AtualizarProprietarioControllerTeste extends TesteConfig {
     private MockMvc mockMvc;
 
     @MockBean
-    private ProprietarioUserCaseFactory proprietarioUserCaseFactory;
+    private AtualizarProprietarioUserCaseFactory atualizarProprietarioUserCaseFactory;
 
     @MockBean
     private AtualizarProprietarioPresenter atualizarProprietarioPresenter;
@@ -53,7 +53,7 @@ class AtualizarProprietarioControllerTeste extends TesteConfig {
     @Test
     void teste() throws Exception {
 
-        when(proprietarioUserCaseFactory.buildAtualizarProprietarioUserCase(atualizarProprietarioPresenter, proprietarioPresenter, proprietarioRepository))
+        when(atualizarProprietarioUserCaseFactory.buildAtualizarProprietarioUserCase(atualizarProprietarioPresenter, proprietarioPresenter, proprietarioRepository))
                 .thenReturn(atualizarProprietarioUserCase);
 
         when(atualizarProprietarioPresenter.atualizarProprietarioRequestEmAtualizarProprietarioInput(any(), any()))
