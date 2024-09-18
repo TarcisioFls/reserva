@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class CriarClienteOutput extends ClienteOutput{
+public class BuscarClientePorIdOutput  extends CriarClienteOutput{
 
-    public CriarClienteOutput(String id, String nome, String email, String senha, String telefone, String cpf, LocalDate dataNascimento) {
+    public BuscarClientePorIdOutput(String id, String nome, String email, String senha, String telefone, String cpf, LocalDate dataNascimento) {
         super(id, nome, email, senha, telefone, cpf, dataNascimento);
     }
 }
