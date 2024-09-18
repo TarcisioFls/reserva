@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: '21'
-        distribution: 'amazoncorretto'
+        distribution: 'temurin'
         cache: maven
     - name: Build with Maven
       run: mvn -B -Dmaven.test.skip package --file pom.xml
@@ -36,7 +36,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: '21'
-        distribution: 'amazoncorretto'
+        distribution: 'temurin'
         cache: maven
     - name: Test with Maven
       run: mvn --batch-mode --update-snapshots -Dspring.profiles.active=prod verify
