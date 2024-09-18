@@ -1,14 +1,13 @@
 package br.com.grupo27.tech.challenge.reserva;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
 class ReservaApplicationTests {
 
     @Test
-    @Disabled
     void contextLoads() {
     }
 
