@@ -3,7 +3,6 @@ package br.com.grupo27.tech.challenge.reserva.application.controllers.proprietar
 import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietario.response.ProprietarioResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ListarTodosProprietariosPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.ProprietarioPresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ListarTodosProprietariosUserCase;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.proprietario.ProprietarioUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +25,9 @@ public class ListarTodosProprietarioController {
 
 
     @GetMapping
-    public ResponseEntity<PagedModel<ProprietarioResponse>> listarTodos(@RequestParam int pagina,@RequestParam(defaultValue = "50") int tamanho) {
+    public ResponseEntity<PagedModel<ProprietarioResponse>> listarTodos(@RequestParam(defaultValue = "0") int pagina,@RequestParam(defaultValue = "50") int tamanho) {
 
-        ListarTodosProprietariosUserCase listarTodosProprietariosUserCase = proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(
+        var listarTodosProprietariosUserCase = proprietarioUserCaseFactory.buildListarTodosProprietariosUserCase(
                 listarTodosProprietariosPresenter, proprietarioPresenter, proprietarioRepository
         );
 

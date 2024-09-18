@@ -40,7 +40,7 @@ class RestauranteRepositoryIntegrationTest {
     }
 
     @Test
-    void testSalvarRestaurante() {
+    void testeSalvarRestaurante() {
         var restaurante = getRestauranteModelSemId();
 
         restauranteRepository.save(restaurante);

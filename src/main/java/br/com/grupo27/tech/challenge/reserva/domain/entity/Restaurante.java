@@ -8,7 +8,13 @@ import lombok.NoArgsConstructor;
 import java.time.LocalTime;
 import java.util.List;
 
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.*;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.CAPACIDADE_INVALIDA;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.DESCRICAO_OBRIGATORIA;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.HORARIO_FUNCIONAMENTO_OBRIGATORIO;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.LOCALIZACAO_OBRIGATORIA;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.NOME_OBRIGATORIO;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.PROPRIETARIO_OBRIGATORIO;
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.TIPO_COZINHA_OBRIGATORIA;
 import static java.util.Objects.isNull;
 
 @Getter
@@ -46,17 +52,17 @@ public class Restaurante {
         this.setProprietarioId(proprietarioId);
     }
 
-    public Restaurante(String id,
-                       String nome,
-                       String descricao,
-                       String localizacao,
-                       LocalTime horaAbertura,
-                       LocalTime horaFechamento,
-                       int capacidade,
-                       List<TipoCozinha> tipoCozinhas,
-                       String proprietarioId) {
+    public Restaurante (String id,
+                        String nome,
+                        String descricao,
+                        String localizacao,
+                        LocalTime horaAbertura,
+                        LocalTime horaFechamento,
+                        int capacidade,
+                        List<TipoCozinha> tipoCozinhaList,
+                        String proprietarioId) {
+        this(nome, descricao, localizacao, horaAbertura, horaFechamento, capacidade, tipoCozinhaList, proprietarioId);
 
-        this(nome, descricao, localizacao, horaAbertura, horaFechamento, capacidade, tipoCozinhas, proprietarioId);
         this.setId(id);
     }
 

@@ -14,11 +14,13 @@ import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.time.LocalTime;
-
-import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.AtualizarRestauranteDados.*;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.AtualizarRestauranteDados.ID_TESTE;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.AtualizarRestauranteDados.getAtualizarRestauranteRequest;
+import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.AtualizarRestauranteDados.getRestauranteModel;
 import static java.util.Objects.nonNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @Testcontainers

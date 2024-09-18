@@ -1,19 +1,16 @@
 package br.com.grupo27.tech.challenge.reserva.domain.output.proprietario;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class CriarProprietarioOutput {
+@EqualsAndHashCode(callSuper = true)
+public class CriarProprietarioOutput extends ProprietarioOutput {
 
-    private String id;
-    private String nome;
-    private String email;
-    private String senha;
-    private String telefone;
-    private String cpf;
+    public CriarProprietarioOutput(String id, String nome, String email, String senha, String telefone, String cpf) {
+        super(id, nome, email, senha, telefone, cpf);
+    }
 
 }

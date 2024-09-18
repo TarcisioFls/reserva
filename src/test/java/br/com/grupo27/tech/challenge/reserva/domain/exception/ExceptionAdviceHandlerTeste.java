@@ -42,7 +42,7 @@ class ExceptionAdviceHandlerTeste extends TesteConfig {
     }
 
     @Test
-    void handleValidationExceptionsReturnsBadRequestWithErrors() {
+    void testeHandleValidationExceptionsReturnsBadRequestWithErrors() {
         var exceptionAdviceHandler = new ExceptionAdviceHandler();
         var bindingResult = mock(BindingResult.class);
         var fieldError = new FieldError("objectName", "fieldName", "defaultMessage");
@@ -57,7 +57,7 @@ class ExceptionAdviceHandlerTeste extends TesteConfig {
     }
 
     @Test
-    void handleValidationExceptionsReturnsBadRequestWithEmptyErrors() {
+    void testeHandleValidationExceptionsReturnsBadRequestWithEmptyErrors() {
         var exceptionAdviceHandler = new ExceptionAdviceHandler();
         var bindingResult = mock(BindingResult.class);
         when(bindingResult.getAllErrors()).thenReturn(Collections.emptyList());

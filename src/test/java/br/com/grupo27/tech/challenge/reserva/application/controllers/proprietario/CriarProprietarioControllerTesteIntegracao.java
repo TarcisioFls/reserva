@@ -60,13 +60,13 @@ class CriarProprietarioControllerTesteIntegracao {
 
     @Test
     void testeCriarProprietario() {
-        var request = getCriarProprietarioRequest();
+        var criarProprietarioRequest = getCriarProprietarioRequest();
 
-        var response = criarProprietarioController.criar(request);
+        var proprietarioResponseEntity = criarProprietarioController.criar(criarProprietarioRequest);
 
-        assertEquals(200, response.getStatusCode().value());
-        assertTrue(nonNull(response.getBody()));
-        assertEquals("João", response.getBody().getNome());
+        assertEquals(200, proprietarioResponseEntity.getStatusCode().value());
+        assertTrue(nonNull(proprietarioResponseEntity.getBody()));
+        assertEquals("João", proprietarioResponseEntity.getBody().getNome());
     }
 
     @Test
@@ -75,122 +75,132 @@ class CriarProprietarioControllerTesteIntegracao {
         var criarProprietarioRequest = getCriarProprietarioRequest();
 
         proprietarioRepository.save(proprietarioModel);
-        var exceptionAdvice = assertThrows(
+        var resultado = assertThrows(
                 ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("Email já cadastrado", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Email já cadastrado", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComNomeEmBranco() {
-        var request = getCriarProprietarioRequestComNomeEmBranco();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComNomeEmBranco();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Nome é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComNomeNull() {
-        var request = getCriarProprietarioRequestComNomeNull();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComNomeNull();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Nome é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComEmailEmBranco() {
-        var request = getCriarProprietarioRequestComEmailEmBranco();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComEmailEmBranco();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("Email é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Email é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComEmailNull() {
-        var request = getCriarProprietarioRequestComEmailNull();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComEmailNull();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("Email é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Email é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComSenhaEmBranco() {
-        var request = getCriarProprietarioRequestComPasswordEmBranco();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComPasswordEmBranco();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("Senha é obrigatória", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Senha é obrigatória", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComSenhadNull() {
-        var request = getCriarProprietarioRequestComPasswordNull();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComPasswordNull();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("Senha é obrigatória", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Senha é obrigatória", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComTelefoneEmBranco() {
-        var request = getCriarProprietarioRequestComTelefoneEmBranco();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComTelefoneEmBranco();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("Telefone é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Telefone é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComTelefoneNull() {
-        var request = getCriarProprietarioRequestComTelefoneNull();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComTelefoneNull();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("Telefone é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("Telefone é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComCpfEmBranco() {
-        var request = getCriarProprietarioRequestComCpfEmBranco();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComCpfEmBranco();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("CPF é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("CPF é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
     @Test
     void testeCriarProprietarioComCpfNull() {
-        var request = getCriarProprietarioRequestComCpfNull();
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> criarProprietarioController.criar(request)
+        var criarProprietarioRequest = getCriarProprietarioRequestComCpfNull();
+
+        var resultado = assertThrows(
+                ExceptionAdvice.class, () -> criarProprietarioController.criar(criarProprietarioRequest)
         );
 
-        assertEquals("CPF é obrigatório", exceptionAdvice.getMessage());
-        assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
+        assertEquals("CPF é obrigatório", resultado.getMessage());
+        assertEquals(400, resultado.getCodigoError().getCodigo());
     }
 
 }
