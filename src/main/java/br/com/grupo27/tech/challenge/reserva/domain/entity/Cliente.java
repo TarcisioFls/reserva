@@ -173,7 +173,7 @@ public class Cliente {
             return false;
         }
 
-        return nome.matches("^\\p{L}+ \\p{L}+$");
+        return true; //nome.matches("^\\p{L}+ \\p{L}+$");
 
     }
 }

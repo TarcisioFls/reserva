@@ -5,76 +5,78 @@ import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.Cri
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.CriarClientePresenter;
+import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.ClienteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.CriarClienteUserCase;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
-import org.mockito.junit.jupiter.MockitoExtension;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteResponse;
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-//@RunWith(MockitoJUnitRunner.class)
-@ExtendWith(MockitoExtension.class)
+@WebMvcTest(CriarClienteController.class)
 public class CriarClienteControllerTeste  extends TesteConfig {
 
-   // private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-    @InjectMocks
-    private CriarClienteController criarClienteController;
-
-    @Mock
-    private CriarClienteUserCase criarClienteUserCase;
-    @Mock
+    @MockBean
     private  CriarClientePresenter criarClientePresenter;
-    @Mock
-    private  ClientePresenter clientePresenter;
-    @Mock
+
+    @MockBean
+    private ClienteUserCaseFactory clienteUserCaseFactory;
+
+    @MockBean
+    private ClientePresenter clientePresenter;
+
+    @MockBean
     private ClienteRepository clienteRepository;
 
-
-//    AutoCloseable mock;
-//    @BeforeEach
-//    void setUp() {
-//        mock = MockitoAnnotations.openMocks(this);
-//        ClienteResponseController clienteResponseController = new ClienteResponseController(clienteRepository, criarClientePresenter, clientePresenter);
-//        mockMvc = MockMvcBuilders.standaloneSetup(clienteResponseController)
-//                .build();
-//
-//    }
-//
-//    @AfterEach
-//    void tearDown() throws Exception {
-//        mock.close();
-//    }
+    @MockBean
+    private CriarClienteUserCase criarClienteUserCase;
 
 
     void testeCriar() throws Exception {
-        var request = getCriarClienteRequest();
-        var criarClienteInput =  getCriarClienteInput();
-        var criarClienteOutput = getCriarClienteOutput();
-        var clienteResponse = getClienteResponse();
 
-        when(criarClientePresenter.criarClienteEmClienteInput(request)).thenReturn(criarClienteInput);
-        when(criarClienteUserCase.criar(criarClienteInput)).thenReturn(criarClienteOutput);
-        when(criarClientePresenter.criarClienteOutputEmClienteResponse(criarClienteOutput)).thenReturn(clienteResponse);
+        when(clienteUserCaseFactory.buidCriarClienteUserCase(criarClientePresenter, clientePresenter, clienteRepository))
+                .thenReturn(criarClienteUserCase);
 
-        var resultado = criarClienteController.criarCliente(request);
+        when(criarClientePresenter.criarClienteEmClienteInput(any()))
+                .thenReturn(getCriarClienteInput());
 
-        assertEquals(clienteResponse, resultado.getBody());
+        when(criarClienteUserCase.criar(any()))
+                .thenReturn(getCriarClienteOutput());
 
-      //  mockMvc.perform(post("/clientes", request)).andExpect(status().isOk());
+        when(criarClientePresenter.criarClienteOutputEmClienteResponse(any()))
+                .thenReturn(getClienteResponse());
+
+        mockMvc.perform(post("/clientes")
+                        .contentType("application/json")
+                        .content(asJsonString(getCriarClienteRequest())))
+                        .andExpect(status().isOk());
+
+        verify(criarClientePresenter,times(1)).criarClienteEmClienteInput(getCriarClienteRequest());
+        verify(criarClienteUserCase, times(1)).criar(getCriarClienteInput());
+        verify(criarClientePresenter,times(1)).criarClienteOutputEmClienteResponse(getCriarClienteOutput());
 
     }
 
 
+    private static String asJsonString(final Object obj) throws JsonProcessingException {
 
-
+        return new ObjectMapper().writeValueAsString(obj);
+    }
 
 }

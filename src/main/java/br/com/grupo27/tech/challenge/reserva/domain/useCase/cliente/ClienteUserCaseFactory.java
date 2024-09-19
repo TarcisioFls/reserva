@@ -1,12 +1,10 @@
 package br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente;
 
 
-import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.AtualizarClientePresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.BuscarClientePorIdPresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ListarTodosClientesPresenter;
+import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.*;
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.cliente.AtualizarClienteAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.cliente.BuscarClientePorIdAdapter;
+import br.com.grupo27.tech.challenge.reserva.infra.adapter.cliente.CriarClienteAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.adapter.cliente.ListarTodosClientesAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +13,21 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class ClienteUserCaseFactory {
+
+
+    public CriarClienteUserCase buidCriarClienteUserCase( CriarClientePresenter criarClientePresenter,
+                                                                  ClientePresenter clientePresenter,
+                                                                  ClienteRepository clienteRepository)
+    {
+        return  new CriarClienteUserCase(
+                buildCriarClienteGateway(clientePresenter, clienteRepository), criarClientePresenter);
+
+    }
+
+
+    private CriarClienteAdapter buildCriarClienteGateway(ClientePresenter clientePresenter, ClienteRepository clienteRepository){
+        return new CriarClienteAdapter(clienteRepository, clientePresenter);
+    }
 
     public AtualizarClienteUserCase buidAtualizarClienteUserCase( AtualizarClientePresenter atualizarClientePresenter,
                                                                   ClientePresenter clientePresenter,
