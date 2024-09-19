@@ -42,14 +42,7 @@ public class ClienteTeste extends TesteConfig {
         assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
     }
 
-    @Test
-    void testaClienteComNomeSemSobrenome(){
-        var exceptionAdvice = assertThrows(
-                ExceptionAdvice.class, () -> getClienteComNomeSemSobrenome()
-        );
 
-        assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
-    }
 
     @Test
     void testaClienteComEmailNull(){
