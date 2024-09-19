@@ -1,16 +1,9 @@
 spring:
-  profiles:
-    active: local
   application:
     name: '@project.name@'
   data:
     mongodb:
-#      uri: mongodb://localhost/reserva
-     uri: mongodb://${db.username}:${db.password}@${db.host}:${db.port}/${db.database}?authSource=admin
-#      host: ${MONGO_HOST}
-#      port: ${MONGO_PORT}
-#      username: ${MONGO_USERNAME}
-#      password: ${MONGO_PASSWORD}
+      uri: mongodb://admin:admin@localhost:27017/reserva?authSource=admin
 
 server:
   port: 8080
