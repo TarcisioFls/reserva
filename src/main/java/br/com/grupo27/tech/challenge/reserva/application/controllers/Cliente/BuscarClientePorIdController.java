@@ -1,9 +1,9 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.response.ClienteResponse;
+import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.BuscarClientePorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.BuscarClientePorIdPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.ClienteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/clientes")
 public class BuscarClientePorIdController {
 
-    private final ClienteUserCaseFactory clienteUserCaseFactory;
+    private final BuscarClientePorIdUserCaseFactory buscarClientePorIdUserCaseFactory;
     private final BuscarClientePorIdPresenter buscarClientePorIdPresenter;
     private final ClienteRepository clienteRepository;
     private final ClientePresenter clientePresenter;
@@ -25,7 +25,7 @@ public class BuscarClientePorIdController {
     @GetMapping("/{id}")
     public ResponseEntity<ClienteResponse> buscaPorId(@PathVariable String id){
 
-        var buscarClientePorIdUserCase = clienteUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter,
+        var buscarClientePorIdUserCase = buscarClientePorIdUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter,
                 clientePresenter, clienteRepository);
 
         var buscarClientePorIdOutPut = buscarClientePorIdUserCase.buscarPorId(id);

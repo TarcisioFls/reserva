@@ -1,14 +1,13 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.ListarTodosClienteController;
+import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.ListarTodosClientesUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ListarTodosClientesPresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.ClienteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.ListarTodosClientesUserCase;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -27,7 +26,7 @@ public class ListarTodosClientesControllerTeste extends TesteConfig {
     private MockMvc mockMvc;
 
     @MockBean
-    private ClienteUserCaseFactory clienteUserCaseFactory;
+    private ListarTodosClientesUserCaseFactory listarTodosClientesUserCaseFactory;
 
     @MockBean
     private ListarTodosClientesUserCase listarTodosClientesUserCase;
@@ -44,7 +43,7 @@ public class ListarTodosClientesControllerTeste extends TesteConfig {
     @Test
     void testListarTodos() throws Exception {
 
-        when(clienteUserCaseFactory.buildListarTodosClientesUserCase(listarTodosClientesPresenter,clientePresenter, clienteRepository))
+        when(listarTodosClientesUserCaseFactory.buildListarTodosClientesUserCase(listarTodosClientesPresenter,clientePresenter, clienteRepository))
             .thenReturn(listarTodosClientesUserCase);
         when(listarTodosClientesUserCase.listarTodos(0,10))
                 .thenReturn(getPageTodosClientesOutput());
@@ -61,7 +60,7 @@ public class ListarTodosClientesControllerTeste extends TesteConfig {
     @Test
     void testListarTodosSemPagina() throws Exception {
 
-        when(clienteUserCaseFactory.buildListarTodosClientesUserCase(listarTodosClientesPresenter,clientePresenter, clienteRepository))
+        when(listarTodosClientesUserCaseFactory.buildListarTodosClientesUserCase(listarTodosClientesPresenter,clientePresenter, clienteRepository))
                 .thenReturn(listarTodosClientesUserCase);
         when(listarTodosClientesUserCase.listarTodos(0,10))
                 .thenReturn(getPageTodosClientesOutput());
@@ -76,7 +75,7 @@ public class ListarTodosClientesControllerTeste extends TesteConfig {
     @Test
     void testListarTodosSemTamanho() throws Exception {
 
-        when(clienteUserCaseFactory.buildListarTodosClientesUserCase(listarTodosClientesPresenter,clientePresenter, clienteRepository))
+        when(listarTodosClientesUserCaseFactory.buildListarTodosClientesUserCase(listarTodosClientesPresenter,clientePresenter, clienteRepository))
                 .thenReturn(listarTodosClientesUserCase);
         when(listarTodosClientesUserCase.listarTodos(0,10))
                 .thenReturn(getPageTodosClientesOutput());
