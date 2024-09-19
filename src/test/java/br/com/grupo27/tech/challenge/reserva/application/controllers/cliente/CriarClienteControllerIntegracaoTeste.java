@@ -31,6 +31,7 @@ import static java.util.Objects.nonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+
 @SpringBootTest
 @Testcontainers(parallel = true)
 public class CriarClienteControllerIntegracaoTeste {
