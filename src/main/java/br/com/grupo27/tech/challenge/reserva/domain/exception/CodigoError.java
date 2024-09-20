@@ -33,7 +33,10 @@ public enum CodigoError {
     HORARIO_FUNCIONAMENTO_OBRIGATORIO("Horário de Funcionamento é obrigatório", BAD_REQUEST, FALSE),
     RESTAURANTE_NAO_ENCONTRADO("Restaurante não encontrado", NOT_FOUND, FALSE),
     HORARIO_FUNCIONAMENTO_INVALIDO("Horário de Funcionamento inválido", BAD_REQUEST, FALSE),
-    HORA_ABERTURA_RESTAURANTE_MAIOR_HORA_FECHAMENTO("Hora de abertura do restaurante não pode ser maior que a hora de fechamento", BAD_REQUEST, FALSE);
+    HORA_ABERTURA_RESTAURANTE_MAIOR_HORA_FECHAMENTO("Hora de abertura do restaurante não pode ser maior que a hora de fechamento", BAD_REQUEST, FALSE),
+
+    AVALIACAO_INVALIDA("A nota da Avaliação só é permitido valores entre 0 e 5", BAD_REQUEST, FALSE),
+    AVALIACAO_OBRIGATORIA("A nota para a Avaliação é obrigatória", BAD_REQUEST, FALSE);
 
     private final String mensagem;
     private final HttpStatus httpStatus;
