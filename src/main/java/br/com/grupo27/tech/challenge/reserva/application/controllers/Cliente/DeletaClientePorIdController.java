@@ -22,6 +22,10 @@ public class DeletaClientePorIdController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletaPorId(@PathVariable String id) {
 
-        var deletaClientePorIdUserCase = deletaClientePorIdUserCaseFactory;
+        var deletaClientePorIdUserCase = deletaClientePorIdUserCaseFactory.buildDeletaClientePorIdUserCase(
+                clientePresenter, clienteRepository
+        );
+
+        deletaClientePorIdUserCase.deletaPorId(id);
     }
 }
