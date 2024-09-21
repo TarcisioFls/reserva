@@ -3,7 +3,7 @@ package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurant
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.BuscarRestaurantePorIdPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.BuscarRestaurantePorIdUserCase;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.BuscarRestaurantePorIdUserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.application.factory.restaurante.BuscarRestaurantePorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
