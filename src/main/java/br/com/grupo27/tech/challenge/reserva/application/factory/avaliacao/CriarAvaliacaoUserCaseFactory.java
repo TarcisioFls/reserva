@@ -21,7 +21,7 @@ public class CriarAvaliacaoUserCaseFactory {
         );
     }
 
-    private CriarAvaliacaoAdapter buildCriarAvaliacaoGateway(AvaliacaoPresenter avaliacaoPresenter, AvaliacaoRepository avaliacaoRepository) {
+    public CriarAvaliacaoAdapter buildCriarAvaliacaoGateway(AvaliacaoPresenter avaliacaoPresenter, AvaliacaoRepository avaliacaoRepository) {
         return new CriarAvaliacaoAdapter(avaliacaoRepository, avaliacaoPresenter);
     }
 }
