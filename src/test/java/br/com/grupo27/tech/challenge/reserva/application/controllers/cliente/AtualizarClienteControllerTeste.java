@@ -1,7 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.AtualizarClienteController;
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.request.AtualizarClienteRequest;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.request.AtualizarClienteRequest;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.input.cliente.AtualizarClienteInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.cliente.AtualizarClienteOutput;
@@ -10,7 +9,6 @@ import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePr
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.AtualizarClienteUserCase;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.ClienteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

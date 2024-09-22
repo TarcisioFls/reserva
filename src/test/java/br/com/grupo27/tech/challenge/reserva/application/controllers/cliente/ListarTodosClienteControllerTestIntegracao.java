@@ -1,6 +1,5 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.ListarTodosClienteController;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

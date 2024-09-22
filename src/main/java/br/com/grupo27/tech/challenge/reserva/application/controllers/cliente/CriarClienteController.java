@@ -1,15 +1,12 @@
-package br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente;
+package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.request.CriarClienteRequest;
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.response.ClienteResponse;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.request.CriarClienteRequest;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.response.ClienteResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.CriarClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.ClienteUserCaseFactory;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.CriarClienteUserCase;
-import br.com.grupo27.tech.challenge.reserva.infra.adapter.cliente.CriarClienteAdapter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

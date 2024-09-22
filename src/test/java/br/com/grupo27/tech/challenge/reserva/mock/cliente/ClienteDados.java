@@ -1,6 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.mock.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.response.ClienteResponse;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.response.ClienteResponse;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Cliente;
 import br.com.grupo27.tech.challenge.reserva.infra.model.ClienteModel;
 import org.springframework.data.domain.Page;

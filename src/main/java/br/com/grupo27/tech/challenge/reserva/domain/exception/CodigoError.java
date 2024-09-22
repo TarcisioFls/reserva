@@ -24,7 +24,6 @@ public enum CodigoError {
     NOME_CLIENTE_VALIDO("O campo nome deve ser preenchido com o nome e sobrenome", BAD_REQUEST, FALSE),
     CLIENTE_NAO_ENCONTRADO("Cliente não encontrado", NOT_FOUND, FALSE),
 
-    ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE),
     DESCRICAO_OBRIGATORIA("Descrição é obrigatória", BAD_REQUEST,FALSE),
     LOCALIZACAO_OBRIGATORIA("Localização é obrigatória", BAD_REQUEST, FALSE),
     CAPACIDADE_INVALIDA("Capacidade precisa ser maior que 0", BAD_REQUEST, FALSE),
@@ -33,7 +32,21 @@ public enum CodigoError {
     HORARIO_FUNCIONAMENTO_OBRIGATORIO("Horário de Funcionamento é obrigatório", BAD_REQUEST, FALSE),
     RESTAURANTE_NAO_ENCONTRADO("Restaurante não encontrado", NOT_FOUND, FALSE),
     HORARIO_FUNCIONAMENTO_INVALIDO("Horário de Funcionamento inválido", BAD_REQUEST, FALSE),
-    HORA_ABERTURA_RESTAURANTE_MAIOR_HORA_FECHAMENTO("Hora de abertura do restaurante não pode ser maior que a hora de fechamento", BAD_REQUEST, FALSE);
+    HORA_ABERTURA_RESTAURANTE_MAIOR_HORA_FECHAMENTO("Hora de abertura do restaurante não pode ser maior que a hora de fechamento", BAD_REQUEST, FALSE),
+
+    DATA_HORA_OBRIGATORIA("Data e hora da reserva são obrigatórios", BAD_REQUEST, FALSE),
+    DATA_HORA_PASSADO("Não é possível reservar para o passado", BAD_REQUEST, FALSE),
+    QUANTIDADE_PESSOAS_OBRIGATORIA("Quantidade de pessoas é obrigatória", BAD_REQUEST, FALSE),
+    QUANTIDADE_PESSOAS_INVALIDA("Quantidade de pessoas precisa ser maior que 0", BAD_REQUEST, FALSE),
+    CAMPO_RESTAURANTE_ID_OBRIGATORIO("Campo restauranteId é obrigatório", BAD_REQUEST, FALSE),
+    CAMPO_CLIENTE_ID_OBRIGATORIO("Campo clienteId é obrigatório", BAD_REQUEST, FALSE),
+    CAMPO_STATUS_OBRIGATORIO("Campo status é obrigatório", BAD_REQUEST, FALSE),
+    CAPACIDADE_DO_RESTAURANTE_ATINGIDA("Capacidade máxima do restaurante atingida", BAD_REQUEST, FALSE),
+    RESERVA_FORA_DO_HORARIO_PERMITIDO("Reserva fora do horário permitido", BAD_REQUEST, FALSE),
+    CLIENTE_JA_POSSUI_RESERVA_NESTE_HORARIO("Cliente já possui reserva neste horário", BAD_REQUEST, FALSE),
+    CLIENTE_JA_POSSUI_RESERVA_NESTE_RESTAURANTE("Cliente já possui reserva neste restaurante", BAD_REQUEST, FALSE),
+
+    ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE);
 
     private final String mensagem;
     private final HttpStatus httpStatus;

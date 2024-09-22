@@ -1,6 +1,5 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.BuscarClientePorIdController;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
@@ -23,7 +22,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BuscarClientePorIdController.class)
-public class BuscarClientePorIdControllerTeste extends TesteConfig {
+class BuscarClientePorIdControllerTeste extends TesteConfig {
 
     @Autowired
     private MockMvc mockMvc;
