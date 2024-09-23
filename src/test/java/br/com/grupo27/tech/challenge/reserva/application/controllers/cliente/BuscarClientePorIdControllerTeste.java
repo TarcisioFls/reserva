@@ -1,13 +1,13 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.BuscarClientePorIdController;
+import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.BuscarClientePorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.BuscarClientePorIdPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.BuscarClientePorIdUserCase;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.ClienteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class BuscarClientePorIdControllerTeste extends TesteConfig {
     private MockMvc mockMvc;
 
     @MockBean
-    private ClienteUserCaseFactory clienteUserCaseFactory;
+    private BuscarClientePorIdUserCaseFactory buscarClientePorIdUserCaseFactory;
 
     @MockBean
     private BuscarClientePorIdUserCase buscarClientePorIdUserCase;
@@ -48,7 +48,7 @@ public class BuscarClientePorIdControllerTeste extends TesteConfig {
 
         var id = "66c67aa035ed1f735450b7a2";
 
-        when(clienteUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter, clientePresenter, clienteRepository))
+        when(buscarClientePorIdUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter, clientePresenter, clienteRepository))
                 .thenReturn(buscarClientePorIdUserCase);
 
         when(buscarClientePorIdUserCase.buscarPorId(id))
@@ -69,7 +69,7 @@ public class BuscarClientePorIdControllerTeste extends TesteConfig {
 
         var id = "teste";
 
-        when(clienteUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter, clientePresenter, clienteRepository))
+        when(buscarClientePorIdUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter, clientePresenter, clienteRepository))
                 .thenReturn(buscarClientePorIdUserCase);
 
         when(buscarClientePorIdUserCase.buscarPorId(id))
