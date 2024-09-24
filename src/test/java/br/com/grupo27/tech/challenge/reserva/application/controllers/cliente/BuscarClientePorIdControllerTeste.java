@@ -1,12 +1,12 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
+import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.BuscarClientePorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.BuscarClientePorIdPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.BuscarClientePorIdUserCase;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.ClienteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.BuscarClientePorIdDados.buscarClientePorIdOutput;
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteResponse;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,7 +31,7 @@ class BuscarClientePorIdControllerTeste extends TesteConfig {
     private MockMvc mockMvc;
 
     @MockBean
-    private ClienteUserCaseFactory clienteUserCaseFactory;
+    private BuscarClientePorIdUserCaseFactory buscarClientePorIdUserCaseFactory;
 
     @MockBean
     private BuscarClientePorIdUserCase buscarClientePorIdUserCase;
@@ -47,7 +50,7 @@ class BuscarClientePorIdControllerTeste extends TesteConfig {
 
         var id = "66c67aa035ed1f735450b7a2";
 
-        when(clienteUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter, clientePresenter, clienteRepository))
+        when(buscarClientePorIdUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter, clientePresenter, clienteRepository))
                 .thenReturn(buscarClientePorIdUserCase);
 
         when(buscarClientePorIdUserCase.buscarPorId(id))
@@ -68,7 +71,7 @@ class BuscarClientePorIdControllerTeste extends TesteConfig {
 
         var id = "teste";
 
-        when(clienteUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter, clientePresenter, clienteRepository))
+        when(buscarClientePorIdUserCaseFactory.buildBuscarClientePorIdUserCase(buscarClientePorIdPresenter, clientePresenter, clienteRepository))
                 .thenReturn(buscarClientePorIdUserCase);
 
         when(buscarClientePorIdUserCase.buscarPorId(id))

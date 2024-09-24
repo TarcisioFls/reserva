@@ -1,14 +1,12 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
 
+import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.CriarClienteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.CriarClientePresenter;
-import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.ClienteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente.CriarClienteUserCase;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -16,10 +14,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
-
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteResponse;
-import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.*;
-import static org.mockito.Mockito.*;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.getCriarClienteInput;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.getCriarClienteOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.getCriarClienteRequest;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -34,7 +36,7 @@ public class CriarClienteControllerTeste  extends TesteConfig {
     private  CriarClientePresenter criarClientePresenter;
 
     @MockBean
-    private ClienteUserCaseFactory clienteUserCaseFactory;
+    private CriarClienteUserCaseFactory criarClienteUserCaseFactory;
 
     @MockBean
     private ClientePresenter clientePresenter;
@@ -48,7 +50,7 @@ public class CriarClienteControllerTeste  extends TesteConfig {
 
     void testeCriar() throws Exception {
 
-        when(clienteUserCaseFactory.buidCriarClienteUserCase(criarClientePresenter, clientePresenter, clienteRepository))
+        when(criarClienteUserCaseFactory.buidCriarClienteUserCase(criarClientePresenter, clientePresenter, clienteRepository))
                 .thenReturn(criarClienteUserCase);
 
         when(criarClientePresenter.criarClienteEmClienteInput(any()))
