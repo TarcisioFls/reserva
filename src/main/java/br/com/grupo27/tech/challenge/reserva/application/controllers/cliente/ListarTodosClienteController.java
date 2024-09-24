@@ -1,7 +1,7 @@
-package br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente;
+package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.response.ClienteResponse;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.response.ClienteResponse;
 import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.ListarTodosClientesUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ListarTodosClientesPresenter;

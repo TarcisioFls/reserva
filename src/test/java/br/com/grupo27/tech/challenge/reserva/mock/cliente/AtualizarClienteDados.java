@@ -1,6 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.mock.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.request.AtualizarClienteRequest;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.request.AtualizarClienteRequest;
 import br.com.grupo27.tech.challenge.reserva.domain.input.cliente.AtualizarClienteInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.cliente.AtualizarClienteOutput;
 

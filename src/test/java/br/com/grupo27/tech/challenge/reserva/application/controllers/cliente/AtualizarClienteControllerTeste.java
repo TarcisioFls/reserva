@@ -1,7 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.AtualizarClienteController;
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.request.AtualizarClienteRequest;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.request.AtualizarClienteRequest;
 import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.AtualizarClienteUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.input.cliente.AtualizarClienteInput;
@@ -17,10 +16,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
 import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.cliente.AtualizarClienteDados.*;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.AtualizarClienteDados.getAtualizarClienteInput;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.AtualizarClienteDados.getAtualizarClienteOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.cliente.AtualizarClienteDados.getAtualizarClienteRequest;
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteAtualizadoResponse;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

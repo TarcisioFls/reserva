@@ -1,6 +1,5 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.BuscarClientePorIdController;
 import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.BuscarClientePorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError;
@@ -18,12 +17,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.BuscarClientePorIdDados.buscarClientePorIdOutput;
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getClienteResponse;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BuscarClientePorIdController.class)
-public class BuscarClientePorIdControllerTeste extends TesteConfig {
+class BuscarClientePorIdControllerTeste extends TesteConfig {
 
     @Autowired
     private MockMvc mockMvc;

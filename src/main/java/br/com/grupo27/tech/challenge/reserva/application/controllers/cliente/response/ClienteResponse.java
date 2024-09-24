@@ -1,4 +1,4 @@
-package br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.response;
+package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,5 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.ListarTodosClienteController;
 import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.ListarTodosClientesUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
@@ -20,7 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ListarTodosClienteController.class)
-public class ListarTodosClientesControllerTeste extends TesteConfig {
+class ListarTodosClientesControllerTeste extends TesteConfig {
 
     @Autowired
     private MockMvc mockMvc;
