@@ -3,7 +3,8 @@ spring:
     name: '@project.name@'
   data:
     mongodb:
-      uri: mongodb://admin:admin@localhost:27017/reserva?authSource=admin
+      uri: mongodb://localhost/reserva
+      #uri: mongodb://admin:admin@localhost:27017/reserva?authSource=admin
 
 server:
   port: 8080

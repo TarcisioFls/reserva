@@ -1,4 +1,5 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/${MONGO_DATABASE}?retryWrites=true&w=majority&appName=postech-reserva
+      uri: mongodb://localhost/reserva
+    #  uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/${MONGO_DATABASE}?retryWrites=true&w=majority&appName=postech-reserva
