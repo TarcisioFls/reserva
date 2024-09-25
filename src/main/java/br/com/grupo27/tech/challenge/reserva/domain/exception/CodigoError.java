@@ -47,6 +47,7 @@ public enum CodigoError {
     CLIENTE_JA_POSSUI_RESERVA_NESTE_RESTAURANTE("Cliente já possui reserva neste restaurante", BAD_REQUEST, FALSE),
     AVALIACAO_INVALIDA("A nota da Avaliação só é permitido valores entre 0 e 5", BAD_REQUEST, FALSE),
     AVALIACAO_OBRIGATORIA("A nota para a Avaliação é obrigatória", BAD_REQUEST, FALSE),
+    RESERVA_NAO_ENCONTRADA("Reserva não encontrado", NOT_FOUND, FALSE),
 
     ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE);
 
