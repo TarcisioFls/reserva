@@ -46,6 +46,8 @@ public enum CodigoError {
     RESERVA_FORA_DO_HORARIO_PERMITIDO("Reserva fora do horário permitido", BAD_REQUEST, FALSE),
     CLIENTE_JA_POSSUI_RESERVA_NESTE_HORARIO("Cliente já possui reserva neste horário", BAD_REQUEST, FALSE),
     CLIENTE_JA_POSSUI_RESERVA_NESTE_RESTAURANTE("Cliente já possui reserva neste restaurante", BAD_REQUEST, FALSE),
+    AVALIACAO_INVALIDA("A nota da Avaliação só é permitido valores entre 0 e 5", BAD_REQUEST, FALSE),
+    AVALIACAO_OBRIGATORIA("A nota para a Avaliação é obrigatória", BAD_REQUEST, FALSE),
 
     ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE);
 
