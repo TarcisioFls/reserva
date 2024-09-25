@@ -8,9 +8,9 @@ import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class CriarReservaOutput extends ReservaOutput {
+public class BuscarReservaPorIdOutput extends ReservaOutput {
 
-    public CriarReservaOutput(String id, String clienteId, String restauranteId, int quantidadePessoas, LocalDateTime dataHora, ReservaStatus status) {
+    public BuscarReservaPorIdOutput(String id, String clienteId, String restauranteId, int quantidadePessoas, LocalDateTime dataHora, ReservaStatus status) {
         super(id, clienteId, restauranteId, quantidadePessoas, dataHora, status);
     }
 }
