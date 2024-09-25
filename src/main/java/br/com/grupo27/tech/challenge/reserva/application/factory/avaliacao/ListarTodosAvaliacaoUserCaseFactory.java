@@ -21,7 +21,7 @@ public class ListarTodosAvaliacaoUserCaseFactory {
         );
     }
 
-    private ListarTodosAvaliacaoAdapter buildListarTodosAvaliacaoGateway(AvaliacaoPresenter avaliacaoPresenter, AvaliacaoRepository avaliacaoRepository) {
+    public ListarTodosAvaliacaoAdapter buildListarTodosAvaliacaoGateway(AvaliacaoPresenter avaliacaoPresenter, AvaliacaoRepository avaliacaoRepository) {
         return new ListarTodosAvaliacaoAdapter(avaliacaoRepository, avaliacaoPresenter);
     }
 }
