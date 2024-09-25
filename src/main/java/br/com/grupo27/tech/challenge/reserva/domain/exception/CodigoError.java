@@ -33,6 +33,7 @@ public enum CodigoError {
     RESTAURANTE_NAO_ENCONTRADO("Restaurante não encontrado", NOT_FOUND, FALSE),
     HORARIO_FUNCIONAMENTO_INVALIDO("Horário de Funcionamento inválido", BAD_REQUEST, FALSE),
     HORA_ABERTURA_RESTAURANTE_MAIOR_HORA_FECHAMENTO("Hora de abertura do restaurante não pode ser maior que a hora de fechamento", BAD_REQUEST, FALSE),
+    RESERVA_NAO_ENCONTRADA("Reserva não encontrada", NOT_FOUND, FALSE),
 
     DATA_HORA_OBRIGATORIA("Data e hora da reserva são obrigatórios", BAD_REQUEST, FALSE),
     DATA_HORA_PASSADO("Não é possível reservar para o passado", BAD_REQUEST, FALSE),
