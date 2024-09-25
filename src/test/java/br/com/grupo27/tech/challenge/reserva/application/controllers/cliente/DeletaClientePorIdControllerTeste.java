@@ -1,6 +1,5 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.DeletaClientePorIdController;
 import br.com.grupo27.tech.challenge.reserva.application.factory.cliente.DeletaClientePorIdUserCaseFactory;
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;

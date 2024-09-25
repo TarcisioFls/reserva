@@ -32,8 +32,17 @@
         <springdoc.version>2.5.0</springdoc.version>
         <pitest.version>1.16.3</pitest.version>
         <pitestSkip>true</pitestSkip>
+        <cucumber.version>7.18.1</cucumber.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
+        <junit-platform-suite.version>1.11.0</junit-platform-suite.version>
     </properties>
     <dependencies>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.mockito</groupId>
@@ -101,6 +110,41 @@
             <groupId>org.pitest</groupId>
             <artifactId>pitest-maven</artifactId>
             <version>${pitest.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>${junit-platform-suite.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
