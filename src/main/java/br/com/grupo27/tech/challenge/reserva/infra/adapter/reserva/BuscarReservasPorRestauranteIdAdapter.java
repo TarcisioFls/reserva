@@ -3,6 +3,7 @@ package br.com.grupo27.tech.challenge.reserva.infra.adapter.reserva;
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Reserva;
 import br.com.grupo27.tech.challenge.reserva.domain.gateway.reserva.BuscarReservasPorRestauranteIdGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.reserva.ReservaPresenter;
+import br.com.grupo27.tech.challenge.reserva.infra.model.enums.ReservaStatus;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.reserva.ReservaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -20,11 +21,11 @@ public class BuscarReservasPorRestauranteIdAdapter implements BuscarReservasPorR
     private final ReservaPresenter reservaPresenter;
 
     @Override
-    public Optional<List<Reserva>> buscarPorRestauranteIdEDataHora(String restauranteId, LocalDateTime horaData) {
+    public Optional<List<Reserva>> buscarPorRestauranteIdEStatusReservadoEDataHora(String restauranteId, ReservaStatus status, LocalDateTime horaData) {
 
         var inicioDoDia = horaData.toLocalDate().atStartOfDay();
         var fimDoDia = horaData.toLocalDate().atTime(LocalTime.MAX);
-        var reservaModelList = reservaRepository.findByRestauranteIdAndDataHoraBetween(restauranteId, inicioDoDia, fimDoDia);
+        var reservaModelList = reservaRepository.findByRestauranteIdAndStatusAndDataHoraBetween(restauranteId, status, inicioDoDia, fimDoDia);
 
         return reservaModelList.map(reservaModels -> reservaModels.stream()
                 .map(reservaPresenter::reservaModelEmReserva)

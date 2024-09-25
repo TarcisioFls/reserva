@@ -10,6 +10,7 @@ import br.com.grupo27.tech.challenge.reserva.domain.gateway.restaurante.BuscarRe
 import br.com.grupo27.tech.challenge.reserva.domain.input.reserva.AtualizarReservaInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.reserva.AtualizarReservaOutput;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.reserva.AtualizarReservaPresenter;
+import br.com.grupo27.tech.challenge.reserva.infra.model.enums.ReservaStatus;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -26,6 +27,7 @@ import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.RESERVA_FORA_DO_HORARIO_PERMITIDO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.RESERVA_NAO_ENCONTRADA;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.RESTAURANTE_NAO_ENCONTRADO;
+import static br.com.grupo27.tech.challenge.reserva.infra.model.enums.ReservaStatus.RESERVADO;
 
 @Getter
 @RequiredArgsConstructor
@@ -56,8 +58,8 @@ public class AtualizarReservaUserCase {
         var restaurante = buscarRestaurantePorIdGateway.buscarPorId(reserva.getRestauranteId())
                 .orElseThrow(() -> new ExceptionAdvice(RESTAURANTE_NAO_ENCONTRADO));
 
-        var reservasDoRestaurante = buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEDataHora(
-                reserva.getRestauranteId(), reserva.getDataHora());
+        var reservasDoRestaurante = buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reserva.getRestauranteId(), RESERVADO, reserva.getDataHora());
 
         var reservaAuxiliar = reserva;
         reservasDoRestaurante.ifPresent(reservas -> {
@@ -81,7 +83,7 @@ public class AtualizarReservaUserCase {
             throw new ExceptionAdvice(RESERVA_FORA_DO_HORARIO_PERMITIDO);
         }
 
-        buscarReservasPorClientIdGateway.buscarPorClientIdEDataHora(reserva).stream()
+        buscarReservasPorClientIdGateway.buscarPorClientIdEStatusReservadoEDataHora(reserva, RESERVADO).stream()
                 .filter(r -> !r.getId().equals(reservaAuxiliar.getId()))
                 .findAny().ifPresent(r -> {
             throw new ExceptionAdvice(CLIENTE_JA_POSSUI_RESERVA_NESTE_HORARIO);

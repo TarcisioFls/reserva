@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import java.time.LocalTime;
 import java.util.List;
 
+import static br.com.grupo27.tech.challenge.reserva.infra.model.enums.ReservaStatus.RESERVADO;
 import static br.com.grupo27.tech.challenge.reserva.mock.reserva.CriarReservaDados.getReservaModelComId;
 import static br.com.grupo27.tech.challenge.reserva.mock.reserva.CriarReservaDados.getReservaSemId;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -31,20 +32,20 @@ class BuscarReservasPorClientIdAdapterTeste extends TesteConfig {
     private ReservaPresenter reservaPresenter;
 
     @Test
-    void testeBuscarPorClientIdEDataHora() {
+    void testeBuscarPorClientIdEStatusReservadoEDataHora() {
         var reserva = getReservaSemId();
         var inicioDoDia = reserva.getDataHora().toLocalDate().atStartOfDay();
         var fimDoDia = reserva.getDataHora().toLocalDate().atTime(LocalTime.MAX);
         var reservaModelList = List.of(getReservaModelComId());
 
-        when(reservaRepository.findByClienteIdAndDataHoraBetween(reserva.getClienteId(), inicioDoDia, fimDoDia))
+        when(reservaRepository.findByClienteIdAndStatusAndDataHoraBetween(reserva.getClienteId(), RESERVADO, inicioDoDia, fimDoDia))
                 .thenReturn(reservaModelList);
         when(reservaPresenter.reservaModelEmReserva(any())).thenReturn(CriarReservaDados.getReservaComId());
 
-        var resultado = buscarReservasPorClientIdAdapter.buscarPorClientIdEDataHora(reserva);
+        var resultado = buscarReservasPorClientIdAdapter.buscarPorClientIdEStatusReservadoEDataHora(reserva, RESERVADO);
 
         verify(reservaRepository, times(1))
-                .findByClienteIdAndDataHoraBetween(reserva.getClienteId(), inicioDoDia, fimDoDia);
+                .findByClienteIdAndStatusAndDataHoraBetween(reserva.getClienteId(), RESERVADO, inicioDoDia, fimDoDia);
         verify(reservaPresenter, times(1)).reservaModelEmReserva(any());
 
         assertNotNull(resultado);

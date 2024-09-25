@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static br.com.grupo27.tech.challenge.reserva.infra.model.enums.ReservaStatus.RESERVADO;
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.getCliente;
 import static br.com.grupo27.tech.challenge.reserva.mock.reserva.AtualizarReservaDados.getAtualizarReservaInput;
 import static br.com.grupo27.tech.challenge.reserva.mock.reserva.AtualizarReservaDados.getAtualizarReservaOutput;
@@ -90,9 +91,10 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
         when(buscarRestaurantePorIdGateway.buscarPorId(getReserva().getRestauranteId()))
                 .thenReturn(Optional.of(getRestaurante()));
 
-        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora()))
+        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora()))
                 .thenReturn(Optional.of(getReservasDiferentes()));
-        when(buscarReservasPorClientIdGateway.buscarPorClientIdEDataHora(reservarComId)).thenReturn(List.of());
+        when(buscarReservasPorClientIdGateway.buscarPorClientIdEStatusReservadoEDataHora(reservarComId, RESERVADO)).thenReturn(List.of());
 
         when(atualizarReservaGateway.atualizar(any())).thenReturn(getReserva());
 
@@ -104,8 +106,9 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
         verify(atualizarReservaPresenter, times(1)).atualizarReservaInputEmReserva(reservarComId, atualizarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(getReserva().getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(getReserva().getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(1)).buscarPorClientIdEDataHora(reservarComId);
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(1)).buscarPorClientIdEStatusReservadoEDataHora(reservarComId, RESERVADO);
         verify(atualizarReservaGateway, times(1)).atualizar(any());
         verify(atualizarReservaPresenter, times(1)).reservaEmAtualizarReservaOutput(getReserva());
 
@@ -132,8 +135,9 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
         verify(atualizarReservaPresenter, times(1)).atualizarReservaInputEmReserva(reservarComId, atualizarReservaInput);
         verify(buscarClientePorIdGateway, never()).buscarClientePorId(getReserva().getClienteId());
         verify(buscarRestaurantePorIdGateway, never()).buscarPorId(getReserva().getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, never()).buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, never()).buscarPorClientIdEDataHora(reservarComId);
+        verify(buscarReservasPorRestauranteIdGateway, never()).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, never()).buscarPorClientIdEStatusReservadoEDataHora(reservarComId, RESERVADO);
         verify(atualizarReservaGateway, never()).atualizar(any());
         verify(atualizarReservaPresenter, never()).reservaEmAtualizarReservaOutput(getReserva());
 
@@ -155,7 +159,8 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
                 .thenReturn(Optional.of(getCliente()));
         when(buscarRestaurantePorIdGateway.buscarPorId(getReserva().getRestauranteId()))
                 .thenReturn(Optional.of(restaurante));
-        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora()))
+        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora()))
                 .thenReturn(Optional.of(getReservasDiferentes()));
 
         var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> atualizarReservaUserCase.atualizar(atualizarReservaInput));
@@ -166,8 +171,9 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
         verify(atualizarReservaPresenter, times(1)).atualizarReservaInputEmReserva(reservarComId, atualizarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(getReserva().getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(getReserva().getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, never()).buscarPorClientIdEDataHora(getReserva());
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, never()).buscarPorClientIdEStatusReservadoEDataHora(getReserva(), RESERVADO);
         verify(atualizarReservaGateway, never()).atualizar(any());
         verify(atualizarReservaPresenter, never()).reservaEmAtualizarReservaOutput(getReserva());
     }
@@ -187,7 +193,8 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
                 .thenReturn(Optional.of(getCliente()));
         when(buscarRestaurantePorIdGateway.buscarPorId(getReserva().getRestauranteId()))
                 .thenReturn(Optional.of(getRestaurante()));
-        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora()))
+        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora()))
                 .thenReturn(Optional.of(reservas));
 
         var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> atualizarReservaUserCase.atualizar(atualizarReservaInput));
@@ -198,8 +205,9 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
         verify(atualizarReservaPresenter, times(1)).atualizarReservaInputEmReserva(reservarComId, atualizarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(getReserva().getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(getReserva().getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, never()).buscarPorClientIdEDataHora(reservarComId);
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, never()).buscarPorClientIdEStatusReservadoEDataHora(reservarComId, RESERVADO);
         verify(atualizarReservaGateway, never()).atualizar(any());
         verify(atualizarReservaPresenter, never()).reservaEmAtualizarReservaOutput(getReserva());
     }
@@ -221,7 +229,8 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
                 .thenReturn(Optional.of(getCliente()));
         when(buscarRestaurantePorIdGateway.buscarPorId(getReserva().getRestauranteId()))
                 .thenReturn(Optional.of(restaurante));
-        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora()))
+        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora()))
                 .thenReturn(Optional.of(getReservasDiferentes()));
 
         var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> atualizarReservaUserCase.atualizar(atualizarReservaInput));
@@ -232,8 +241,9 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
         verify(atualizarReservaPresenter, times(1)).atualizarReservaInputEmReserva(reservarComId, atualizarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(getReserva().getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(getReserva().getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, never()).buscarPorClientIdEDataHora(reservarComId);
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, never()).buscarPorClientIdEStatusReservadoEDataHora(reservarComId, RESERVADO);
         verify(atualizarReservaGateway, never()).atualizar(any());
         verify(atualizarReservaPresenter, never()).reservaEmAtualizarReservaOutput(getReserva());
     }
@@ -253,9 +263,10 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
                 .thenReturn(Optional.of(getCliente()));
         when(buscarRestaurantePorIdGateway.buscarPorId(getReserva().getRestauranteId()))
                 .thenReturn(Optional.of(getRestaurante()));
-        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora()))
+        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora()))
                 .thenReturn(Optional.of(getReservasDiferentes()));
-        when(buscarReservasPorClientIdGateway.buscarPorClientIdEDataHora(reservarComId)).thenReturn(reservas);
+        when(buscarReservasPorClientIdGateway.buscarPorClientIdEStatusReservadoEDataHora(reservarComId, RESERVADO)).thenReturn(reservas);
 
         var exceptionAdvice = assertThrows(ExceptionAdvice.class, () -> atualizarReservaUserCase.atualizar(atualizarReservaInput));
 
@@ -265,8 +276,9 @@ class AtualizarReservaUserCaseTeste extends TesteConfig {
         verify(atualizarReservaPresenter, times(1)).atualizarReservaInputEmReserva(reservarComId, atualizarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(getReserva().getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(getReserva().getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservarComId.getRestauranteId(), reservarComId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(1)).buscarPorClientIdEDataHora(reservarComId);
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservarComId.getRestauranteId(), RESERVADO, reservarComId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(1)).buscarPorClientIdEStatusReservadoEDataHora(reservarComId, RESERVADO);
         verify(atualizarReservaGateway, never()).atualizar(any());
         verify(atualizarReservaPresenter, never()).reservaEmAtualizarReservaOutput(getReserva());
     }
