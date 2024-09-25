@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Arquivos ######
+src/main/resources/application-prod.yml
+src/main/resources/application.yml
+
