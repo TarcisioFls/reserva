@@ -21,7 +21,7 @@ public class BuscarReservaPorIdUserCaseFactory {
         );
     }
 
-    private BuscarReservaPorIdAdapter buildReservaPorIdGateway(ReservaPresenter reservaPresenter, ReservaRepository reservaRepository) {
+    public BuscarReservaPorIdAdapter buildReservaPorIdGateway(ReservaPresenter reservaPresenter, ReservaRepository reservaRepository) {
         return new BuscarReservaPorIdAdapter(reservaRepository, reservaPresenter);
     }
 }

@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 public abstract class ReservaOutput {
 
     private String id;
-    private String clienteId;
-    private String restauranteId;
-    private int quantidadePessoas;
     private LocalDateTime dataHora;
+    private int quantidadePessoas;
+    private String restauranteId;
+    private String clienteId;
     private ReservaStatus status;
 }

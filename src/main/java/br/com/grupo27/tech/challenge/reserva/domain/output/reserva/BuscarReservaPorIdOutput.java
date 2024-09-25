@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 public class BuscarReservaPorIdOutput extends ReservaOutput {
 
-    public BuscarReservaPorIdOutput(String id, String clienteId, String restauranteId, int quantidadePessoas, LocalDateTime dataHora, ReservaStatus status) {
-        super(id, clienteId, restauranteId, quantidadePessoas, dataHora, status);
+    public BuscarReservaPorIdOutput(String id, LocalDateTime dataHora, int quantidadePessoas, String restauranteId, String clienteId, ReservaStatus status) {
+        super(id, dataHora, quantidadePessoas, restauranteId, clienteId, status);
     }
 }
