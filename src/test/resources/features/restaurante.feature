@@ -3,40 +3,30 @@
   Funcionalidade: Restaurante
 
     Cenario: Criar Restaurante
-      Dado um proprietário já criado
-      Quando efetuar requisição para criar um novo restaurante
-      Então o restaurante é criado no banco com sucesso
-      E deve ser apresentado
+      Quando efetuar requisicao para criar um novo restaurante
+      Então restaurante criado com sucesso
 
     Cenario: Atualizar Restaurante
-      Dado um restaurante já criado
-      Quando atualizar o restaurante através do id
-      E restaurante for encontrado pelo id solicitado
-      Então dados do restaurante são atualizados com sucesso
-      E deve ser apresentado
+      Dado um restaurante ja criado
+      Quando atualizar o restaurante atraves do id
+      Então restaurante atualizado com sucesso
 
     Cenario: Listar Todos Os Restaurantes
-      Dado restaurantes já criados
+      Dado um restaurante ja criado
       Quando realizar a busca de restaurantes
-      Então busca no banco todos os restaurantes com paginação
-      E deve ser apresentado com paginação
+      Então restaurantes sao exibidos com sucesso
 
     Cenario: Buscar Restaurante Por Id
-      Dado um restaurante já criado
-      Quando efetuar requisição de busca de restaurante por id
-      Então busca no banco o restaurante pelo id solicitado com sucesso
-      E deve ser apresentado
+      Dado um restaurante ja criado
+      Quando efetuar requisicao de busca de restaurante por id
+      Então restaurante e exibido com sucesso
 
     Cenario: Buscar Restaurantes Por Filtros
-      Dado restaurantes já criados
-      E uma string de busca (Nome, Localizacao, Tipo de Cozinha)
-      Quando realizar a busca de restaurantes
-      Então busca no banco todos os restaurantes filtrados com paginação
-      E deve ser apresentado com paginação
+      Dado um restaurante ja criado
+      Quando realizar a busca de restaurantes com filtro
+      Então restaurantes filtrados sao exibidos com sucesso
 
     Cenario: Deletar Restaurante Por Id
-      Dado um restaurante já criado
-      Quando efetuar requisição de deleção de restaurante por id
-      E restaurante for encontrado pelo id solicitado
-      Então o restaurante é deletado do banco de dados com sucesso
-      E deve ser apresentada resposta vazia
+      Dado um restaurante ja criado
+      Quando efetuar requisicao de delecao de restaurante por id
+      Então restaurante e deletado com sucesso

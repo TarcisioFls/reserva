@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "id",
+    "nome",
+    "email",
+    "senha",
+    "telefone",
+    "cpf"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "default": "",
+      "title": "The id Schema",
+      "examples": [
+        "66f4e4cc10b4c5142bd3b229"
+      ]
+    },
+    "nome": {
+      "type": "string",
+      "default": "",
+      "title": "The nome Schema",
+      "examples": [
+        "João Rodrigo"
+      ]
+    },
+    "email": {
+      "type": "string",
+      "default": "",
+      "title": "The email Schema",
+      "examples": [
+        "joao@teste.com"
+      ]
+    },
+    "senha": {
+      "type": "string",
+      "default": "",
+      "title": "The senha Schema",
+      "examples": [
+        "123456"
+      ]
+    },
+    "telefone": {
+      "type": "string",
+      "default": "",
+      "title": "The telefone Schema",
+      "examples": [
+        "11999999999"
+      ]
+    },
+    "cpf": {
+      "type": "string",
+      "default": "",
+      "title": "The cpf Schema",
+      "examples": [
+        "896.271.990-87"
+      ]
+    }
+  },
+  "examples": [{
+    "id": "66f4e4cc10b4c5142bd3b229",
+    "nome": "João Rodrigo",
+    "email": "joao@teste.com",
+    "senha": "123456",
+    "telefone": "11999999999",
+    "cpf": "896.271.990-87"
+  }]
+}

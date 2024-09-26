@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "id",
+    "nome",
+    "descricao",
+    "localizacao",
+    "horaAbertura",
+    "horaFechamento",
+    "capacidade",
+    "tipoCozinhaList",
+    "proprietarioId"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "default": "",
+      "title": "The id Schema",
+      "examples": [
+        "id"
+      ]
+    },
+    "nome": {
+      "type": "string",
+      "default": "",
+      "title": "The nome Schema",
+      "examples": [
+        "nome"
+      ]
+    },
+    "descricao": {
+      "type": "string",
+      "default": "",
+      "title": "The descricao Schema",
+      "examples": [
+        "descricao"
+      ]
+    },
+    "localizacao": {
+      "type": "string",
+      "default": "",
+      "title": "The localizacao Schema",
+      "examples": [
+        "localizacao"
+      ]
+    },
+    "horaAbertura": {
+      "type": "string",
+      "default": "",
+      "title": "The horaAbertura Schema",
+      "examples": [
+        "horaAbertura"
+      ]
+    },
+    "horaFechamento": {
+      "type": "string",
+      "default": "",
+      "title": "The horaFechamento Schema",
+      "examples": [
+        "horaFechamento"
+      ]
+    },
+    "capacidade": {
+      "type": "integer",
+      "default": 0,
+      "title": "The capacidade Schema",
+      "examples": [
+        50
+      ]
+    },
+    "tipoCozinhaList": {
+      "type": "array",
+      "default": [],
+      "title": "The tipoCozinhaList Schema",
+      "items": {
+        "type": "string",
+        "title": "A Schema",
+        "examples": [
+          "CASEIRA",
+          "BRASILEIRA"
+        ]
+      },
+      "examples": [
+        ["CASEIRA",
+          "BRASILEIRA"
+        ]
+      ]
+    },
+    "proprietarioId": {
+      "type": "string",
+      "default": "",
+      "title": "The proprietarioId Schema",
+      "examples": [
+        "proprietarioId"
+      ]
+    }
+  },
+  "examples": [{
+    "id": "id",
+    "nome": "nome",
+    "descricao": "descricao",
+    "localizacao": "localizacao",
+    "horaAbertura": "horaAbertura",
+    "horaFechamento": "horaFechamento",
+    "capacidade": 50,
+    "tipoCozinhaList": [
+      "CASEIRA",
+      "BRASILEIRA"
+    ],
+    "proprietarioId": "proprietarioId"
+  }]
+}

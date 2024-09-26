@@ -43,7 +43,7 @@ public class AvaliacaoStepDefinition {
     @Entao("deve ser apresentado o resultado")
     public void deveSerApresentadoOResultado() {
         response.then()
-                .body(matchesJsonSchemaInClasspath("schemas/avaliacaoResponse.schema.json"));
+                .body(matchesJsonSchemaInClasspath("schemas/avaliacao/avaliacaoResponse.schema.json"));
     }
 
 }

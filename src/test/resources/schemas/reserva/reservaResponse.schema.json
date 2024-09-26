@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "id",
+    "clienteId",
+    "restauranteId",
+    "quantidadePessoas",
+    "dataHora",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "default": "",
+      "title": "The id Schema",
+      "examples": [
+        "id"
+      ]
+    },
+    "clienteId": {
+      "type": "string",
+      "default": "",
+      "title": "The clienteId Schema",
+      "examples": [
+        "clienteId"
+      ]
+    },
+    "restauranteId": {
+      "type": "string",
+      "default": "",
+      "title": "The restauranteId Schema",
+      "examples": [
+        "restauranteId"
+      ]
+    },
+    "quantidadePessoas": {
+      "type": "integer",
+      "default": 0,
+      "title": "The quantidadePessoas Schema",
+      "examples": [
+        10
+      ]
+    },
+    "dataHora": {
+      "type": "string",
+      "default": "",
+      "title": "The dataHora Schema",
+      "examples": [
+        "1999-01-01T00:00:00"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "default": "",
+      "title": "The status Schema",
+      "examples": [
+        "RESERVADO"
+      ]
+    }
+  },
+  "examples": [{
+    "id": "id",
+    "clienteId": "clienteId",
+    "restauranteId": "restauranteId",
+    "quantidadePessoas": 10,
+    "dataHora": "1999-01-01T00:00:00",
+    "status": "RESERVADO"
+  }]
+}

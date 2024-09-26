@@ -1,6 +1,5 @@
 package br.com.grupo27.tech.challenge.reserva.domain.useCase.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
 import br.com.grupo27.tech.challenge.reserva.domain.gateway.cliente.CriarClienteGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.input.cliente.CriarClienteInput;

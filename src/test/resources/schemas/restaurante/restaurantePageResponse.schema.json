@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "content",
+    "page"
+  ],
+  "properties": {
+    "content": {
+      "type": "array",
+      "default": [],
+      "title": "The content Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "id",
+          "nome",
+          "descricao",
+          "localizacao",
+          "horaAbertura",
+          "horaFechamento",
+          "capacidade",
+          "tipoCozinhaList",
+          "proprietarioId"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "The id Schema",
+            "examples": [
+              "66f57b621469d621f9ea60cf",
+              "66f57b621469d621f9ea60d0",
+              "66f57b631469d621f9ea60d1"
+            ]
+          },
+          "nome": {
+            "type": "string",
+            "title": "The nome Schema",
+            "examples": [
+              "Magina",
+              "nome bdd"
+            ]
+          },
+          "descricao": {
+            "type": "string",
+            "title": "The descricao Schema",
+            "examples": [
+              "Se deixar farmar é GG"
+            ]
+          },
+          "localizacao": {
+            "type": "string",
+            "title": "The localizacao Schema",
+            "examples": [
+              "do seu lado"
+            ]
+          },
+          "horaAbertura": {
+            "type": "string",
+            "title": "The horaAbertura Schema",
+            "examples": [
+              "07:00"
+            ]
+          },
+          "horaFechamento": {
+            "type": "string",
+            "title": "The horaFechamento Schema",
+            "examples": [
+              "22:00"
+            ]
+          },
+          "capacidade": {
+            "type": "integer",
+            "title": "The capacidade Schema",
+            "examples": [
+              100
+            ]
+          },
+          "tipoCozinhaList": {
+            "type": "array",
+            "title": "The tipoCozinhaList Schema",
+            "items": {
+              "type": "string",
+              "title": "A Schema",
+              "examples": [
+                "JAPONESA"
+              ]
+            },
+            "examples": [
+              [
+                "JAPONESA"],
+              [
+                "JAPONESA"],
+              [
+                "JAPONESA"]
+            ]
+          },
+          "proprietarioId": {
+            "type": "string",
+            "title": "The proprietarioId Schema",
+            "examples": [
+              "44c67aa035ed1f735450b72a"
+            ]
+          }
+        },
+        "examples": [{
+          "id": "66f57b621469d621f9ea60cf",
+          "nome": "Magina",
+          "descricao": "Se deixar farmar é GG",
+          "localizacao": "do seu lado",
+          "horaAbertura": "07:00",
+          "horaFechamento": "22:00",
+          "capacidade": 100,
+          "tipoCozinhaList": [
+            "JAPONESA"
+          ],
+          "proprietarioId": "44c67aa035ed1f735450b72a"
+        },
+          {
+            "id": "66f57b621469d621f9ea60d0",
+            "nome": "nome bdd",
+            "descricao": "Se deixar farmar é GG",
+            "localizacao": "do seu lado",
+            "horaAbertura": "07:00",
+            "horaFechamento": "22:00",
+            "capacidade": 100,
+            "tipoCozinhaList": [
+              "JAPONESA"
+            ],
+            "proprietarioId": "44c67aa035ed1f735450b72a"
+          },
+          {
+            "id": "66f57b631469d621f9ea60d1",
+            "nome": "Magina",
+            "descricao": "Se deixar farmar é GG",
+            "localizacao": "do seu lado",
+            "horaAbertura": "07:00",
+            "horaFechamento": "22:00",
+            "capacidade": 100,
+            "tipoCozinhaList": [
+              "JAPONESA"
+            ],
+            "proprietarioId": "44c67aa035ed1f735450b72a"
+          }]
+      },
+      "examples": [
+        [{
+          "id": "66f57b621469d621f9ea60cf",
+          "nome": "Magina",
+          "descricao": "Se deixar farmar é GG",
+          "localizacao": "do seu lado",
+          "horaAbertura": "07:00",
+          "horaFechamento": "22:00",
+          "capacidade": 100,
+          "tipoCozinhaList": [
+            "JAPONESA"
+          ],
+          "proprietarioId": "44c67aa035ed1f735450b72a"
+        },
+          {
+            "id": "66f57b621469d621f9ea60d0",
+            "nome": "nome bdd",
+            "descricao": "Se deixar farmar é GG",
+            "localizacao": "do seu lado",
+            "horaAbertura": "07:00",
+            "horaFechamento": "22:00",
+            "capacidade": 100,
+            "tipoCozinhaList": [
+              "JAPONESA"
+            ],
+            "proprietarioId": "44c67aa035ed1f735450b72a"
+          },
+          {
+            "id": "66f57b631469d621f9ea60d1",
+            "nome": "Magina",
+            "descricao": "Se deixar farmar é GG",
+            "localizacao": "do seu lado",
+            "horaAbertura": "07:00",
+            "horaFechamento": "22:00",
+            "capacidade": 100,
+            "tipoCozinhaList": [
+              "JAPONESA"
+            ],
+            "proprietarioId": "44c67aa035ed1f735450b72a"
+          }]
+      ]
+    },
+    "page": {
+      "type": "object",
+      "default": {},
+      "title": "The page Schema",
+      "required": [
+        "size",
+        "number",
+        "totalElements",
+        "totalPages"
+      ],
+      "properties": {
+        "size": {
+          "type": "integer",
+          "default": 0,
+          "title": "The size Schema",
+          "examples": [
+            50
+          ]
+        },
+        "number": {
+          "type": "integer",
+          "default": 0,
+          "title": "The number Schema",
+          "examples": [
+            0
+          ]
+        },
+        "totalElements": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalElements Schema",
+          "examples": [
+            3
+          ]
+        },
+        "totalPages": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalPages Schema",
+          "examples": [
+            1
+          ]
+        }
+      },
+      "examples": [{
+        "size": 50,
+        "number": 0,
+        "totalElements": 3,
+        "totalPages": 1
+      }]
+    }
+  },
+  "examples": [{
+    "content": [{
+      "id": "66f57b621469d621f9ea60cf",
+      "nome": "Magina",
+      "descricao": "Se deixar farmar é GG",
+      "localizacao": "do seu lado",
+      "horaAbertura": "07:00",
+      "horaFechamento": "22:00",
+      "capacidade": 100,
+      "tipoCozinhaList": [
+        "JAPONESA"
+      ],
+      "proprietarioId": "44c67aa035ed1f735450b72a"
+    },
+      {
+        "id": "66f57b621469d621f9ea60d0",
+        "nome": "nome bdd",
+        "descricao": "Se deixar farmar é GG",
+        "localizacao": "do seu lado",
+        "horaAbertura": "07:00",
+        "horaFechamento": "22:00",
+        "capacidade": 100,
+        "tipoCozinhaList": [
+          "JAPONESA"
+        ],
+        "proprietarioId": "44c67aa035ed1f735450b72a"
+      },
+      {
+        "id": "66f57b631469d621f9ea60d1",
+        "nome": "Magina",
+        "descricao": "Se deixar farmar é GG",
+        "localizacao": "do seu lado",
+        "horaAbertura": "07:00",
+        "horaFechamento": "22:00",
+        "capacidade": 100,
+        "tipoCozinhaList": [
+          "JAPONESA"
+        ],
+        "proprietarioId": "44c67aa035ed1f735450b72a"
+      }],
+    "page": {
+      "size": 50,
+      "number": 0,
+      "totalElements": 3,
+      "totalPages": 1
+    }
+  }]
+}

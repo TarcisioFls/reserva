@@ -3,34 +3,25 @@
   Funcionalidade: Proprietário
 
     Cenario: Criar Proprietário
-      Quando efetuar requisição para criar um novo proprietário
-      E proprietário com mesmo e-mail não existir no banco
-      Então o proprietário é criado no banco com sucesso
-      E deve ser apresentado
+      Quando efetuar requisicao para criar um novo proprietario
+      Então proprietario criado com sucesso
 
     Cenario: Atualizar Proprietário
-      Dado um proprietário já criado
-      Quando atualizar o proprietário através do id
-      E proprietário for encontrado pelo id solicitado
-      E proprietário com mesmo e-mail a ser atualizado não existir no banco
-      Então dados do proprietário são atualizados com sucesso
-      E deve ser apresentado
+      Dado um proprietario ja criado
+      Quando atualizar o proprietario atraves do id
+      Então proprietario atualizado com sucesso
 
     Cenario: Listar Todos Os Proprietarios
-      Dado proprietários já criados
-      Quando realizar a busca de proprietários
-      Então busca no banco todos os proprietários com paginação
-      E deve ser apresentado com paginação
+      Dado um proprietario ja criado
+      Quando realizar a busca de proprietarios
+      Então proprietarios sao exibidos com sucesso
 
     Cenario: Buscar Proprietario Por Id
-      Dado um proprietário já criado
-      Quando efetuar requisição de busca de proprietário por id
-      Então busca no banco o proprietário pelo id solicitado com sucesso
-      E deve ser apresentado
+      Dado um proprietario ja criado
+      Quando efetuar requisicao de busca de proprietario por id
+      Então proprietario e exibido com sucesso
 
     Cenario: Deletar Proprietario Por Id
-      Dado um proprietário já criado
-      Quando efetuar requisição de deleção de proprietário por id
-      E proprietário for encontrado pelo id solicitado
-      Então o proprietário é deletado do banco de dados com sucesso
-      E deve ser apresentada resposta vazia
+      Dado um proprietario ja criado
+      Quando efetuar requisicao de delecao de proprietario por id
+      Então proprietario e deletado com sucesso

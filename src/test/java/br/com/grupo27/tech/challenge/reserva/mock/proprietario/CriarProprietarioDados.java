@@ -6,10 +6,17 @@ import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
 import br.com.grupo27.tech.challenge.reserva.domain.input.proprietario.CriarProprietarioInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.proprietario.CriarProprietarioOutput;
 
+import java.util.UUID;
+
 public interface CriarProprietarioDados {
 
     static ProprietarioResponse getProprieatarioResponse() {
         return new ProprietarioResponse("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+    }
+
+    static CriarProprietarioRequest getCriarProprietarioUnicoRequest() {
+        var uniqueEmail = "client" + UUID.randomUUID() + "@example.com";
+        return new CriarProprietarioRequest("João", uniqueEmail, "123456", "11999999999", "11999999999");
     }
 
     static CriarProprietarioRequest getCriarProprietarioRequest() {

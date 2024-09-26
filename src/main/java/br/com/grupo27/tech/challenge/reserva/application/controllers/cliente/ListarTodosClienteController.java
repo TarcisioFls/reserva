@@ -26,7 +26,7 @@ public class ListarTodosClienteController {
     private final ListarTodosClientesPresenter listarTodosClientesPresenter;
 
     @GetMapping
-    public ResponseEntity<PagedModel<ClienteResponse>> listarTodos(@RequestParam int pagina, @RequestParam(defaultValue = "50") int tamanho) {
+    public ResponseEntity<PagedModel<ClienteResponse>> listarTodos(@RequestParam(defaultValue = "0") int pagina, @RequestParam(defaultValue = "50") int tamanho) {
 
         ListarTodosClientesUserCase listarTodosClientesUserCase = listarTodosClientesUserCaseFactory.buildListarTodosClientesUserCase(
                 listarTodosClientesPresenter, clientePresenter, clienteRepository);
