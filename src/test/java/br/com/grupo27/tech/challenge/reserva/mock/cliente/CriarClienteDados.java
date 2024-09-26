@@ -14,7 +14,7 @@ import static br.com.grupo27.tech.challenge.reserva.util.CpfUtility.generateCpf;
 public interface CriarClienteDados {
 
     static CriarClienteRequest getCriarClienteUnicoRequest() {
-        var uniqueEmail = "client" + UUID.randomUUID() + "@example.com";
+        var uniqueEmail = "client-test-" + UUID.randomUUID() + "@example.com";
         var uniqueCpf = generateCpf();
         return new CriarClienteRequest( "João Rodrigo", uniqueEmail, "123456", "11999999999",uniqueCpf, LocalDate.of(1985,5,5));
     }

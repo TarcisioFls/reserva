@@ -1,9 +1,18 @@
 version: '3.8'
 
 services:
-  mongoDb:
+
+  app:
+    image: reserva:latest
+    container_name: reserva
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+
+  mongodb:
     image: mongo:latest
-    container_name: mongoDb
+    container_name: mongodb
     ports:
       - "27017:27017"
     environment:
@@ -13,4 +22,4 @@ services:
       - mongo-data:/data/db
 
 volumes:
-    mongo-data:
+  mongo-data:

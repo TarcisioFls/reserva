@@ -35,6 +35,7 @@
         <cucumber.version>7.18.1</cucumber.version>
         <rest-assured.version>5.5.0</rest-assured.version>
         <junit-platform-suite.version>1.11.0</junit-platform-suite.version>
+        <jackson-datatype-jsr310.version>2.13.4</jackson-datatype-jsr310.version>
     </properties>
     <dependencies>
 
@@ -79,6 +80,7 @@
             <artifactId>modelmapper</artifactId>
             <version>${modelMapper.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -104,6 +106,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-datatype-jsr310.version}</version>
         </dependency>
 
         <dependency>
@@ -150,6 +158,19 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
             <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.gatling</groupId>
+            <artifactId>gatling-app</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>3.12.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -322,9 +343,9 @@
                     <plugin>
                         <groupId>io.gatling</groupId>
                         <artifactId>gatling-maven-plugin</artifactId>
-                        <version>4.3.7</version>
+                        <version>4.10.0</version>
                         <configuration>
-                            <simulationClass>org.example.performance.ApiPerformanceSimulation</simulationClass>
+                            <simulationClass>br.com.grupo27.tech.challenge.reserva.performance.ClientePerformanceSimulation</simulationClass>
                         </configuration>
                     </plugin>
                 </plugins>
