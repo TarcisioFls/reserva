@@ -12,5 +12,7 @@ import java.util.Optional;
 public interface ReservaRepository extends MongoRepository<ReservaModel, String> {
     Optional<List<ReservaModel>> findByRestauranteIdAndDataHoraBetween(String restauranteId, LocalDateTime inicioDoDia, LocalDateTime fimDoDia);
 
+    Optional<ReservaModel> findByRestauranteId(String restauranteId);
+
     List<ReservaModel> findByClienteIdAndDataHoraBetween(String clienteId, LocalDateTime inicioDoDia, LocalDateTime fimDoDia);
 }

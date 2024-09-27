@@ -17,5 +17,8 @@ public interface ReservaDados {
     static ReservaModel getReservaModel(){
         return new ReservaModel("66eb8772fd532626f457c740", LocalDateTime.of(2024,1,1,20,0), 2,
                 "66c67aa035ed1f735450b7a2", "66e39d371994ae7f1b5e9ff0", RESERVADO);
+
     }
+
+
 }

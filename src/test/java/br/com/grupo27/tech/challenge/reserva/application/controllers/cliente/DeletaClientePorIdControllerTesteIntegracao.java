@@ -1,6 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.cliente;
 
-import br.com.grupo27.tech.challenge.reserva.application.controllers.Cliente.DeletaClientePorIdController;
+import br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.DeletaClientePorIdController;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import org.junit.jupiter.api.AfterEach;
