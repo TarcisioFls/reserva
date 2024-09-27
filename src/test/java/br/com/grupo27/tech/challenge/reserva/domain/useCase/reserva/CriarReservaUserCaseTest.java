@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static br.com.grupo27.tech.challenge.reserva.infra.model.enums.ReservaStatus.RESERVADO;
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.getClienteDepoisDeSalvar;
 import static br.com.grupo27.tech.challenge.reserva.mock.reserva.CriarReservaDados.getCriarReservaInput;
 import static br.com.grupo27.tech.challenge.reserva.mock.reserva.CriarReservaDados.getCriarReservaOutput;
@@ -77,9 +78,10 @@ class CriarReservaUserCaseTest extends TesteConfig {
         when(criarReservaPresenter.criarReservaInputEmReserva(criarReservaInput)).thenReturn(reservaSemId);
         when(buscarClientePorIdGateway.buscarClientePorId(reservaSemId.getClienteId())).thenReturn(Optional.of(getClienteDepoisDeSalvar()));
         when(buscarRestaurantePorIdGateway.buscarPorId(reservaSemId.getRestauranteId())).thenReturn(Optional.of(getRestaurante()));
-        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora()))
+        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora()))
                 .thenReturn(Optional.of(getReservasDiferentes()));
-        when(buscarReservasPorClientIdGateway.buscarPorClientIdEDataHora(reservaSemId)).thenReturn(List.of());
+        when(buscarReservasPorClientIdGateway.buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO)).thenReturn(List.of());
         when(criarReservaGateway.criar(reservaSemId)).thenReturn(reservaComId);
         when(criarReservaPresenter.reservaEmCriarReservaOutput(reservaComId)).thenReturn(getCriarReservaOutput());
 
@@ -88,8 +90,9 @@ class CriarReservaUserCaseTest extends TesteConfig {
         verify(criarReservaPresenter, times(1)).criarReservaInputEmReserva(criarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(reservaSemId.getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(reservaSemId.getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(1)).buscarPorClientIdEDataHora(reservaSemId);
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(1)).buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO);
         verify(criarReservaGateway, times(1)).criar(reservaSemId);
         verify(criarReservaPresenter, times(1)).reservaEmCriarReservaOutput(reservaComId);
 
@@ -112,8 +115,9 @@ class CriarReservaUserCaseTest extends TesteConfig {
         verify(criarReservaPresenter, times(1)).criarReservaInputEmReserva(criarReservaInput);
         verify(buscarClientePorIdGateway, times(0)).buscarClientePorId(reservaSemId.getClienteId());
         verify(buscarRestaurantePorIdGateway, times(0)).buscarPorId(reservaSemId.getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(0)).buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEDataHora(reservaSemId);
+        verify(buscarReservasPorRestauranteIdGateway, times(0)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO);
         verify(criarReservaGateway, times(0)).criar(reservaSemId);
         verify(criarReservaPresenter, times(0)).reservaEmCriarReservaOutput(reservaSemId);
     }
@@ -134,8 +138,9 @@ class CriarReservaUserCaseTest extends TesteConfig {
         verify(criarReservaPresenter, times(1)).criarReservaInputEmReserva(criarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(reservaSemId.getClienteId());
         verify(buscarRestaurantePorIdGateway, times(0)).buscarPorId(reservaSemId.getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(0)).buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEDataHora(reservaSemId);
+        verify(buscarReservasPorRestauranteIdGateway, times(0)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO);
         verify(criarReservaGateway, times(0)).criar(reservaSemId);
         verify(criarReservaPresenter, times(0)).reservaEmCriarReservaOutput(reservaSemId);
     }
@@ -157,8 +162,9 @@ class CriarReservaUserCaseTest extends TesteConfig {
         verify(criarReservaPresenter, times(1)).criarReservaInputEmReserva(criarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(reservaSemId.getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(reservaSemId.getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(0)).buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEDataHora(reservaSemId);
+        verify(buscarReservasPorRestauranteIdGateway, times(0)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO);
         verify(criarReservaGateway, times(0)).criar(reservaSemId);
         verify(criarReservaPresenter, times(0)).reservaEmCriarReservaOutput(reservaSemId);
     }
@@ -175,7 +181,8 @@ class CriarReservaUserCaseTest extends TesteConfig {
         when(criarReservaPresenter.criarReservaInputEmReserva(criarReservaInput)).thenReturn(reservaSemId);
         when(buscarClientePorIdGateway.buscarClientePorId(reservaSemId.getClienteId())).thenReturn(Optional.of(getClienteDepoisDeSalvar()));
         when(buscarRestaurantePorIdGateway.buscarPorId(reservaSemId.getRestauranteId())).thenReturn(Optional.of(restaurante));
-        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora()))
+        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora()))
                 .thenReturn(Optional.of(reservas));
 
         var exception = assertThrows(ExceptionAdvice.class, () -> criarReservaUserCase.criar(criarReservaInput));
@@ -185,8 +192,9 @@ class CriarReservaUserCaseTest extends TesteConfig {
         verify(criarReservaPresenter, times(1)).criarReservaInputEmReserva(criarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(reservaSemId.getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(reservaSemId.getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEDataHora(reservaSemId);
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO);
         verify(criarReservaGateway, times(0)).criar(reservaSemId);
         verify(criarReservaPresenter, times(0)).reservaEmCriarReservaOutput(reservaSemId);
     }
@@ -201,7 +209,8 @@ class CriarReservaUserCaseTest extends TesteConfig {
         when(criarReservaPresenter.criarReservaInputEmReserva(criarReservaInput)).thenReturn(reservaSemId);
         when(buscarClientePorIdGateway.buscarClientePorId(reservaSemId.getClienteId())).thenReturn(Optional.of(getClienteDepoisDeSalvar()));
         when(buscarRestaurantePorIdGateway.buscarPorId(reservaSemId.getRestauranteId())).thenReturn(Optional.of(getRestaurante()));
-        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora()))
+        when(buscarReservasPorRestauranteIdGateway.buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora()))
                 .thenReturn(Optional.of(reservas));
 
         var exception = assertThrows(ExceptionAdvice.class, () -> criarReservaUserCase.criar(criarReservaInput));
@@ -211,8 +220,9 @@ class CriarReservaUserCaseTest extends TesteConfig {
         verify(criarReservaPresenter, times(1)).criarReservaInputEmReserva(criarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(reservaSemId.getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(reservaSemId.getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEDataHora(reservaSemId);
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO);
         verify(criarReservaGateway, times(0)).criar(reservaSemId);
         verify(criarReservaPresenter, times(0)).reservaEmCriarReservaOutput(reservaSemId);
     }
@@ -237,8 +247,9 @@ class CriarReservaUserCaseTest extends TesteConfig {
         verify(criarReservaPresenter, times(1)).criarReservaInputEmReserva(criarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(reservaSemId.getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(reservaSemId.getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEDataHora(reservaSemId);
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(0)).buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO);
         verify(criarReservaGateway, times(0)).criar(reservaSemId);
         verify(criarReservaPresenter, times(0)).reservaEmCriarReservaOutput(reservaSemId);
     }
@@ -253,7 +264,7 @@ class CriarReservaUserCaseTest extends TesteConfig {
         when(criarReservaPresenter.criarReservaInputEmReserva(criarReservaInput)).thenReturn(reservaSemId);
         when(buscarClientePorIdGateway.buscarClientePorId(reservaSemId.getClienteId())).thenReturn(Optional.of(getClienteDepoisDeSalvar()));
         when(buscarRestaurantePorIdGateway.buscarPorId(reservaSemId.getRestauranteId())).thenReturn(Optional.of(getRestaurante()));
-        when(buscarReservasPorClientIdGateway.buscarPorClientIdEDataHora(reservaSemId)).thenReturn(reservas);
+        when(buscarReservasPorClientIdGateway.buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO)).thenReturn(reservas);
 
         var exception = assertThrows(ExceptionAdvice.class, () -> criarReservaUserCase.criar(criarReservaInput));
 
@@ -262,8 +273,9 @@ class CriarReservaUserCaseTest extends TesteConfig {
         verify(criarReservaPresenter, times(1)).criarReservaInputEmReserva(criarReservaInput);
         verify(buscarClientePorIdGateway, times(1)).buscarClientePorId(reservaSemId.getClienteId());
         verify(buscarRestaurantePorIdGateway, times(1)).buscarPorId(reservaSemId.getRestauranteId());
-        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEDataHora(reservaSemId.getRestauranteId(), reservaSemId.getDataHora());
-        verify(buscarReservasPorClientIdGateway, times(1)).buscarPorClientIdEDataHora(reservaSemId);
+        verify(buscarReservasPorRestauranteIdGateway, times(1)).buscarPorRestauranteIdEStatusReservadoEDataHora(
+                reservaSemId.getRestauranteId(), RESERVADO, reservaSemId.getDataHora());
+        verify(buscarReservasPorClientIdGateway, times(1)).buscarPorClientIdEStatusReservadoEDataHora(reservaSemId, RESERVADO);
         verify(criarReservaGateway, times(0)).criar(reservaSemId);
         verify(criarReservaPresenter, times(0)).reservaEmCriarReservaOutput(reservaSemId);
     }

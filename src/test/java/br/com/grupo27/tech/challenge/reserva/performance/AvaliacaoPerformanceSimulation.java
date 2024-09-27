@@ -25,8 +25,13 @@ public class AvaliacaoPerformanceSimulation implements GatlingSimulation {
             .check(status().is(HttpStatus.OK.value()))
             .check(jsonPath("$.id").saveAs("avaliacaoId"));
 
+    ActionBuilder listarAvaliacaoRequest = http("request: listar avaliacao")
+            .get("/avaliacoes")
+            .check(status().is(HttpStatus.OK.value()));
+
     ScenarioBuilder scenarioOperacoesAvaliacao = scenario("operacoes avaliacao")
-            .exec(criarAvaliacaoRequest);
+            .exec(criarAvaliacaoRequest)
+            .exec(listarAvaliacaoRequest);
 
     @Override
     public PopulationBuilder getSimulationConfig() {

@@ -58,8 +58,15 @@ public class ReservaStepDefinition {
                 .as(RestauranteResponse.class);
     }
 
+    @Dado("uma reserva ja criada")
+    public void umaReservaJaCriada() {
+        umClienteJaCriadoParaReserva();
+        umRestauranteJaCriadoParaReserva();
+        reservaResponse = efetuarRequisicaoDeCriacaoDeReserva();
+    }
+
     @Quando("efetuar requisicao de criacao de reserva")
-    public void efetuarRequisicaoDeCriacaoDeReserva() {
+    public ReservaResponse efetuarRequisicaoDeCriacaoDeReserva() {
         var request = getCriarReservaValidRequest();
         request.setClienteId(clienteResponse.getId());
         request.setRestauranteId(restauranteResponse.getId());
@@ -68,6 +75,7 @@ public class ReservaStepDefinition {
                 .body(request)
                 .when()
                 .post(ENDPOINT_RESERVA);
+        return response.then().extract().as(ReservaResponse.class);
     }
 
     @Entao("a reserva e criada com sucesso")
@@ -75,6 +83,83 @@ public class ReservaStepDefinition {
         response.then()
                 .statusCode(HttpStatus.OK.value())
                 .body(matchesJsonSchemaInClasspath("schemas/reserva/reservaResponse.schema.json"));
+    }
+
+    @Quando("atualizar a reserva atraves do id")
+    public void atualizarAReservaAtualizaDoId() {
+        reservaResponse.setQuantidadePessoas(1);
+        response = given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(reservaResponse)
+                .when()
+                .put(ENDPOINT_RESERVA + "/{id}", reservaResponse.getId());
+    }
+
+    @Entao("reserva atualizada com sucesso")
+    public void reservaAtualizadaComSucesso() {
+        response.then()
+                .statusCode(HttpStatus.OK.value())
+                .body(matchesJsonSchemaInClasspath("schemas/reserva/reservaResponse.schema.json"));
+    }
+
+    @Quando("realizar a busca de reservas")
+    public void realizarABuscaDeReservas() {
+        response = given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .get(ENDPOINT_RESERVA);
+    }
+
+    @Entao("reservas sao exibidas com sucesso")
+    public void reservasSaoExibidasComSucesso() {
+        response.then()
+                .statusCode(HttpStatus.OK.value())
+                .body(matchesJsonSchemaInClasspath("schemas/reserva/reservaPageResponse.schema.json"));
+    }
+
+    @Quando("efetuar requisicao de busca de reserva por id")
+    public void efetuarRequisicaoDeBuscaDeReservaPorId() {
+        response = given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .get(ENDPOINT_RESERVA + "/{id}", reservaResponse.getId());
+    }
+
+    @Entao("reserva e exibida com sucesso")
+    public void reservaEExibidaComSucesso() {
+        response.then()
+                .statusCode(HttpStatus.OK.value())
+                .body(matchesJsonSchemaInClasspath("schemas/reserva/reservaResponse.schema.json"));
+    }
+
+    @Quando("efetuar requisicao de busca de reservas por restaurante")
+    public void efetuarRequisicaoDeBuscaDeReservasPorRestaurante() {
+        response = given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .get(ENDPOINT_RESERVA + "/restaurante?restauranteId={id}", restauranteResponse.getId());
+    }
+
+    @Entao("reservas do restaurante sao exibidas com sucesso")
+    public void reservasDoRestauranteSaoExibidasComSucesso() {
+        response.then()
+                .statusCode(HttpStatus.OK.value())
+                .body(matchesJsonSchemaInClasspath("schemas/reserva/reservaPageResponse.schema.json"));
+    }
+
+    @Quando("efetuar requisicao de busca de reservas por cliente")
+    public void efetuarRequisicaoDeBuscaDeReservasPorCliente() {
+        response = given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .get(ENDPOINT_RESERVA + "/cliente?clienteId={id}", clienteResponse.getId());
+    }
+
+    @Entao("reservas do cliente sao exibidas com sucesso")
+    public void reservasDoClienteSaoExibidasComSucesso() {
+        response.then()
+                .statusCode(HttpStatus.OK.value())
+                .body(matchesJsonSchemaInClasspath("schemas/reserva/reservaPageResponse.schema.json"));
     }
 
 }

@@ -47,10 +47,39 @@ public class ReservaPerformanceSimulation implements GatlingSimulation {
             .check(status().is(HttpStatus.OK.value()))
             .check(jsonPath("$.id").saveAs("reservaId"));
 
+    ActionBuilder buscarReservaRequest = http("request: buscar reserva")
+            .get("/reservas/#{reservaId}")
+            .check(status().is(HttpStatus.OK.value()))
+            .check(jsonPath("$.id").saveAs("reservaId"));
+
+    ActionBuilder buscarReservaClienteRequest = http("request: buscar reserva cliente")
+            .get("/reservas/cliente?clienteId=#{clienteId}")
+            .check(status().is(HttpStatus.OK.value()));
+
+    ActionBuilder buscarReservaRestauranteRequest = http("request: buscar reserva restaurante")
+            .get("/reservas/restaurante?restauranteId=#{restauranteId}")
+            .check(status().is(HttpStatus.OK.value()));
+
+    ActionBuilder atualizarReservaRequest = http("request: atualizar reserva")
+            .put("/reservas/#{reservaId}")
+            .body(StringBody(session -> {
+                var request = getCriarReservaValidRequest();
+                request.setClienteId(session.getString("clienteId"));
+                request.setRestauranteId(session.getString("restauranteId"));
+                request.setQuantidadePessoas(1);
+                return gson.toJson(request);
+            }))
+            .check(status().is(HttpStatus.OK.value()))
+            .check(jsonPath("$.quantidadePessoas").saveAs("1"));
+
     ScenarioBuilder scenarioOperacoesReserva = scenario("operacoes reserva")
             .exec(criarClienteRequest)
             .exec(criarRestauranteRequest)
-            .exec(criarReservaRequest);
+            .exec(criarReservaRequest)
+            .exec(buscarReservaRequest)
+            .exec(buscarReservaClienteRequest)
+            .exec(buscarReservaRestauranteRequest)
+            .exec(atualizarReservaRequest);
 
     @Override
     public PopulationBuilder getSimulationConfig() {

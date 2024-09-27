@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "content",
+    "page"
+  ],
+  "properties": {
+    "content": {
+      "type": "array",
+      "default": [],
+      "title": "The content Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "id",
+          "nota",
+          "comentario",
+          "reservaId"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "The id Schema",
+            "examples": [
+              "66f6f1999f87c050901339e0",
+              "66f6f1999f87c050901339e1",
+              "66f6f19a9f87c050901339e2"
+            ]
+          },
+          "nota": {
+            "type": "integer",
+            "title": "The nota Schema",
+            "examples": [
+              4
+            ]
+          },
+          "comentario": {
+            "type": "string",
+            "title": "The comentario Schema",
+            "examples": [
+              "Excelente serviço!"
+            ]
+          },
+          "reservaId": {
+            "type": "string",
+            "title": "The reservaId Schema",
+            "examples": [
+              "11G91CC146fg2f846561b8c4"
+            ]
+          }
+        },
+        "examples": [{
+          "id": "66f6f1999f87c050901339e0",
+          "nota": 4,
+          "comentario": "Excelente serviço!",
+          "reservaId": "11G91CC146fg2f846561b8c4"
+        },
+          {
+            "id": "66f6f1999f87c050901339e1",
+            "nota": 4,
+            "comentario": "Excelente serviço!",
+            "reservaId": "11G91CC146fg2f846561b8c4"
+          },
+          {
+            "id": "66f6f19a9f87c050901339e2",
+            "nota": 4,
+            "comentario": "Excelente serviço!",
+            "reservaId": "11G91CC146fg2f846561b8c4"
+          }]
+      },
+      "examples": [
+        [{
+          "id": "66f6f1999f87c050901339e0",
+          "nota": 4,
+          "comentario": "Excelente serviço!",
+          "reservaId": "11G91CC146fg2f846561b8c4"
+        },
+          {
+            "id": "66f6f1999f87c050901339e1",
+            "nota": 4,
+            "comentario": "Excelente serviço!",
+            "reservaId": "11G91CC146fg2f846561b8c4"
+          },
+          {
+            "id": "66f6f19a9f87c050901339e2",
+            "nota": 4,
+            "comentario": "Excelente serviço!",
+            "reservaId": "11G91CC146fg2f846561b8c4"
+          }]
+      ]
+    },
+    "page": {
+      "type": "object",
+      "default": {},
+      "title": "The page Schema",
+      "required": [
+        "size",
+        "number",
+        "totalElements",
+        "totalPages"
+      ],
+      "properties": {
+        "size": {
+          "type": "integer",
+          "default": 0,
+          "title": "The size Schema",
+          "examples": [
+            50
+          ]
+        },
+        "number": {
+          "type": "integer",
+          "default": 0,
+          "title": "The number Schema",
+          "examples": [
+            0
+          ]
+        },
+        "totalElements": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalElements Schema",
+          "examples": [
+            3
+          ]
+        },
+        "totalPages": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalPages Schema",
+          "examples": [
+            1
+          ]
+        }
+      },
+      "examples": [{
+        "size": 50,
+        "number": 0,
+        "totalElements": 3,
+        "totalPages": 1
+      }]
+    }
+  },
+  "examples": [{
+    "content": [{
+      "id": "66f6f1999f87c050901339e0",
+      "nota": 4,
+      "comentario": "Excelente serviço!",
+      "reservaId": "11G91CC146fg2f846561b8c4"
+    },
+      {
+        "id": "66f6f1999f87c050901339e1",
+        "nota": 4,
+        "comentario": "Excelente serviço!",
+        "reservaId": "11G91CC146fg2f846561b8c4"
+      },
+      {
+        "id": "66f6f19a9f87c050901339e2",
+        "nota": 4,
+        "comentario": "Excelente serviço!",
+        "reservaId": "11G91CC146fg2f846561b8c4"
+      }],
+    "page": {
+      "size": 50,
+      "number": 0,
+      "totalElements": 3,
+      "totalPages": 1
+    }
+  }]
+}

@@ -4,6 +4,8 @@ import br.com.grupo27.tech.challenge.reserva.domain.entity.Reserva;
 import br.com.grupo27.tech.challenge.reserva.infra.model.ReservaModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PagedModel;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,6 +25,13 @@ public class ReservaPresenterImpl implements  ReservaPresenter{
     public ReservaModel reservaEmReservaModel(Reserva reserva) {
 
         return mapper.map(reserva, ReservaModel.class);
+    }
+
+    @Override
+    public PagedModel<Reserva> pageReservaModelListEmPageReservaList(Page<ReservaModel> pageReservaModelList) {
+        var pageReservas = pageReservaModelList.map(this::reservaModelEmReserva);
+
+        return new PagedModel<>(pageReservas);
     }
 
 }
