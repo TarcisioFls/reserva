@@ -1,29 +1,27 @@
 package br.com.grupo27.tech.challenge.reserva.performance;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import br.com.grupo27.tech.challenge.reserva.util.GsonUtils;
+import br.com.grupo27.tech.challenge.reserva.util.PerformanceUtils;
+import com.google.gson.Gson;
 import io.gatling.javaapi.core.ActionBuilder;
+import io.gatling.javaapi.core.PopulationBuilder;
 import io.gatling.javaapi.core.ScenarioBuilder;
 import org.springframework.http.HttpStatus;
 
-import java.time.Duration;
-
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.getCriarClienteUnicoRequest;
-import static io.gatling.javaapi.core.CoreDsl.*;
+import static io.gatling.javaapi.core.CoreDsl.StringBody;
+import static io.gatling.javaapi.core.CoreDsl.jsonPath;
+import static io.gatling.javaapi.core.CoreDsl.scenario;
 import static io.gatling.javaapi.http.HttpDsl.http;
 import static io.gatling.javaapi.http.HttpDsl.status;
 
-public class ClientePerformanceSimulation extends PerformanceSimulation {
+public class ClientePerformanceSimulation implements GatlingSimulation {
+
+    private final Gson gson = GsonUtils.buildGson();
 
     ActionBuilder criarClienteRequest = http("request: criar cliente")
             .post("/clientes")
-            .body(StringBody(session -> {
-                try {
-                    return objectMapper.writeValueAsString(getCriarClienteUnicoRequest());
-                } catch (JsonProcessingException e) {
-                    System.err.println("Error processing JSON: " + e.getMessage());
-                    return "{}";
-                }
-            }))
+            .body(StringBody(session -> gson.toJson(getCriarClienteUnicoRequest())))
             .check(status().is(HttpStatus.OK.value()))
             .check(jsonPath("$.id").saveAs("clienteId"));
 
@@ -34,14 +32,9 @@ public class ClientePerformanceSimulation extends PerformanceSimulation {
     ActionBuilder atualizarClienteRequest = http("request: atualizar cliente")
             .put("/clientes/#{clienteId}")
             .body(StringBody(session -> {
-                try {
-                    var request = getCriarClienteUnicoRequest();
-                    request.setNome("Performance");
-                    return objectMapper.writeValueAsString(request);
-                } catch (JsonProcessingException e) {
-                    System.err.println("Error processing JSON: " + e.getMessage());
-                    return "{}";
-                }
+                var request = getCriarClienteUnicoRequest();
+                request.setNome("Performance");
+                return gson.toJson(request);
             }))
             .check(status().is(HttpStatus.OK.value()))
             .check(jsonPath("$.nome").is("Performance"));
@@ -50,67 +43,19 @@ public class ClientePerformanceSimulation extends PerformanceSimulation {
             .delete("/clientes/#{clienteId}")
             .check(status().is(HttpStatus.NO_CONTENT.value()));
 
-    ScenarioBuilder scenarioCriarCliente = scenario("criar cliente")
-            .exec(criarClienteRequest);
-
-    ScenarioBuilder scenarioBuscarCliente = scenario("buscar cliente")
+    ScenarioBuilder scenarioOperacoesCliente = scenario("operacoes cliente")
             .exec(criarClienteRequest)
-            .exec(buscarClienteRequest);
-
-    ScenarioBuilder scenarioAtualizarCliente = scenario("atualizar cliente")
-            .exec(criarClienteRequest)
-            .exec(atualizarClienteRequest);
-
-    ScenarioBuilder scenarioDeletarCliente = scenario("deletar cliente")
-            .exec(criarClienteRequest)
+            .exec(buscarClienteRequest)
+            .exec(atualizarClienteRequest)
             .exec(deletarClienteRequest);
 
-    {
-        setUp(
-                scenarioCriarCliente.injectOpen(
-                        rampUsersPerSec(1)
-                                .to(2)
-                                .during(Duration.ofSeconds(10)),
-                        constantUsersPerSec(2)
-                                .during(Duration.ofSeconds(20)),
-                        rampUsersPerSec(2)
-                                .to(1)
-                                .during(Duration.ofSeconds(10))
-                ),
-                scenarioBuscarCliente.injectOpen(
-                        rampUsersPerSec(1)
-                                .to(4)
-                                .during(Duration.ofSeconds(10)),
-                        constantUsersPerSec(4)
-                                .during(Duration.ofSeconds(20)),
-                        rampUsersPerSec(4)
-                                .to(1)
-                                .during(Duration.ofSeconds(10))
-                ),
-                scenarioAtualizarCliente.injectOpen(
-                        rampUsersPerSec(1)
-                                .to(4)
-                                .during(Duration.ofSeconds(10)),
-                        constantUsersPerSec(4)
-                                .during(Duration.ofSeconds(20)),
-                        rampUsersPerSec(4)
-                                .to(1)
-                                .during(Duration.ofSeconds(10))
-                ),
-                scenarioDeletarCliente.injectOpen(
-                        rampUsersPerSec(1)
-                                .to(4)
-                                .during(Duration.ofSeconds(10)),
-                        constantUsersPerSec(4)
-                                .during(Duration.ofSeconds(20)),
-                        rampUsersPerSec(4)
-                                .to(1)
-                                .during(Duration.ofSeconds(10))
-                )
-        )
-                .protocols(httpProtocol)
-                .assertions(
-                        global().responseTime().max().lt(50)
-                );
+    @Override
+    public PopulationBuilder getSimulationConfig() {
+        return scenarioOperacoesCliente.injectOpen(
+                PerformanceUtils.getRampUp(),
+                PerformanceUtils.getConstantRate(),
+                PerformanceUtils.getRampDown()
+        );
     }
+
 }

@@ -66,10 +66,23 @@ public interface CriarReservaDados {
                 "66e39d371994ae7f1b5e9ff0", "66e8e4563ea03c1d35ba65bb");
     }
 
+    static CriarReservaRequest getCriarReservaValidRequest() {
+        return new CriarReservaRequest(
+                getReservaValidDate(),
+                2,
+                "66e39d371994ae7f1b5e9ff0",
+                "66e8e4563ea03c1d35ba65bb"
+        );
+    }
+
     static ReservaResponse getReservaResponse() {
         var reservaComId = getReservaComId();
 
         return new ReservaResponse(reservaComId.getId(), reservaComId.getClienteId(), reservaComId.getRestauranteId(),
                 reservaComId.getQuantidadePessoas(), reservaComId.getDataHora(), reservaComId.getStatus());
+    }
+
+    static LocalDateTime getReservaValidDate() {
+        return LocalDateTime.now().plusDays(3).withHour(7).withMinute(0).withSecond(0);
     }
 }

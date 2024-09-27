@@ -1,7 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.bdd;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.cliente.response.ClienteResponse;
-import br.com.grupo27.tech.challenge.reserva.application.controllers.reserva.request.CriarReservaRequest;
 import br.com.grupo27.tech.challenge.reserva.application.controllers.reserva.response.ReservaResponse;
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
 import io.cucumber.java.pt.Dado;
@@ -11,10 +10,8 @@ import io.restassured.response.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import java.time.LocalDateTime;
-
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.getCriarClienteUnicoRequest;
-import static br.com.grupo27.tech.challenge.reserva.mock.reserva.CriarReservaDados.getCriarReservaRequest;
+import static br.com.grupo27.tech.challenge.reserva.mock.reserva.CriarReservaDados.getCriarReservaValidRequest;
 import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.CriarRestauranteDados.getCriarRestauranteUnicoRequest;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -63,27 +60,14 @@ public class ReservaStepDefinition {
 
     @Quando("efetuar requisicao de criacao de reserva")
     public void efetuarRequisicaoDeCriacaoDeReserva() {
-        var request = getCriarReservaRequest();
-        updateReservaRequest(request);
+        var request = getCriarReservaValidRequest();
+        request.setClienteId(clienteResponse.getId());
+        request.setRestauranteId(restauranteResponse.getId());
         response = given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(request)
                 .when()
                 .post(ENDPOINT_RESERVA);
-    }
-
-    private void updateReservaRequest(CriarReservaRequest request) {
-        request.setClienteId(clienteResponse.getId());
-        request.setRestauranteId(restauranteResponse.getId());
-        request.setDataHora(LocalDateTime.of(
-                LocalDateTime.now().getYear(),
-                LocalDateTime.now().getMonth().getValue(),
-                LocalDateTime.now().getDayOfMonth() + 1,
-                7,
-                0,
-                0
-                )
-        );
     }
 
     @Entao("a reserva e criada com sucesso")
