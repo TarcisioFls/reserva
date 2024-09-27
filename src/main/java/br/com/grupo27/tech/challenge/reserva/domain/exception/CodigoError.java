@@ -48,7 +48,9 @@ public enum CodigoError {
     AVALIACAO_INVALIDA("A nota da Avaliação só é permitido valores entre 0 e 5", BAD_REQUEST, FALSE),
     AVALIACAO_OBRIGATORIA("A nota para a Avaliação é obrigatória", BAD_REQUEST, FALSE),
 
-    ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE);
+    ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE),
+
+    RESERVA_NAO_ENCONTRADA("Reserva não encontrada", NOT_FOUND, FALSE);
 
     private final String mensagem;
     private final HttpStatus httpStatus;
