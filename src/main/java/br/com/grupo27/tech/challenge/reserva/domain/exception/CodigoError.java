@@ -33,6 +33,8 @@ public enum CodigoError {
     RESTAURANTE_NAO_ENCONTRADO("Restaurante não encontrado", NOT_FOUND, FALSE),
     HORARIO_FUNCIONAMENTO_INVALIDO("Horário de Funcionamento inválido", BAD_REQUEST, FALSE),
     HORA_ABERTURA_RESTAURANTE_MAIOR_HORA_FECHAMENTO("Hora de abertura do restaurante não pode ser maior que a hora de fechamento", BAD_REQUEST, FALSE),
+    RESERVA_NAO_ENCONTRADA("Reserva não encontrada", NOT_FOUND, FALSE),
+    STATUS_RESERVA_INVALIDO("Status da reserva inválido", BAD_REQUEST, FALSE),
 
     DATA_HORA_OBRIGATORIA("Data e hora da reserva são obrigatórios", BAD_REQUEST, FALSE),
     DATA_HORA_PASSADO("Não é possível reservar para o passado", BAD_REQUEST, FALSE),
@@ -48,9 +50,7 @@ public enum CodigoError {
     AVALIACAO_INVALIDA("A nota da Avaliação só é permitido valores entre 0 e 5", BAD_REQUEST, FALSE),
     AVALIACAO_OBRIGATORIA("A nota para a Avaliação é obrigatória", BAD_REQUEST, FALSE),
 
-    ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE),
-
-    RESERVA_NAO_ENCONTRADA("Reserva não encontrada", NOT_FOUND, FALSE);
+    ERRO_DESCONHECIDO("Erro desconhecido", INTERNAL_SERVER_ERROR, TRUE);
 
     private final String mensagem;
     private final HttpStatus httpStatus;

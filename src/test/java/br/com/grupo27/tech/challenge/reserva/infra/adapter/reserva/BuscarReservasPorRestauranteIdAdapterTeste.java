@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static br.com.grupo27.tech.challenge.reserva.infra.model.enums.ReservaStatus.RESERVADO;
 import static br.com.grupo27.tech.challenge.reserva.mock.reserva.CriarReservaDados.getReservaModelComId;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -31,7 +32,7 @@ class BuscarReservasPorRestauranteIdAdapterTeste extends TesteConfig {
     private ReservaPresenter reservaPresenter;
 
     @Test
-    void testeBuscarPorRestauranteIdEDataHora() {
+    void testeBuscarPorRestauranteIdEStatusReservadoEDataHora() {
 
         var restauranteId = "66c67aa035ed1f735450b7a2";
         var dataHora = LocalDateTime.of(2024,1,1,20,0);
@@ -39,16 +40,16 @@ class BuscarReservasPorRestauranteIdAdapterTeste extends TesteConfig {
         var fimDoDia = dataHora.toLocalDate().atTime(LocalDateTime.MAX.toLocalTime());
         var optionalReservaModelList = Optional.of(List.of(getReservaModelComId()));
 
-        when(reservaRepository.findByRestauranteIdAndDataHoraBetween(restauranteId, inicioDoDia, fimDoDia))
+        when(reservaRepository.findByRestauranteIdAndStatusAndDataHoraBetween(restauranteId, RESERVADO, inicioDoDia, fimDoDia))
                 .thenReturn(optionalReservaModelList);
         when(reservaPresenter.reservaModelEmReserva(any()))
                 .thenReturn(CriarReservaDados.getReservaComId());
 
         var resultado = buscarReservasPorRestauranteIdAdapter
-                .buscarPorRestauranteIdEDataHora(restauranteId, dataHora);
+                .buscarPorRestauranteIdEStatusReservadoEDataHora(restauranteId, RESERVADO, dataHora);
 
         verify(reservaRepository, Mockito.times(1))
-                .findByRestauranteIdAndDataHoraBetween(restauranteId, inicioDoDia, fimDoDia);
+                .findByRestauranteIdAndStatusAndDataHoraBetween(restauranteId, RESERVADO, inicioDoDia, fimDoDia);
         verify(reservaPresenter, Mockito.times(1)).reservaModelEmReserva(any());
 
         assertTrue(resultado.isPresent());

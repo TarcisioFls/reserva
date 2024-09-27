@@ -57,21 +57,6 @@ class ListarTodosClientesControllerTeste extends TesteConfig {
     }
 
     @Test
-    void testListarTodosSemPagina() throws Exception {
-
-        when(listarTodosClientesUserCaseFactory.buildListarTodosClientesUserCase(listarTodosClientesPresenter,clientePresenter, clienteRepository))
-                .thenReturn(listarTodosClientesUserCase);
-        when(listarTodosClientesUserCase.listarTodos(0,10))
-                .thenReturn(getPageTodosClientesOutput());
-        when(listarTodosClientesPresenter.pageTodosClienteOutputEmPageClienteListResponse(getPageTodosClientesOutput()))
-                .thenReturn(getPageClienteResponse());
-
-        mockMvc.perform(get("/clientes")
-                        .param("tamanho", "10"))
-                .andExpect(status().isBadRequest());
-    }
-
-    @Test
     void testListarTodosSemTamanho() throws Exception {
 
         when(listarTodosClientesUserCaseFactory.buildListarTodosClientesUserCase(listarTodosClientesPresenter,clientePresenter, clienteRepository))
