@@ -10,6 +10,7 @@ import br.com.grupo27.tech.challenge.reserva.infra.model.AvaliacaoModel;
 public interface CriarAvaliacaoDados {
 
     String ID_CRIAR_TESTE = "99f89bb046ed2f846561b8b3";
+    String ID_CRIAR_TESTE_ATUALZIADO = "11f89bb046ed2f846561b444";
     String ID_CRIAR_RESERVA_TESTE = "11G91CC146fg2f846561b8c4";
     Integer NOTA = 4;
     String COMENTARIO = "Excelente serviço!";
@@ -38,6 +39,10 @@ public interface CriarAvaliacaoDados {
         return criarAvaliacaoModel();
     }
 
+    static AvaliacaoModel getCriarAvaliacaoModelAtualizado() {
+        return criarAvaliacaoModelAtualizado();
+    }
+
     static AvaliacaoModel getCriarAvaliacaoModelSemId() {
         return criarAvaliacaoModelSemId();
     }
@@ -53,6 +58,10 @@ public interface CriarAvaliacaoDados {
 
     private static AvaliacaoModel criarAvaliacaoModel() {
         return new AvaliacaoModel(ID_CRIAR_TESTE, NOTA, COMENTARIO, ID_CRIAR_RESERVA_TESTE);
+    }
+
+    private static AvaliacaoModel criarAvaliacaoModelAtualizado() {
+        return new AvaliacaoModel(ID_CRIAR_TESTE_ATUALZIADO, NOTA, COMENTARIO, ID_CRIAR_RESERVA_TESTE);
     }
 
     private static AvaliacaoResponse criarResponse() {

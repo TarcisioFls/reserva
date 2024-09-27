@@ -16,7 +16,7 @@ public class BuscarReservaPorIdAdapter implements BuscarReservaPorIdGateway {
 
     @Override
     public Optional<Reserva> buscarPorId(String id) {
-
+        
         return reservaRepository.findById(id).map(reservaPresenter::reservaModelEmReserva);
     }
 }

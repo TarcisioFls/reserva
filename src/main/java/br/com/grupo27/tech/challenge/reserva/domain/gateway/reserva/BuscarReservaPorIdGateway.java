@@ -7,5 +7,4 @@ import java.util.Optional;
 public interface BuscarReservaPorIdGateway {
 
     Optional<Reserva> buscarPorId(String id);
-
 }
