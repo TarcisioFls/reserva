@@ -5,11 +5,9 @@ import br.com.grupo27.tech.challenge.reserva.domain.gateway.reserva.BuscarReserv
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.reserva.ReservaPresenter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.reserva.ReservaRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Component
 @RequiredArgsConstructor
 public class BuscarReservaPorIdAdapter implements BuscarReservaPorIdGateway {
 
@@ -18,6 +16,7 @@ public class BuscarReservaPorIdAdapter implements BuscarReservaPorIdGateway {
 
     @Override
     public Optional<Reserva> buscarPorId(String id) {
+        
         return reservaRepository.findById(id).map(reservaPresenter::reservaModelEmReserva);
     }
 }

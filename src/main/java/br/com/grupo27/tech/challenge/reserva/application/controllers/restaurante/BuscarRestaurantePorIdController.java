@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("restaurante")
+@RequestMapping("/restaurantes")
 public class BuscarRestaurantePorIdController {
 
     private final BuscarRestaurantePorIdUserCaseFactory buscarRestaurantePorIdUserCaseFactory;

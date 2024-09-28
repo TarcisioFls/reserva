@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "content",
+    "page"
+  ],
+  "properties": {
+    "content": {
+      "type": "array",
+      "default": [],
+      "title": "The content Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "id",
+          "clienteId",
+          "restauranteId",
+          "quantidadePessoas",
+          "dataHora",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "The id Schema",
+            "examples": [
+              "66f6ff0d9f87c05090134bc1",
+              "66f700689f87c05090134f84",
+              "66f700689f87c05090134f87"
+            ]
+          },
+          "clienteId": {
+            "type": "string",
+            "title": "The clienteId Schema",
+            "examples": [
+              "66f6ff0c9f87c05090134bbf",
+              "66f700689f87c05090134f82",
+              "66f700689f87c05090134f85"
+            ]
+          },
+          "restauranteId": {
+            "type": "string",
+            "title": "The restauranteId Schema",
+            "examples": [
+              "66f6ff0c9f87c05090134bc0",
+              "66f700689f87c05090134f83",
+              "66f700689f87c05090134f86"
+            ]
+          },
+          "quantidadePessoas": {
+            "type": "integer",
+            "title": "The quantidadePessoas Schema",
+            "examples": [
+              2
+            ]
+          },
+          "dataHora": {
+            "type": "string",
+            "title": "The dataHora Schema",
+            "examples": [
+              "2024-09-30T07:00:00.547",
+              "2024-09-30T07:00:00.265",
+              "2024-09-30T07:00:00.637"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "title": "The status Schema",
+            "examples": [
+              "RESERVADO"
+            ]
+          }
+        },
+        "examples": [{
+          "id": "66f6ff0d9f87c05090134bc1",
+          "clienteId": "66f6ff0c9f87c05090134bbf",
+          "restauranteId": "66f6ff0c9f87c05090134bc0",
+          "quantidadePessoas": 2,
+          "dataHora": "2024-09-30T07:00:00.547",
+          "status": "RESERVADO"
+        },
+          {
+            "id": "66f700689f87c05090134f84",
+            "clienteId": "66f700689f87c05090134f82",
+            "restauranteId": "66f700689f87c05090134f83",
+            "quantidadePessoas": 2,
+            "dataHora": "2024-09-30T07:00:00.265",
+            "status": "RESERVADO"
+          },
+          {
+            "id": "66f700689f87c05090134f87",
+            "clienteId": "66f700689f87c05090134f85",
+            "restauranteId": "66f700689f87c05090134f86",
+            "quantidadePessoas": 2,
+            "dataHora": "2024-09-30T07:00:00.637",
+            "status": "RESERVADO"
+          }]
+      },
+      "examples": [
+        [{
+          "id": "66f6ff0d9f87c05090134bc1",
+          "clienteId": "66f6ff0c9f87c05090134bbf",
+          "restauranteId": "66f6ff0c9f87c05090134bc0",
+          "quantidadePessoas": 2,
+          "dataHora": "2024-09-30T07:00:00.547",
+          "status": "RESERVADO"
+        },
+          {
+            "id": "66f700689f87c05090134f84",
+            "clienteId": "66f700689f87c05090134f82",
+            "restauranteId": "66f700689f87c05090134f83",
+            "quantidadePessoas": 2,
+            "dataHora": "2024-09-30T07:00:00.265",
+            "status": "RESERVADO"
+          },
+          {
+            "id": "66f700689f87c05090134f87",
+            "clienteId": "66f700689f87c05090134f85",
+            "restauranteId": "66f700689f87c05090134f86",
+            "quantidadePessoas": 2,
+            "dataHora": "2024-09-30T07:00:00.637",
+            "status": "RESERVADO"
+          }]
+      ]
+    },
+    "page": {
+      "type": "object",
+      "default": {},
+      "title": "The page Schema",
+      "required": [
+        "size",
+        "number",
+        "totalElements",
+        "totalPages"
+      ],
+      "properties": {
+        "size": {
+          "type": "integer",
+          "default": 0,
+          "title": "The size Schema",
+          "examples": [
+            50
+          ]
+        },
+        "number": {
+          "type": "integer",
+          "default": 0,
+          "title": "The number Schema",
+          "examples": [
+            0
+          ]
+        },
+        "totalElements": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalElements Schema",
+          "examples": [
+            3
+          ]
+        },
+        "totalPages": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalPages Schema",
+          "examples": [
+            1
+          ]
+        }
+      },
+      "examples": [{
+        "size": 50,
+        "number": 0,
+        "totalElements": 3,
+        "totalPages": 1
+      }]
+    }
+  },
+  "examples": [{
+    "content": [{
+      "id": "66f6ff0d9f87c05090134bc1",
+      "clienteId": "66f6ff0c9f87c05090134bbf",
+      "restauranteId": "66f6ff0c9f87c05090134bc0",
+      "quantidadePessoas": 2,
+      "dataHora": "2024-09-30T07:00:00.547",
+      "status": "RESERVADO"
+    },
+      {
+        "id": "66f700689f87c05090134f84",
+        "clienteId": "66f700689f87c05090134f82",
+        "restauranteId": "66f700689f87c05090134f83",
+        "quantidadePessoas": 2,
+        "dataHora": "2024-09-30T07:00:00.265",
+        "status": "RESERVADO"
+      },
+      {
+        "id": "66f700689f87c05090134f87",
+        "clienteId": "66f700689f87c05090134f85",
+        "restauranteId": "66f700689f87c05090134f86",
+        "quantidadePessoas": 2,
+        "dataHora": "2024-09-30T07:00:00.637",
+        "status": "RESERVADO"
+      }],
+    "page": {
+      "size": 50,
+      "number": 0,
+      "totalElements": 3,
+      "totalPages": 1
+    }
+  }]
+}

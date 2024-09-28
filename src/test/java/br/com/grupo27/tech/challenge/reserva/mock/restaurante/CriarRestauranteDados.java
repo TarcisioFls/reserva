@@ -16,10 +16,16 @@ import static br.com.grupo27.tech.challenge.reserva.domain.entity.TipoCozinha.JA
 
 public interface CriarRestauranteDados {
 
+    static CriarRestauranteRequest getCriarRestauranteUnicoRequest() {
+        var dados = getRestaurante();
+        return new CriarRestauranteRequest(dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietarioId());
+    }
+
     static CriarRestauranteRequest getCriarRestauranteRequest() {
         var dados = getRestaurante();
-        return new CriarRestauranteRequest(dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura().toString(),
-                dados.getHoraFechamento().toString(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietarioId());
+        return new CriarRestauranteRequest(dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), dados.getProprietarioId());
     }
 
     static CriarRestauranteInput getCriarRestauranteInput() {

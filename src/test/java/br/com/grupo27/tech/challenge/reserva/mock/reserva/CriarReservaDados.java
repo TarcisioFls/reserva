@@ -66,6 +66,15 @@ public interface CriarReservaDados {
                 "66e39d371994ae7f1b5e9ff0", "66e8e4563ea03c1d35ba65bb");
     }
 
+    static CriarReservaRequest getCriarReservaValidRequest() {
+        return new CriarReservaRequest(
+                getReservaValidDate(),
+                2,
+                "66e39d371994ae7f1b5e9ff0",
+                "66e8e4563ea03c1d35ba65bb"
+        );
+    }
+
     static ReservaResponse getReservaResponse() {
         var reservaComId = getReservaComId();
 
@@ -83,5 +92,9 @@ public interface CriarReservaDados {
 
         return new Reserva("99f89bb046ed2f846561b8b3", LocalDateTime.of(2024,1,1,20,0), 2,
                 "99f89bb046ed2f846561b8b3", "66e39d371994ae7f1b5e9ff0", RESERVADO);
+    }
+    
+    static LocalDateTime getReservaValidDate() {
+        return LocalDateTime.now().plusDays(3).withHour(7).withMinute(0).withSecond(0);
     }
 }

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "id",
+    "nota",
+    "comentario",
+    "reservaId"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "default": "",
+      "title": "The id Schema",
+      "examples": [
+        "id"
+      ]
+    },
+    "nota": {
+      "type": "integer",
+      "default": 0,
+      "title": "The nota Schema",
+      "examples": [
+        1
+      ]
+    },
+    "comentario": {
+      "type": "string",
+      "default": "",
+      "title": "The comentario Schema",
+      "examples": [
+        "comentario"
+      ]
+    },
+    "reservaId": {
+      "type": "string",
+      "default": "",
+      "title": "The reservaId Schema",
+      "examples": [
+        "reservaId"
+      ]
+    }
+  },
+  "examples": [{
+    "id": "id",
+    "nota": 1,
+    "comentario": "comentario",
+    "reservaId": "reservaId"
+  }]
+}

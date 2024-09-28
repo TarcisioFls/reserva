@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "content",
+    "page"
+  ],
+  "properties": {
+    "content": {
+      "type": "array",
+      "default": [],
+      "title": "The content Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "id",
+          "nome",
+          "email",
+          "senha",
+          "telefone",
+          "cpf",
+          "dataNascimento"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "The id Schema",
+            "examples": [
+              "66f4e4cc10b4c5142bd3b229",
+              "66f568111469d621f9ea60a2",
+              "66f568121469d621f9ea60a3",
+              "66f568131469d621f9ea60a4"
+            ]
+          },
+          "nome": {
+            "type": "string",
+            "title": "The nome Schema",
+            "examples": [
+              "João Rodrigo",
+              "nome bdd"
+            ]
+          },
+          "email": {
+            "type": "string",
+            "title": "The email Schema",
+            "examples": [
+              "joao@teste.com",
+              "clientfdaa30a1-ec3f-41fe-b74d-90162eb70172@example.com",
+              "clientb5b3e59c-d8a2-499b-b2ab-6fa1fa37f685@example.com",
+              "client05bcec49-1f7c-41bb-bbc7-863514e16c62@example.com"
+            ]
+          },
+          "senha": {
+            "type": "string",
+            "title": "The senha Schema",
+            "examples": [
+              "123456"
+            ]
+          },
+          "telefone": {
+            "type": "string",
+            "title": "The telefone Schema",
+            "examples": [
+              "11999999999"
+            ]
+          },
+          "cpf": {
+            "type": "string",
+            "title": "The cpf Schema",
+            "examples": [
+              "896.271.990-87",
+              "61268110701",
+              "87156068300",
+              "29313788284"
+            ]
+          },
+          "dataNascimento": {
+            "type": "string",
+            "title": "The dataNascimento Schema",
+            "examples": [
+              "1985-05-05"
+            ]
+          }
+        },
+        "examples": [{
+          "id": "66f4e4cc10b4c5142bd3b229",
+          "nome": "João Rodrigo",
+          "email": "joao@teste.com",
+          "senha": "123456",
+          "telefone": "11999999999",
+          "cpf": "896.271.990-87",
+          "dataNascimento": "1985-05-05"
+        },
+          {
+            "id": "66f568111469d621f9ea60a2",
+            "nome": "João Rodrigo",
+            "email": "clientfdaa30a1-ec3f-41fe-b74d-90162eb70172@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "61268110701",
+            "dataNascimento": "1985-05-05"
+          },
+          {
+            "id": "66f568121469d621f9ea60a3",
+            "nome": "nome bdd",
+            "email": "clientb5b3e59c-d8a2-499b-b2ab-6fa1fa37f685@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "87156068300",
+            "dataNascimento": "1985-05-05"
+          },
+          {
+            "id": "66f568131469d621f9ea60a4",
+            "nome": "João Rodrigo",
+            "email": "client05bcec49-1f7c-41bb-bbc7-863514e16c62@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "29313788284",
+            "dataNascimento": "1985-05-05"
+          }]
+      },
+      "examples": [
+        [{
+          "id": "66f4e4cc10b4c5142bd3b229",
+          "nome": "João Rodrigo",
+          "email": "joao@teste.com",
+          "senha": "123456",
+          "telefone": "11999999999",
+          "cpf": "896.271.990-87",
+          "dataNascimento": "1985-05-05"
+        },
+          {
+            "id": "66f568111469d621f9ea60a2",
+            "nome": "João Rodrigo",
+            "email": "clientfdaa30a1-ec3f-41fe-b74d-90162eb70172@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "61268110701",
+            "dataNascimento": "1985-05-05"
+          },
+          {
+            "id": "66f568121469d621f9ea60a3",
+            "nome": "nome bdd",
+            "email": "clientb5b3e59c-d8a2-499b-b2ab-6fa1fa37f685@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "87156068300",
+            "dataNascimento": "1985-05-05"
+          },
+          {
+            "id": "66f568131469d621f9ea60a4",
+            "nome": "João Rodrigo",
+            "email": "client05bcec49-1f7c-41bb-bbc7-863514e16c62@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "29313788284",
+            "dataNascimento": "1985-05-05"
+          }]
+      ]
+    },
+    "page": {
+      "type": "object",
+      "default": {},
+      "title": "The page Schema",
+      "required": [
+        "size",
+        "number",
+        "totalElements",
+        "totalPages"
+      ],
+      "properties": {
+        "size": {
+          "type": "integer",
+          "default": 0,
+          "title": "The size Schema",
+          "examples": [
+            50
+          ]
+        },
+        "number": {
+          "type": "integer",
+          "default": 0,
+          "title": "The number Schema",
+          "examples": [
+            0
+          ]
+        },
+        "totalElements": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalElements Schema",
+          "examples": [
+            4
+          ]
+        },
+        "totalPages": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalPages Schema",
+          "examples": [
+            1
+          ]
+        }
+      },
+      "examples": [{
+        "size": 50,
+        "number": 0,
+        "totalElements": 4,
+        "totalPages": 1
+      }]
+    }
+  },
+  "examples": [{
+    "content": [{
+      "id": "66f4e4cc10b4c5142bd3b229",
+      "nome": "João Rodrigo",
+      "email": "joao@teste.com",
+      "senha": "123456",
+      "telefone": "11999999999",
+      "cpf": "896.271.990-87",
+      "dataNascimento": "1985-05-05"
+    },
+      {
+        "id": "66f568111469d621f9ea60a2",
+        "nome": "João Rodrigo",
+        "email": "clientfdaa30a1-ec3f-41fe-b74d-90162eb70172@example.com",
+        "senha": "123456",
+        "telefone": "11999999999",
+        "cpf": "61268110701",
+        "dataNascimento": "1985-05-05"
+      },
+      {
+        "id": "66f568121469d621f9ea60a3",
+        "nome": "nome bdd",
+        "email": "clientb5b3e59c-d8a2-499b-b2ab-6fa1fa37f685@example.com",
+        "senha": "123456",
+        "telefone": "11999999999",
+        "cpf": "87156068300",
+        "dataNascimento": "1985-05-05"
+      },
+      {
+        "id": "66f568131469d621f9ea60a4",
+        "nome": "João Rodrigo",
+        "email": "client05bcec49-1f7c-41bb-bbc7-863514e16c62@example.com",
+        "senha": "123456",
+        "telefone": "11999999999",
+        "cpf": "29313788284",
+        "dataNascimento": "1985-05-05"
+      }],
+    "page": {
+      "size": 50,
+      "number": 0,
+      "totalElements": 4,
+      "totalPages": 1
+    }
+  }]
+}
