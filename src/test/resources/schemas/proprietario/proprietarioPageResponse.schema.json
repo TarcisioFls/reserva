@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "content",
+    "page"
+  ],
+  "properties": {
+    "content": {
+      "type": "array",
+      "default": [],
+      "title": "The content Schema",
+      "items": {
+        "type": "object",
+        "title": "A Schema",
+        "required": [
+          "nome",
+          "email",
+          "senha",
+          "telefone",
+          "cpf",
+          "id"
+        ],
+        "properties": {
+          "nome": {
+            "type": "string",
+            "title": "The nome Schema",
+            "examples": [
+              "João",
+              "nome bdd"
+            ]
+          },
+          "email": {
+            "type": "string",
+            "title": "The email Schema",
+            "examples": [
+              "client60563b37-96b3-4a2f-bacf-0c5fa6374978@example.com",
+              "client24337b4e-d34e-498a-8d08-163994101fa2@example.com",
+              "clienteca830ab-c434-4fe9-b93a-0b64969614d8@example.com"
+            ]
+          },
+          "senha": {
+            "type": "string",
+            "title": "The senha Schema",
+            "examples": [
+              "123456"
+            ]
+          },
+          "telefone": {
+            "type": "string",
+            "title": "The telefone Schema",
+            "examples": [
+              "11999999999"
+            ]
+          },
+          "cpf": {
+            "type": "string",
+            "title": "The cpf Schema",
+            "examples": [
+              "11999999999"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "title": "The id Schema",
+            "examples": [
+              "66f570b01469d621f9ea60b6",
+              "66f570b01469d621f9ea60b7",
+              "66f570b11469d621f9ea60b8"
+            ]
+          }
+        },
+        "examples": [{
+          "nome": "João",
+          "email": "client60563b37-96b3-4a2f-bacf-0c5fa6374978@example.com",
+          "senha": "123456",
+          "telefone": "11999999999",
+          "cpf": "11999999999",
+          "id": "66f570b01469d621f9ea60b6"
+        },
+          {
+            "nome": "nome bdd",
+            "email": "client24337b4e-d34e-498a-8d08-163994101fa2@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "11999999999",
+            "id": "66f570b01469d621f9ea60b7"
+          },
+          {
+            "nome": "João",
+            "email": "clienteca830ab-c434-4fe9-b93a-0b64969614d8@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "11999999999",
+            "id": "66f570b11469d621f9ea60b8"
+          }]
+      },
+      "examples": [
+        [{
+          "nome": "João",
+          "email": "client60563b37-96b3-4a2f-bacf-0c5fa6374978@example.com",
+          "senha": "123456",
+          "telefone": "11999999999",
+          "cpf": "11999999999",
+          "id": "66f570b01469d621f9ea60b6"
+        },
+          {
+            "nome": "nome bdd",
+            "email": "client24337b4e-d34e-498a-8d08-163994101fa2@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "11999999999",
+            "id": "66f570b01469d621f9ea60b7"
+          },
+          {
+            "nome": "João",
+            "email": "clienteca830ab-c434-4fe9-b93a-0b64969614d8@example.com",
+            "senha": "123456",
+            "telefone": "11999999999",
+            "cpf": "11999999999",
+            "id": "66f570b11469d621f9ea60b8"
+          }]
+      ]
+    },
+    "page": {
+      "type": "object",
+      "default": {},
+      "title": "The page Schema",
+      "required": [
+        "size",
+        "number",
+        "totalElements",
+        "totalPages"
+      ],
+      "properties": {
+        "size": {
+          "type": "integer",
+          "default": 0,
+          "title": "The size Schema",
+          "examples": [
+            50
+          ]
+        },
+        "number": {
+          "type": "integer",
+          "default": 0,
+          "title": "The number Schema",
+          "examples": [
+            0
+          ]
+        },
+        "totalElements": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalElements Schema",
+          "examples": [
+            3
+          ]
+        },
+        "totalPages": {
+          "type": "integer",
+          "default": 0,
+          "title": "The totalPages Schema",
+          "examples": [
+            1
+          ]
+        }
+      },
+      "examples": [{
+        "size": 50,
+        "number": 0,
+        "totalElements": 3,
+        "totalPages": 1
+      }]
+    }
+  },
+  "examples": [{
+    "content": [{
+      "nome": "João",
+      "email": "client60563b37-96b3-4a2f-bacf-0c5fa6374978@example.com",
+      "senha": "123456",
+      "telefone": "11999999999",
+      "cpf": "11999999999",
+      "id": "66f570b01469d621f9ea60b6"
+    },
+      {
+        "nome": "nome bdd",
+        "email": "client24337b4e-d34e-498a-8d08-163994101fa2@example.com",
+        "senha": "123456",
+        "telefone": "11999999999",
+        "cpf": "11999999999",
+        "id": "66f570b01469d621f9ea60b7"
+      },
+      {
+        "nome": "João",
+        "email": "clienteca830ab-c434-4fe9-b93a-0b64969614d8@example.com",
+        "senha": "123456",
+        "telefone": "11999999999",
+        "cpf": "11999999999",
+        "id": "66f570b11469d621f9ea60b8"
+      }],
+    "page": {
+      "size": 50,
+      "number": 0,
+      "totalElements": 3,
+      "totalPages": 1
+    }
+  }]
+}

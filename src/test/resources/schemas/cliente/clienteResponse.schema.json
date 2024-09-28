@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "id",
+    "nome",
+    "email",
+    "senha",
+    "telefone",
+    "cpf",
+    "dataNascimento"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "default": "",
+      "title": "The id Schema",
+      "examples": [
+        "id"
+      ]
+    },
+    "nome": {
+      "type": "string",
+      "default": "",
+      "title": "The nome Schema",
+      "examples": [
+        "nome"
+      ]
+    },
+    "email": {
+      "type": "string",
+      "default": "",
+      "title": "The email Schema",
+      "examples": [
+        "email"
+      ]
+    },
+    "senha": {
+      "type": "string",
+      "default": "",
+      "title": "The senha Schema",
+      "examples": [
+        "senha"
+      ]
+    },
+    "telefone": {
+      "type": "string",
+      "default": "",
+      "title": "The telefone Schema",
+      "examples": [
+        "telefone"
+      ]
+    },
+    "cpf": {
+      "type": "string",
+      "default": "",
+      "title": "The cpf Schema",
+      "examples": [
+        "cpf"
+      ]
+    },
+    "dataNascimento": {
+      "type": "string",
+      "format": "date",
+      "default": "",
+      "title": "The dataNascimento Schema",
+      "examples": [
+        "2019-04-03"
+      ]
+    }
+  },
+  "examples": [{
+    "id": "id",
+    "nome": "nome",
+    "email": "email",
+    "senha": "senha",
+    "telefone": "telefone",
+    "cpf": "cpf",
+    "dataNascimento": "2019-04-03"
+  }]
+}

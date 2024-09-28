@@ -26,7 +26,7 @@ public class BuscarRestaurantesController {
 
     private final BuscarRestaurantesPresenter buscarRestaurantesPresenter;
 
-    @GetMapping("/{buscar}")
+    @GetMapping("/buscar/{buscar}")
     public ResponseEntity<PagedModel<RestauranteResponse>> buscarRestaurantes(@PathVariable String buscar) {
 
         var buscarRestauranteUserCase = buscarRestaurantesUserCaseFactory
