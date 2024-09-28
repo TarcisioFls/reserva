@@ -82,6 +82,18 @@ public interface CriarReservaDados {
                 reservaComId.getQuantidadePessoas(), reservaComId.getDataHora(), reservaComId.getStatus());
     }
 
+    static ReservaModel getReservaModelAvaliacao() {
+
+        return new ReservaModel("66c67aa035ed1f735450b7a2", LocalDateTime.of(2024,1,1,20,0), 2,
+                "99f89bb046ed2f846561b8b3", "66e39d371994ae7f1b5e9ff0", RESERVADO);
+    }
+
+    static Reserva getReservaAvaliacao() {
+
+        return new Reserva("99f89bb046ed2f846561b8b3", LocalDateTime.of(2024,1,1,20,0), 2,
+                "99f89bb046ed2f846561b8b3", "66e39d371994ae7f1b5e9ff0", RESERVADO);
+    }
+    
     static LocalDateTime getReservaValidDate() {
         return LocalDateTime.now().plusDays(3).withHour(7).withMinute(0).withSecond(0);
     }

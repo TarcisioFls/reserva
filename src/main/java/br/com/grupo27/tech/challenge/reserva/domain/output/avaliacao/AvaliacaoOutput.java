@@ -7,10 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class AvaliacaoOutput {
+public class AvaliacaoOutput {
 
     private String id;
     private Integer nota;
     private String comentario;
     private String reservaId;
+
+
 }

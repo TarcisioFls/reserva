@@ -54,6 +54,14 @@ public interface CriarRestauranteDados {
                 dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), proprietarioModel.getId());
     }
 
+    static RestauranteModel getRestauranteModelParaTesteDeListarAvaliacaoPorRestaurante() {
+        var dados = getRestaurante();
+        var proprietarioModel = new ProprietarioModel();
+        proprietarioModel.setId("44c67aa035ed1f735450b72a");
+        return new RestauranteModel(dados.getId(), dados.getNome(), dados.getDescricao(), dados.getLocalizacao(), dados.getHoraAbertura(),
+                dados.getHoraFechamento(), dados.getCapacidade(), dados.getTipoCozinhaList(), proprietarioModel.getId());
+    }
+
     static RestauranteModel getRestauranteModelSemId() {
         var dados = getRestaurante();
         var proprietarioModel = new ProprietarioModel();
