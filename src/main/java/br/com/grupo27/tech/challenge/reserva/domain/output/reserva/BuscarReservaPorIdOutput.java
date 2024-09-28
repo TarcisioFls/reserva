@@ -1,21 +1,16 @@
 package br.com.grupo27.tech.challenge.reserva.domain.output.reserva;
 
 import br.com.grupo27.tech.challenge.reserva.infra.model.enums.ReservaStatus;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class BuscarReservaPorIdOutput {
+@EqualsAndHashCode(callSuper = true)
+public class BuscarReservaPorIdOutput extends ReservaOutput {
 
-    private String id;
-    private String clienteId;
-    private String restauranteId;
-    private int quantidadePessoas;
-    private LocalDateTime dataHora;
-    private ReservaStatus status;
+    public BuscarReservaPorIdOutput(String id, LocalDateTime dataHora, int quantidadePessoas, String restauranteId, String clienteId, ReservaStatus status) {
+        super(id, dataHora, quantidadePessoas, restauranteId, clienteId, status);
+    }
 }

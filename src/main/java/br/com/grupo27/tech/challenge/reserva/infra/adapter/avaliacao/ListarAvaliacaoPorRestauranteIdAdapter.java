@@ -10,15 +10,9 @@ import br.com.grupo27.tech.challenge.reserva.infra.repository.avaliacao.Avaliaca
 import br.com.grupo27.tech.challenge.reserva.infra.repository.reserva.ReservaRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PagedModel;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Optional;
-
-import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.AVALIACAO_NAO_ENCONTRADA;
 
 @Component
 @RequiredArgsConstructor
