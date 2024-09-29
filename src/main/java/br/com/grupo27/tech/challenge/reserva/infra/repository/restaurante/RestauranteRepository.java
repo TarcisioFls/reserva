@@ -14,4 +14,5 @@ public interface RestauranteRepository extends MongoRepository<RestauranteModel,
     Optional<Page<RestauranteModel>> findByNomeOrLocalizacaoOrTipoCozinhaList(String seach, PageRequest pageRequest);
 
 
+    void deleteByProprietarioId(String proprietarioId);
 }

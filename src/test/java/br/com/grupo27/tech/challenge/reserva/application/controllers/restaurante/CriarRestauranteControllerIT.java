@@ -2,7 +2,9 @@ package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurant
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.request.CriarRestauranteRequest;
 import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
+import br.com.grupo27.tech.challenge.reserva.infra.repository.proprietario.ProprietarioRepository;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
+import br.com.grupo27.tech.challenge.reserva.mock.proprietario.ProprietarioDados;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,10 +44,17 @@ public class CriarRestauranteControllerIT {
     @Autowired
     private RestauranteRepository restauranteRepository;
 
+    @Autowired
+    private ProprietarioRepository proprietarioRepository;
+
     @BeforeEach
     void setUp() {
         restauranteRepository.deleteAll();
         request = getCriarRestauranteRequest();
+        var proprietario = ProprietarioDados.getProprietarioModel();
+        proprietario.setId("44c67aa035ed1f735450b72a");
+        proprietarioRepository.save(proprietario);
+
     }
 
     @AfterEach

@@ -112,7 +112,7 @@ public class AtualizarClienteControllerIT {
             atualizarClienteController.atualizar("66c67aa035ed1f735450b7a2", request);
         });
 
-        assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
+        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
         assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 
@@ -125,7 +125,7 @@ public class AtualizarClienteControllerIT {
             atualizarClienteController.atualizar("66c67aa035ed1f735450b7a2", request);
         });
 
-        assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
+        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
         assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 

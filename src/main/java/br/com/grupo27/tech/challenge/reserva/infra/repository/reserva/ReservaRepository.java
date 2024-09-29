@@ -24,4 +24,6 @@ public interface ReservaRepository extends MongoRepository<ReservaModel, String>
     Page<ReservaModel> findByRestauranteId(String restauranteId, PageRequest pageRequest);
 
     Page<ReservaModel> findByClienteId(String clienteId, PageRequest pageRequest);
+
+    void deleteByRestauranteId(String restauranteId);
 }

@@ -90,7 +90,7 @@ public class CriarClienteControllerIT {
                 ExceptionAdvice.class, () -> criarClienteController.criarCliente(request)
         );
 
-        assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
+        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
         assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 
@@ -101,7 +101,7 @@ public class CriarClienteControllerIT {
                 ExceptionAdvice.class, () -> criarClienteController.criarCliente(request)
         );
 
-        assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
+        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
         assertEquals(400, exceptionAdvice.getCodigoError().getCodigo());
     }
 

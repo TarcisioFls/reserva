@@ -11,4 +11,6 @@ public interface AtualizarProprietarioGateway {
     Optional<Proprietario> buscarPorId(String id);
 
     Optional<Proprietario> buscarPorEmail(String email);
+
+    Optional<Proprietario> buscarPorCpf(String cpf);
 }

@@ -30,7 +30,7 @@ class BuscarProprietarioPorIdPresenterImplTest extends TesteConfig {
                 () -> Assertions.assertEquals("joao@teste.com", buscarProprietarioPorIdOutput.getEmail()),
                 () -> Assertions.assertEquals("123456", buscarProprietarioPorIdOutput.getSenha()),
                 () -> Assertions.assertEquals("11999999999", buscarProprietarioPorIdOutput.getTelefone()),
-                () -> Assertions.assertEquals("11999999999", buscarProprietarioPorIdOutput.getCpf())
+                () -> Assertions.assertEquals("03394829070", buscarProprietarioPorIdOutput.getCpf())
         );
     }
 
@@ -45,7 +45,7 @@ class BuscarProprietarioPorIdPresenterImplTest extends TesteConfig {
                 () -> Assertions.assertEquals("joao@teste.com", buscarProprietarioPorIdOutput.getEmail()),
                 () -> Assertions.assertEquals("123456", buscarProprietarioPorIdOutput.getSenha()),
                 () -> Assertions.assertEquals("11999999999", buscarProprietarioPorIdOutput.getTelefone()),
-                () -> Assertions.assertEquals("11999999999", buscarProprietarioPorIdOutput.getCpf())
+                () -> Assertions.assertEquals("03394829070", buscarProprietarioPorIdOutput.getCpf())
         );
 
     }

@@ -2,6 +2,7 @@ package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurant
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.request.CriarRestauranteRequest;
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
+import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.BuscarProprietarioPorIdGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.CriarRestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.application.factory.restaurante.CriarRestauranteUserCaseFactory;
@@ -22,12 +23,13 @@ public class CriarRestauranteController {
     private final CriarRestaurantePresenter criarRestaurantePresenter;
     private final RestaurantePresenter restaurantePresenter;
     private final RestauranteRepository restauranteRepository;
+    private final BuscarProprietarioPorIdGateway buscarProprietarioPorIdGateway;
 
 
     @PostMapping
     public ResponseEntity<RestauranteResponse> criar(@RequestBody CriarRestauranteRequest request) {
 
-        var criarRestauranteUserCase = criarRestauranteUserCaseFactory.buildCriarRestauranteUserCase(criarRestaurantePresenter, restaurantePresenter, restauranteRepository);
+        var criarRestauranteUserCase = criarRestauranteUserCaseFactory.buildCriarRestauranteUserCase(criarRestaurantePresenter, restaurantePresenter, restauranteRepository, buscarProprietarioPorIdGateway);
         var criarRestauranteInput = criarRestaurantePresenter.criarRestauranteParaCriarRestauranteInput(request);
         var criarRestauranteOutput = criarRestauranteUserCase.criar(criarRestauranteInput);
         var restauranteResponse = criarRestaurantePresenter.criarRestauranteOutputParaRestauranteResponse(criarRestauranteOutput);

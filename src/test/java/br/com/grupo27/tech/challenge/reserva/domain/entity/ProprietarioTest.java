@@ -30,7 +30,7 @@ class ProprietarioTest extends TesteConfig {
                 () -> assertEquals("joao@teste.com", proprietario.getEmail()),
                 () -> assertEquals("123456", proprietario.getSenha()),
                 () -> assertEquals("11999999999", proprietario.getTelefone()),
-                () -> assertEquals("11999999999", proprietario.getCpf())
+                () -> assertEquals("03394829070", proprietario.getCpf())
         );
     }
 

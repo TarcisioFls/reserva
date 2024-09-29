@@ -34,7 +34,7 @@ class AtualizarProprietarioPresenterImplTest extends TesteConfig {
                 () -> assertEquals("maria@teste.com", resultado.getEmail()),
                 () -> assertEquals("abcd", resultado.getSenha()),
                 () -> assertEquals("11988888888", resultado.getTelefone()),
-                () -> assertEquals("11999999999", resultado.getCpf())
+                () -> assertEquals("69448419082", resultado.getCpf())
         );
     }
 
@@ -52,7 +52,7 @@ class AtualizarProprietarioPresenterImplTest extends TesteConfig {
                 () -> assertEquals("maria@teste.com", resultado.getEmail()),
                 () -> assertEquals("abcd", resultado.getSenha()),
                 () -> assertEquals("11988888888", resultado.getTelefone()),
-                () -> assertEquals("11999999999", resultado.getCpf())
+                () -> assertEquals("69448419082", resultado.getCpf())
         );
     }
 
@@ -68,7 +68,7 @@ class AtualizarProprietarioPresenterImplTest extends TesteConfig {
                 () -> assertEquals("joao@teste.com", resultado.getEmail()),
                 () -> assertEquals("123456", resultado.getSenha()),
                 () -> assertEquals("11999999999", resultado.getTelefone()),
-                () -> assertEquals("11999999999", resultado.getCpf())
+                () -> assertEquals("03394829070", resultado.getCpf())
         );
     }
 
@@ -84,7 +84,7 @@ class AtualizarProprietarioPresenterImplTest extends TesteConfig {
                 () -> assertEquals("maria@teste.com", resultado.getEmail()),
                 () -> assertEquals("abcd", resultado.getSenha()),
                 () -> assertEquals("11988888888", resultado.getTelefone()),
-                () -> assertEquals("11999999999", resultado.getCpf())
+                () -> assertEquals("69448419082", resultado.getCpf())
         );
     }
 

@@ -1,7 +1,8 @@
 package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante;
 
-import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.application.factory.restaurante.DeletaRestaurantePorIdUserCaseFactory;
+import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
+import br.com.grupo27.tech.challenge.reserva.infra.repository.reserva.ReservaRepository;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,12 +24,14 @@ public class DeletaRestaurantePorIdController {
 
     private final RestaurantePresenter restaurantePresenter;
 
+    private final ReservaRepository reservaRepository;
+
     @DeleteMapping("/{id}")
     @ResponseStatus(NO_CONTENT)
     public void deletePorId(@PathVariable String id) {
 
          var deletaRestaurantePorIdUserCase = deletaRestaurantePorIdUserCaseFactory.buildDeletaRestaurantePorIdUserCase(
-                 restauranteRepository
+                 restauranteRepository, restaurantePresenter, reservaRepository
          );
 
          deletaRestaurantePorIdUserCase.deletaPorId(id);

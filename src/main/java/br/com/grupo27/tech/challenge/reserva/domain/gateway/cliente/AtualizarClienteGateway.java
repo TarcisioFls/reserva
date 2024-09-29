@@ -11,4 +11,6 @@ public interface AtualizarClienteGateway {
     Optional<Cliente> buscarPorId(String id);
 
     Optional<Cliente> buscarPorEmail(String email);
+
+    Optional<Cliente> buscarPorCpf(String cpf);
 }

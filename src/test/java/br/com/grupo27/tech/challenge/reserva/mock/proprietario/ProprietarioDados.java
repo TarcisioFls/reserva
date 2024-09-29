@@ -13,43 +13,43 @@ import java.util.List;
 public interface ProprietarioDados {
 
     static ProprietarioResponse getProprietarioResponse() {
-        return new ProprietarioResponse("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new ProprietarioResponse("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static ProprietarioResponse getProprietarioResponseAtualizado() {
-        return new ProprietarioResponse("77b11aa035ed1f735459a1p0", "Maria", ",maria@teste.com", "abcd", "11988888888", "11999999999");
+        return new ProprietarioResponse("77b11aa035ed1f735459a1p0", "Maria", ",maria@teste.com", "abcd", "11988888888", "69448419082");
     }
 
     static ProprietarioModel getProprietarioModel() {
-        return new ProprietarioModel("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new ProprietarioModel("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static ProprietarioModel getProprietarioModelSemId() {
-        return new ProprietarioModel(null, "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new ProprietarioModel(null, "João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static Proprietario getProprietario() {
-        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static Proprietario getProprietarioAtualizado() {
-        return new Proprietario("77b11aa035ed1f735459a1p0", "Maria", ",maria@teste.com", "abcd", "11988888888", "11999999999");
+        return new Proprietario("77b11aa035ed1f735459a1p0", "Maria", ",maria@teste.com", "abcd", "11988888888", "69448419082");
     }
 
     static Proprietario getProprietarioSemId() {
-        return new Proprietario(null, "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new Proprietario(null, "João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static Proprietario getProprietarioComNomeNull() {
-        return new Proprietario("66c67aa035ed1f735450b7a2", null, "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new Proprietario("66c67aa035ed1f735450b7a2", null, "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static Proprietario getProprietarioComNomeEmBranco() {
-        return new Proprietario("66c67aa035ed1f735450b7a2", "", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new Proprietario("66c67aa035ed1f735450b7a2", "", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static Proprietario getProprietarioComEmailNull() {
-        return new Proprietario("66c67aa035ed1f735450b7a2", "João", null, "123456", "11999999999", "11999999999");
+        return new Proprietario("66c67aa035ed1f735450b7a2", "João", null, "123456", "11999999999", "03394829070");
     }
 
     static Proprietario getProprietarioComEmailEmBranco() {
@@ -57,19 +57,19 @@ public interface ProprietarioDados {
     }
 
     static Proprietario getProprietarioComSenhadNull() {
-        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", null, "11999999999", "11999999999");
+        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", null, "11999999999", "03394829070");
     }
 
     static Proprietario getProprietarioComSenhaEmBranco() {
-        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "", "11999999999", "11999999999");
+        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "", "11999999999", "03394829070");
     }
 
     static Proprietario getProprietarioComTelefoneNull() {
-        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", null, "11999999999");
+        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", null, "03394829070");
     }
 
     static Proprietario getProprietarioComTelefoneEmBranco() {
-        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "", "11999999999");
+        return new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "", "03394829070");
     }
 
     static Proprietario getProprietarioComCpfNull() {
@@ -81,21 +81,21 @@ public interface ProprietarioDados {
     }
 
     static ProprietarioModel getProprietarioModelAtualizado() {
-        return new ProprietarioModel("77b11aa035ed1f735459a1p0", "Maria", ",maria@teste.com", "abcd", "11988888888", "11999999999");
+        return new ProprietarioModel("77b11aa035ed1f735459a1p0", "Maria", ",maria@teste.com", "abcd", "11988888888", "69448419082");
     }
 
     static Page<ProprietarioModel> getPageProprietarioModel() {
 
-        var proprietarioModelJoao = new ProprietarioModel("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
-        var proprietarioModelMaria = new ProprietarioModel("77b11aa035ed1f735459a1p0", "Maria", "maria@teste.com", "abcd", "11988888888", "11999999999");
+        var proprietarioModelJoao = new ProprietarioModel("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "03394829070");
+        var proprietarioModelMaria = new ProprietarioModel("77b11aa035ed1f735459a1p0", "Maria", "maria@teste.com", "abcd", "11988888888", "69448419082");
         var proprietarioModelList = List.of(proprietarioModelJoao, proprietarioModelMaria);
 
         return new PageImpl<>(proprietarioModelList);
     }
 
     static PagedModel<Proprietario> getPageProprietario() {
-        var proprietarioJoao = new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
-        var proprietarioMaria = new Proprietario("77b11aa035ed1f735459a1p0", "Maria", "maria@teste.com", "abcd", "11988888888", "11999999999");
+        var proprietarioJoao = new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "03394829070");
+        var proprietarioMaria = new Proprietario("77b11aa035ed1f735459a1p0", "Maria", "maria@teste.com", "abcd", "11988888888", "69448419082");
         var proprietarioList = List.of(proprietarioJoao, proprietarioMaria);
         var pageRequest = PageRequest.of(0, 10);
         var pageProprietario = new PageImpl<>(proprietarioList, pageRequest, proprietarioList.size());

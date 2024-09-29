@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.ClienteDados.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ClienteTest extends TesteConfig {
+class ClienteTest extends TesteConfig {
 
 
     @Test
@@ -31,7 +31,7 @@ public class ClienteTest extends TesteConfig {
         var exceptionAdvice = assertThrows(
                 ExceptionAdvice.class, () -> getClienteComNomeNull()
         );
-        assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
+        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
     }
     @Test
     void testaClienteComNomeEmBranco(){
@@ -39,7 +39,7 @@ public class ClienteTest extends TesteConfig {
                 ExceptionAdvice.class, () -> getClienteComNomeEmBranco()
         );
 
-        assertEquals("O campo nome deve ser preenchido com o nome e sobrenome", exceptionAdvice.getMessage());
+        assertEquals("Nome é obrigatório", exceptionAdvice.getMessage());
     }
 
 
@@ -122,6 +122,6 @@ public class ClienteTest extends TesteConfig {
                 ExceptionAdvice.class, () -> getClienteComCpfInvalido()
         );
 
-        assertEquals("CPF é obrigatório", exceptionAdvice.getMessage());
+        assertEquals("CPF inválido", exceptionAdvice.getMessage());
     }
 }
