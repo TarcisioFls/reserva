@@ -32,7 +32,7 @@ import static org.mockito.Mockito.doReturn;
 
 @SpringBootTest
 @Testcontainers
-class AtualizarReservaControllerTesteIT {
+class AtualizarReservaControllerIT {
 
     @Container
     public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:6.0.9");

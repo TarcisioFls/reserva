@@ -18,7 +18,7 @@ import static org.junit.Assert.assertFalse;
 
 @SpringBootTest
 @Testcontainers
-public class DeletaReservaPorIdControllerTesteIT {
+public class DeletaReservaPorIdControllerIT {
 
     @Container
     public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:6.0.9");

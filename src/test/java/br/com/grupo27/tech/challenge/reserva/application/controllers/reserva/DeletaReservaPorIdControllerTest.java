@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(DeletaReservaPorIdController.class)
-public class DeletaReservaPorIdControllerTest extends TesteConfig {
+class DeletaReservaPorIdControllerTest extends TesteConfig {
 
     @Autowired
     private MockMvc mockMvc;

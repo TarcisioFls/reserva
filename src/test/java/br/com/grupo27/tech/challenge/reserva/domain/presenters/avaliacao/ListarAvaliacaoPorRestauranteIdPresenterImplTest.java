@@ -8,13 +8,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.avaliacao.ListarAvaliacaoPorRestauranteIdDados.*;
+import static br.com.grupo27.tech.challenge.reserva.mock.avaliacao.ListarAvaliacaoPorRestauranteIdDados.getPageAvaliacao;
+import static br.com.grupo27.tech.challenge.reserva.mock.avaliacao.ListarAvaliacaoPorRestauranteIdDados.getPageListarAvaliacaoPorRestauranteIdOutput;
+import static br.com.grupo27.tech.challenge.reserva.mock.avaliacao.ListarAvaliacaoPorRestauranteIdDados.getPageListarAvaliacaoPorRestauranteResponse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-public class ListarAvaliacaoPorRestauranteIdPresenterImplTest extends TesteConfig {
+class ListarAvaliacaoPorRestauranteIdPresenterImplTest extends TesteConfig {
 
     @Spy
     private ModelMapper mapper;

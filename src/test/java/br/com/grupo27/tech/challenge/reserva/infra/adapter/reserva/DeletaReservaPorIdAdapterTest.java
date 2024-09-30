@@ -9,7 +9,7 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-public class DeletaReservaPorIdAdapterTest extends TesteConfig {
+class DeletaReservaPorIdAdapterTest extends TesteConfig {
 
     @InjectMocks
     private DeletaReservaPorIdAdapter deletaReservaPorIdAdapter;

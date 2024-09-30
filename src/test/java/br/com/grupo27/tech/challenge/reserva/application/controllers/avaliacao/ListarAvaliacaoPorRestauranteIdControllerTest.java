@@ -14,15 +14,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static br.com.grupo27.tech.challenge.reserva.mock.avaliacao.ListarAvaliacaoPorRestauranteIdDados.*;
 import static br.com.grupo27.tech.challenge.reserva.mock.avaliacao.ListarAvaliacaoPorRestauranteIdDados.getPageListarAvaliacaoPorRestauranteIdOutput;
-import static java.util.Objects.requireNonNull;
+import static br.com.grupo27.tech.challenge.reserva.mock.avaliacao.ListarAvaliacaoPorRestauranteIdDados.getPageListarAvaliacaoPorRestauranteResponse;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ListarAvaliacaoPorRestauranteIdController.class)
-public class ListarAvaliacaoPorRestauranteIdControllerTest extends TesteConfig {
+class ListarAvaliacaoPorRestauranteIdControllerTest extends TesteConfig {
 
 
     @Autowired

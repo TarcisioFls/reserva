@@ -270,6 +270,8 @@
                         <param>br.com.grupo27.tech.challenge.reserva.infra.*</param>
                     </targetClasses>
                     <excludedClasses>
+                        <param>br.com.grupo27.tech.challenge.reserva.application.beans.*</param>
+                        <param>br.com.grupo27.tech.challenge.reserva.application.factory.*</param>
                         <param>br.com.grupo27.tech.challenge.reserva.application.*Request</param>
                         <param>br.com.grupo27.tech.challenge.reserva.application.*Response</param>
                         <param>br.com.grupo27.tech.challenge.reserva.domain.exception.*</param>

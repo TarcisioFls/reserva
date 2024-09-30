@@ -18,7 +18,7 @@ import static br.com.grupo27.tech.challenge.reserva.mock.reserva.CriarReservaDad
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class ListarAvaliacaoPorRestauranteIdAdapterTest extends TesteConfig {
+class ListarAvaliacaoPorRestauranteIdAdapterTest extends TesteConfig {
 
     @InjectMocks
     private ListarAvaliacaoPorRestauranteIdAdapter listarAvaliacaoPorRestauranteIdAdapter;
@@ -43,7 +43,6 @@ public class ListarAvaliacaoPorRestauranteIdAdapterTest extends TesteConfig {
         var pagina = 0;
         var tamanho = 10;
         var restaurandeId ="66c67aa035ed1f735450b7a2";
-        var reservaId = "66eb8772fd532626f457c740";
         var pageAvaliacaoModel = getPageAvaliacaoModel();
         var optionalReservaModelList = Optional.of(getReservaModelAvaliacao());
         var pageAvaliacao = getPageAvaliacao();

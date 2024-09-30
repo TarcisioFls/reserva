@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Testcontainers
-public class ListarAvaliacaoPorRestauranteIdControllerTesteIT {
+public class ListarAvaliacaoPorRestauranteIdControllerIT {
 
     @Container
     public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:6.0.9");
