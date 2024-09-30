@@ -8,6 +8,9 @@ package:
 unit-test:
 	mvn test
 
+mutation-test:
+	mvn test -DpitestSkip=false
+
 integration-test:
 	mvn test -P integration-test
 

@@ -280,6 +280,9 @@
                         <param>br.com.grupo27.tech.challenge.reserva.infra.model.*</param>
                         <param>br.com.grupo27.tech.challenge.reserva.infra.repository.*</param>
                     </excludedClasses>
+                    <excludedTestClasses>
+                        <param>br.com.grupo27.tech.challenge.reserva.integration.*</param>
+                    </excludedTestClasses>
                     <targetTests>
                         <param>br.com.grupo27.tech.challenge.reserva.*</param>
                     </targetTests>
