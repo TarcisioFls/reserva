@@ -11,4 +11,5 @@ public interface ProprietarioRepository extends MongoRepository<ProprietarioMode
 
     Optional<ProprietarioModel> findByEmail(String email);
 
+    Optional<ProprietarioModel> findByCpf(String cpf);
 }

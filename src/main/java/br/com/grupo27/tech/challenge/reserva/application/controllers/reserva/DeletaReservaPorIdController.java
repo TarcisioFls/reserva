@@ -22,8 +22,8 @@ public class DeletaReservaPorIdController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletaPorId(@PathVariable String id){
 
-        var deletaReservaPorIdUsesCase = deletaReservaPorIdUserCaseFactory.buildDeletaReservaPorIdUserCase(reservaPresenter,
-                reservaRepository);
+        var deletaReservaPorIdUsesCase = deletaReservaPorIdUserCaseFactory
+                .buildDeletaReservaPorIdUserCase(reservaPresenter, reservaRepository);
 
         deletaReservaPorIdUsesCase.deletaPorId(id);
     }

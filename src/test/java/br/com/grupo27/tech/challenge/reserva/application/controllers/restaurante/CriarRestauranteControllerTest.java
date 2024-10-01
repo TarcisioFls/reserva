@@ -2,6 +2,7 @@ package br.com.grupo27.tech.challenge.reserva.application.controllers.restaurant
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.request.CriarRestauranteRequest;
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.response.RestauranteResponse;
+import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.BuscarProprietarioPorIdGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.input.restaurante.CriarRestauranteInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.CriarRestauranteOutput;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.CriarRestaurantePresenter;
@@ -32,6 +33,9 @@ class CriarRestauranteControllerTest {
     private AutoCloseable closeable;
 
     @Mock
+    private BuscarProprietarioPorIdGateway buscarProprietarioPorIdGateway;
+
+    @Mock
     private CriarRestaurantePresenter criarRestaurantePresenter;
 
     @Mock
@@ -46,12 +50,13 @@ class CriarRestauranteControllerTest {
     @InjectMocks
     private CriarRestauranteController criarRestauranteController;
 
+
     @BeforeEach
     void setUp() {
       closeable = MockitoAnnotations.openMocks(this);
         criarRestauranteUserCase = new CriarRestauranteUserCase(
                 new CriarRestauranteAdapter(restauranteRepository, restaurantePresenter),
-                criarRestaurantePresenter
+                criarRestaurantePresenter, buscarProprietarioPorIdGateway
         );
     }
 

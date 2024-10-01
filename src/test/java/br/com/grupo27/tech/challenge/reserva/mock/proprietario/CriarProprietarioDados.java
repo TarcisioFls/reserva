@@ -11,16 +11,16 @@ import java.util.UUID;
 public interface CriarProprietarioDados {
 
     static ProprietarioResponse getProprieatarioResponse() {
-        return new ProprietarioResponse("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new ProprietarioResponse("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static CriarProprietarioRequest getCriarProprietarioUnicoRequest() {
         var uniqueEmail = "client" + UUID.randomUUID() + "@example.com";
-        return new CriarProprietarioRequest("João", uniqueEmail, "123456", "11999999999", "11999999999");
+        return new CriarProprietarioRequest("João", uniqueEmail, "123456", "11999999999", "03394829070");
     }
 
     static CriarProprietarioRequest getCriarProprietarioRequest() {
-        return new CriarProprietarioRequest("João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new CriarProprietarioRequest("João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static CriarProprietarioRequest getCriarProprietarioRequestComNomeEmBranco() {
@@ -84,11 +84,11 @@ public interface CriarProprietarioDados {
     }
 
     static CriarProprietarioOutput getCriarProprietarioOutput() {
-        return new CriarProprietarioOutput("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new CriarProprietarioOutput("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static Proprietario getProprietario() {
-        return new Proprietario(null, "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new Proprietario(null, "João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
     static Proprietario getProprietarioDepoisDeSalvar() {
@@ -98,7 +98,7 @@ public interface CriarProprietarioDados {
     }
 
     static CriarProprietarioInput getCriarProprietarioInput() {
-        return new CriarProprietarioInput(null, "João", "joao@teste.com", "123456", "11999999999", "11999999999");
+        return new CriarProprietarioInput(null, "João", "joao@teste.com", "123456", "11999999999", "03394829070");
     }
 
 }

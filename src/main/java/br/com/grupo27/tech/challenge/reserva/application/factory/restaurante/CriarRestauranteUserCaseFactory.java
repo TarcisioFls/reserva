@@ -1,5 +1,6 @@
 package br.com.grupo27.tech.challenge.reserva.application.factory.restaurante;
 
+import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.BuscarProprietarioPorIdGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.CriarRestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.CriarRestauranteUserCase;
@@ -14,10 +15,11 @@ public class CriarRestauranteUserCaseFactory {
 
     public CriarRestauranteUserCase buildCriarRestauranteUserCase(CriarRestaurantePresenter criarRestaurantePresenter,
                                                                   RestaurantePresenter restaurantePresenter,
-                                                                  RestauranteRepository restauranteRepository) {
+                                                                  RestauranteRepository restauranteRepository,
+                                                                  BuscarProprietarioPorIdGateway buscarProprietarioPorIdGateway) {
         return new CriarRestauranteUserCase(
                 buildCriarRestauranteGateway(restaurantePresenter, restauranteRepository),
-                criarRestaurantePresenter
+                criarRestaurantePresenter, buscarProprietarioPorIdGateway
         );
     }
 

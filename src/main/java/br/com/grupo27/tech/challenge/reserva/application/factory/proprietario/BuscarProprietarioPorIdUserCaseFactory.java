@@ -21,7 +21,7 @@ public class BuscarProprietarioPorIdUserCaseFactory {
         );
     }
 
-    public BuscarProprietarioPorIdAdapter buildBuscarProprietarioPorIdGateway(ProprietarioPresenter proprietarioPresenter,
+    private BuscarProprietarioPorIdAdapter buildBuscarProprietarioPorIdGateway(ProprietarioPresenter proprietarioPresenter,
                                                                                ProprietarioRepository proprietarioRepository) {
         return new BuscarProprietarioPorIdAdapter(proprietarioRepository, proprietarioPresenter);
     }

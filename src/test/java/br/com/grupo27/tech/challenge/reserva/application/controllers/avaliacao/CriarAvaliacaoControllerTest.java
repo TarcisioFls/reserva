@@ -4,8 +4,10 @@ import br.com.grupo27.tech.challenge.reserva.application.factory.avaliacao.Criar
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.avaliacao.AvaliacaoPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.avaliacao.CriarAvaliacaoPresenter;
+import br.com.grupo27.tech.challenge.reserva.domain.presenters.reserva.ReservaPresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.avaliacao.CriarAvaliacaoUserCase;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.avaliacao.AvaliacaoRepository;
+import br.com.grupo27.tech.challenge.reserva.infra.repository.reserva.ReservaRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -16,6 +18,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class CriarAvaliacaoControllerTest extends TesteConfig {
+
+    @Mock
+    private ReservaRepository reservaRepository;
+
+    @Mock
+    private ReservaPresenter reservaPresenter;
 
     @Mock
     private CriarAvaliacaoUserCaseFactory criarAvaliacaoUserCaseFactory;
@@ -43,8 +51,8 @@ class CriarAvaliacaoControllerTest extends TesteConfig {
         var output = getCriarAvaliacaoOutput();
         var response = getAvaliacaoResponse();
 
-        when(criarAvaliacaoUserCaseFactory.buildCriarAvaliacaoUserCase(criarAvaliacaoPresenter, avaliacaoPresenter, avaliacaoRepository))
-                .thenReturn(criarAvaliacaoUserCase);
+        when(criarAvaliacaoUserCaseFactory.buildCriarAvaliacaoUserCase(criarAvaliacaoPresenter, avaliacaoPresenter, avaliacaoRepository,
+                reservaRepository, reservaPresenter)).thenReturn(criarAvaliacaoUserCase);
         when(criarAvaliacaoPresenter.criarAvaliacaoRequestEmCriarAvaliacaoInput(request)).thenReturn(input);
         when(criarAvaliacaoUserCase.criar(input)).thenReturn(output);
         when(criarAvaliacaoPresenter.criarAvaliacaoOutputEmAvaliacaoResponse(output)).thenReturn(response);
@@ -54,7 +62,8 @@ class CriarAvaliacaoControllerTest extends TesteConfig {
         assertEquals(HttpStatus.OK, resultado.getStatusCode());
         assertEquals(response, resultado.getBody());
 
-        verify(criarAvaliacaoUserCaseFactory, times(1)).buildCriarAvaliacaoUserCase(criarAvaliacaoPresenter, avaliacaoPresenter, avaliacaoRepository);
+        verify(criarAvaliacaoUserCaseFactory, times(1)).buildCriarAvaliacaoUserCase(
+                criarAvaliacaoPresenter, avaliacaoPresenter, avaliacaoRepository, reservaRepository, reservaPresenter);
         verify(criarAvaliacaoPresenter, times(1)).criarAvaliacaoRequestEmCriarAvaliacaoInput(request);
         verify(criarAvaliacaoUserCase, times(1)).criar(input);
         verify(criarAvaliacaoPresenter, times(1)).criarAvaliacaoOutputEmAvaliacaoResponse(output);

@@ -9,4 +9,6 @@ public interface CriarProprietarioGateway {
     Proprietario criar(Proprietario proprietario);
 
     Optional<Proprietario> buscaPorEmail(String email);
+
+    Optional<Proprietario> buscaPorCpf(String cpf);
 }

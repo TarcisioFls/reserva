@@ -15,6 +15,7 @@ public enum CodigoError {
     PROPRIETARIO_NAO_ENCONTRADO("Proprietário não encontrado", NOT_FOUND, FALSE),
     TELEFONE_OBRIGATORIO("Telefone é obrigatório", BAD_REQUEST, FALSE),
     CPF_OBRIGATORIO("CPF é obrigatório", BAD_REQUEST, FALSE),
+    CPF_INVALIDO("CPF inválido", BAD_REQUEST, FALSE),
     CPF_JA_CADASTRADO("CPF já cadastrado", BAD_REQUEST, FALSE),
     SENHA_OBRIGATORIO("Senha é obrigatória", BAD_REQUEST, FALSE),
     NOME_OBRIGATORIO("Nome é obrigatório", BAD_REQUEST, FALSE),

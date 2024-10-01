@@ -35,8 +35,8 @@ public interface ListarTodosProprietariosDados {
 
     static PagedModel<Proprietario> getPageProprietario() {
 
-        var proprietarioJoao = new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "11999999999");
-        var proprietarioMaria = new Proprietario("77b11aa035ed1f735459a1p0", "Maria", ",maria@teste.com", "abcd", "11988888888", "11999999999");
+        var proprietarioJoao = new Proprietario("66c67aa035ed1f735450b7a2", "João", "joao@teste.com", "123456", "11999999999", "03394829070");
+        var proprietarioMaria = new Proprietario("77b11aa035ed1f735459a1p0", "Maria", ",maria@teste.com", "abcd", "11988888888", "69448419082");
         var pageRequest = PageRequest.of(0, 10);
         var proprietarios = List.of(proprietarioJoao, proprietarioMaria);
 

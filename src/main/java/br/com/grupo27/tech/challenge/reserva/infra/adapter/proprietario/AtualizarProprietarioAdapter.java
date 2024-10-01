@@ -33,4 +33,9 @@ public class AtualizarProprietarioAdapter implements AtualizarProprietarioGatewa
 
         return proprietarioRepository.findByEmail(email).map(proprietarioPresenter::proprietarioModelEmProprietario);
     }
+
+    @Override
+    public Optional<Proprietario> buscarPorCpf(String cpf) {
+        return proprietarioRepository.findByCpf(cpf).map(proprietarioPresenter::proprietarioModelEmProprietario);
+    }
 }

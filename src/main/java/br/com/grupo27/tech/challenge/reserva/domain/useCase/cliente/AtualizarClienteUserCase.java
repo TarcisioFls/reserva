@@ -27,6 +27,12 @@ public class AtualizarClienteUserCase {
             }
         });
 
+        atualizarClienteGateway.buscarPorCpf(atualizarClienteInput.getCpf()).ifPresent(result ->{
+            if(!result.getId().equals(atualizarClienteInput.getId())){
+                throw  new ExceptionAdvice(CodigoError.CPF_JA_CADASTRADO);
+            }
+        });
+
         cliente = atualizarClientePresenter.atualizarClienteInputEmCliente(cliente, atualizarClienteInput);
         cliente = atualizarClienteGateway.atualizarCliente(cliente);
 

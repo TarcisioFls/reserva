@@ -69,7 +69,7 @@ class ListarAvaliacaoPorRestauranteIdControllerTest extends TesteConfig {
         when(listarAvaliacaoPorRestauranteIdPresenter.pageAvaliacaoResponseEmListarAvaliacaoPorRestauranteIdOutput(getPageListarAvaliacaoPorRestauranteIdOutput()))
                 .thenReturn(getPageListarAvaliacaoPorRestauranteResponse());
 
-        mockMvc.perform(get("/avaliacoes/restauranteid/{id}", restauranteId)
+        mockMvc.perform(get("/avaliacoes/restaurante/{restauranteId}", restauranteId)
                         .param("pagina", "0")
                         .param("tamanho", "10"))
                 .andExpect(status().isOk());
@@ -93,7 +93,7 @@ class ListarAvaliacaoPorRestauranteIdControllerTest extends TesteConfig {
         when(listarAvaliacaoPorRestauranteIdPresenter.pageAvaliacaoResponseEmListarAvaliacaoPorRestauranteIdOutput(getPageListarAvaliacaoPorRestauranteIdOutput()))
                 .thenReturn(getPageListarAvaliacaoPorRestauranteResponse());
 
-        mockMvc.perform(get("/avaliacoes/restauranteid/{id}", restauranteId)
+        mockMvc.perform(get("/avaliacoes/restaurante/{restauranteId}", restauranteId)
                         .param("pagina", "0"))
                 .andExpect(status().isOk());
     }

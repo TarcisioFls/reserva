@@ -7,15 +7,15 @@ import br.com.grupo27.tech.challenge.reserva.domain.output.proprietario.Atualiza
 public interface AtualizarProprietarioDados {
 
     static AtualizarProprietarioRequest getAtualizarProprietarioRequest() {
-        return new AtualizarProprietarioRequest("Maria", "maria@teste.com", "abcd", "11988888888", "11999999999");
+        return new AtualizarProprietarioRequest("Maria", "maria@teste.com", "abcd", "11988888888", "69448419082");
     }
 
     static AtualizarProprietarioInput getAtualizarProprietarioInput() {
-        return new AtualizarProprietarioInput(null, "Maria", "maria@teste.com", "abcd", "11988888888", "11999999999");
+        return new AtualizarProprietarioInput(null, "Maria", "maria@teste.com", "abcd", "11988888888", "69448419082");
     }
 
     static AtualizarProprietarioOutput getAtualizarProprietarioOutput() {
-        return new AtualizarProprietarioOutput("77b11aa035ed1f735459a1p0", "Maria", "maria@teste.com", "abcd", "11988888888", "11999999999");
+        return new AtualizarProprietarioOutput("77b11aa035ed1f735459a1p0", "Maria", "maria@teste.com", "abcd", "11988888888", "69448419082");
     }
 
 }

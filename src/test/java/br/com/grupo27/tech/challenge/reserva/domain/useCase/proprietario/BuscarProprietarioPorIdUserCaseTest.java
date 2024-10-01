@@ -48,7 +48,7 @@ class BuscarProprietarioPorIdUserCaseTest extends TesteConfig {
                 () -> assertEquals("João", resultado.getNome()),
                 () -> assertEquals("joao@teste.com", resultado.getEmail()),
                 () -> assertEquals("123456", resultado.getSenha()),
-                () -> assertEquals("11999999999", resultado.getCpf()),
+                () -> assertEquals("03394829070", resultado.getCpf()),
                 () -> assertEquals("11999999999", resultado.getTelefone())
         );
 

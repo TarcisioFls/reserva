@@ -1,6 +1,7 @@
 package br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante;
 
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Restaurante;
+import br.com.grupo27.tech.challenge.reserva.domain.gateway.proprietario.BuscarProprietarioPorIdGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.gateway.restaurante.CriarRestauranteGateway;
 import br.com.grupo27.tech.challenge.reserva.domain.input.restaurante.CriarRestauranteInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.restaurante.CriarRestauranteOutput;
@@ -12,10 +13,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Optional;
+
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getProprietario;
 import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.CriarRestauranteDados.getCriarRestauranteInput;
 import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.CriarRestauranteDados.getRestaurante;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 class CriarRestauranteUserCaseTest {
 
@@ -23,6 +29,9 @@ class CriarRestauranteUserCaseTest {
     private CriarRestauranteInput input;
     private Restaurante restaurante;
     private CriarRestauranteOutput expecitativaOutput;
+
+    @Mock
+    private BuscarProprietarioPorIdGateway buscarProprietarioPorIdGateway;
 
     @Mock
     private CriarRestauranteGateway criarRestauranteGateway;
@@ -48,6 +57,7 @@ class CriarRestauranteUserCaseTest {
     @Test
     void testCriar() {
         when(criarRestaurantePresenter.criarRestauranteInputParaRestaurante(input)).thenReturn(restaurante);
+        when(buscarProprietarioPorIdGateway.buscarPorId(input.getProprietarioId())).thenReturn(Optional.of(getProprietario()));
         when(criarRestauranteGateway.criar(restaurante)).thenReturn(restaurante);
         when(criarRestaurantePresenter.restauranteParaCriarRestauranteOutput(restaurante)).thenReturn(expecitativaOutput);
 
@@ -55,6 +65,7 @@ class CriarRestauranteUserCaseTest {
 
         assertEquals(expecitativaOutput, output);
         verify(criarRestaurantePresenter, times(1)).criarRestauranteInputParaRestaurante(input);
+        verify(buscarProprietarioPorIdGateway, times(1)).buscarPorId(input.getProprietarioId());
         verify(criarRestauranteGateway, times(1)).criar(restaurante);
         verify(criarRestaurantePresenter, times(1)).restauranteParaCriarRestauranteOutput(restaurante);
     }

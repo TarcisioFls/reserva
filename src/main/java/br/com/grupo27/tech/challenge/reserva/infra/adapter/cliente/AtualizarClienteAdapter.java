@@ -5,7 +5,6 @@ import br.com.grupo27.tech.challenge.reserva.domain.gateway.cliente.AtualizarCli
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.cliente.ClientePresenter;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.cliente.ClienteRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
@@ -31,5 +30,10 @@ public class AtualizarClienteAdapter implements AtualizarClienteGateway {
     @Override
     public Optional<Cliente> buscarPorEmail(String email) {
         return clienteRepository.findByEmail(email).map(clientePresenter::clienteModelEmCliente);
+    }
+
+    @Override
+    public Optional<Cliente> buscarPorCpf(String cpf) {
+        return clienteRepository.findByCpf(cpf).map(clientePresenter::clienteModelEmCliente);
     }
 }

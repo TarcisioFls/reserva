@@ -23,7 +23,8 @@ public class ProprietarioPresenterImpl implements ProprietarioPresenter {
     @Override
     public Proprietario proprietarioModelEmProprietario(ProprietarioModel proprietarioModel) {
 
-        return mapper.map(proprietarioModel, Proprietario.class);
+        return new Proprietario(proprietarioModel.getId(), proprietarioModel.getNome(), proprietarioModel.getEmail(),
+                proprietarioModel.getSenha(), proprietarioModel.getTelefone(), proprietarioModel.getCpf());
     }
 
     @Override
