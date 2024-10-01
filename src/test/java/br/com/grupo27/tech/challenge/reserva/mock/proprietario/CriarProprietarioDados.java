@@ -5,6 +5,7 @@ import br.com.grupo27.tech.challenge.reserva.application.controllers.proprietari
 import br.com.grupo27.tech.challenge.reserva.domain.entity.Proprietario;
 import br.com.grupo27.tech.challenge.reserva.domain.input.proprietario.CriarProprietarioInput;
 import br.com.grupo27.tech.challenge.reserva.domain.output.proprietario.CriarProprietarioOutput;
+import br.com.grupo27.tech.challenge.reserva.util.CpfUtility;
 
 import java.util.UUID;
 
@@ -16,7 +17,8 @@ public interface CriarProprietarioDados {
 
     static CriarProprietarioRequest getCriarProprietarioUnicoRequest() {
         var uniqueEmail = "client" + UUID.randomUUID() + "@example.com";
-        return new CriarProprietarioRequest("João", uniqueEmail, "123456", "11999999999", "03394829070");
+        var uniqueCpf = CpfUtility.generateCpf();
+        return new CriarProprietarioRequest("João", uniqueEmail, "123456", "11999999999", uniqueCpf);
     }
 
     static CriarProprietarioRequest getCriarProprietarioRequest() {

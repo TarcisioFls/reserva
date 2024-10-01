@@ -8,6 +8,7 @@ import io.gatling.javaapi.core.PopulationBuilder;
 import io.gatling.javaapi.core.ScenarioBuilder;
 import org.springframework.http.HttpStatus;
 
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getCriarProprietarioUnicoRequest;
 import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.CriarRestauranteDados.getCriarRestauranteUnicoRequest;
 import static io.gatling.javaapi.core.CoreDsl.StringBody;
 import static io.gatling.javaapi.core.CoreDsl.jsonPath;
@@ -19,9 +20,19 @@ public class RestaurantePerformanceSimulation implements GatlingSimulation {
 
     private final Gson gson = GsonUtils.buildGson();
 
+    ActionBuilder criarProprietarioRequest = http("request: criar proprietario")
+            .post("/proprietarios")
+            .body(StringBody(session -> gson.toJson(getCriarProprietarioUnicoRequest())))
+            .check(status().is(HttpStatus.OK.value()))
+            .check(jsonPath("$.id").saveAs("proprietarioId"));
+
     ActionBuilder criarRestauranteRequest = http("request: criar restaurante")
             .post("/restaurantes")
-            .body(StringBody(session -> gson.toJson(getCriarRestauranteUnicoRequest())))
+            .body(StringBody(session -> {
+                var request = getCriarRestauranteUnicoRequest();
+                request.setProprietarioId(session.get("proprietarioId"));
+                return gson.toJson(request);
+            }))
             .check(status().is(HttpStatus.OK.value()))
             .check(jsonPath("$.id").saveAs("restauranteId"));
 
@@ -44,6 +55,7 @@ public class RestaurantePerformanceSimulation implements GatlingSimulation {
             .check(status().is(HttpStatus.NO_CONTENT.value()));
 
     ScenarioBuilder scenarioOperacoesRestaurante = scenario("operacoes restaurante")
+            .exec(criarProprietarioRequest)
             .exec(criarRestauranteRequest)
             .exec(buscarRestauranteRequest)
             .exec(atualizarRestauranteRequest)

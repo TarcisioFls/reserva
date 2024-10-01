@@ -25,7 +25,7 @@ public class ListarTodosRestauranteController {
 
 
     @GetMapping
-    ResponseEntity<PagedModel<RestauranteResponse>> listarTodos(@RequestParam(defaultValue = "0") int pagina
+    public ResponseEntity<PagedModel<RestauranteResponse>> listarTodos(@RequestParam(defaultValue = "0") int pagina
             , @RequestParam(defaultValue = "50") int tamanho) {
 
         var listarTodosRestauranteUserCase = listarTodosRestauranteUserCaseFactory

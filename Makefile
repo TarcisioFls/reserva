@@ -8,6 +8,9 @@ package:
 unit-test:
 	mvn test
 
+mutation-test:
+	mvn test -DpitestSkip=false
+
 integration-test:
 	mvn test -P integration-test
 
@@ -29,4 +32,4 @@ docker-stop:
 start-app:
 	mvn spring-boot:start
 
-test: unit-test integration-test docker-start system-test docker-stop
+test: unit-test docker-start integration-test system-test docker-stop
