@@ -29,4 +29,10 @@ public class CriarProprietarioAdapter implements CriarProprietarioGateway {
         return proprietarioRepository.findByEmail(email).map(proprietarioPresenter::proprietarioModelEmProprietario);
     }
 
+    @Override
+    public Optional<Proprietario> buscaPorCpf(String cpf) {
+
+        return proprietarioRepository.findByCpf(cpf).map(proprietarioPresenter::proprietarioModelEmProprietario);
+    }
+
 }

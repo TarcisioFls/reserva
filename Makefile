@@ -32,4 +32,4 @@ docker-stop:
 start-app:
 	mvn spring-boot:start
 
-test: unit-test integration-test docker-start system-test docker-stop
+test: unit-test docker-start integration-test system-test docker-stop

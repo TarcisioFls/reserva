@@ -10,11 +10,15 @@ import br.com.grupo27.tech.challenge.reserva.infra.repository.reserva.ReservaRep
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.web.PagedModel;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/avaliacoes/restauranteid")
+@RequestMapping("/avaliacoes/restaurante")
 public class ListarAvaliacaoPorRestauranteIdController {
 
     private final AvaliacaoRepository avaliacaoRepository;
@@ -24,9 +28,9 @@ public class ListarAvaliacaoPorRestauranteIdController {
     private final ReservaRepository reservaRepository;
     private final ReservaPresenter reservaPresenter;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PagedModel<AvaliacaoResponse>> listarAvaliacaoPorRestauranteId(@PathVariable String id,
-                                                                                         @RequestParam int pagina,
+    @GetMapping("/{restauranteId}")
+    public ResponseEntity<PagedModel<AvaliacaoResponse>> listarAvaliacaoPorRestauranteId(@PathVariable String restauranteId,
+                                                                                         @RequestParam(defaultValue = "0") int pagina,
                                                                                          @RequestParam(defaultValue = "50") int tamanho){
 
         var listarAvaliacaoPorRestauranteIdUseCase = listarAvaliacaoPorRestauranteIdUserCaseFactory
@@ -38,7 +42,7 @@ public class ListarAvaliacaoPorRestauranteIdController {
                         reservaRepository
                 );
 
-        var listarAvaliacaoPorRestauranteIdOutPut = listarAvaliacaoPorRestauranteIdUseCase.listarPorRestauranteId(id, pagina, tamanho);
+        var listarAvaliacaoPorRestauranteIdOutPut = listarAvaliacaoPorRestauranteIdUseCase.listarPorRestauranteId(restauranteId, pagina, tamanho);
 
         var avaliacaoResponse = listarAvaliacaoPorRestauranteIdPresenter.pageAvaliacaoResponseEmListarAvaliacaoPorRestauranteIdOutput(listarAvaliacaoPorRestauranteIdOutPut);
 

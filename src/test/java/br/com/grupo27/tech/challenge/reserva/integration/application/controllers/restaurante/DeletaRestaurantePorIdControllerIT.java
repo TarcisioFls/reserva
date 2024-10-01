@@ -1,6 +1,7 @@
 package br.com.grupo27.tech.challenge.reserva.integration.application.controllers.restaurante;
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.restaurante.DeletaRestaurantePorIdController;
+import br.com.grupo27.tech.challenge.reserva.domain.exception.ExceptionAdvice;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +15,9 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.CriarRestauranteDados.getRestauranteModel;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest
 @Testcontainers
@@ -47,24 +50,24 @@ public class DeletaRestaurantePorIdControllerIT {
 
     @Test
     void testeDeletaRestaurantePorId() {
-        var id = "44c67aa035ed1f735450b72a";
+        var id = "66c67aa035ed1f735450b7a2";
 
         deletaRestaurantePorIdController.deletePorId(id);
 
         assertFalse(restauranteRepository.existsById(id));
     }
 
-//    @Test
-//    void testeDeletaRestaurantePorIdInexistente() {
-//        var id = "idInexistente";
-//
-//        try {
-//            deletaRestaurantePorIdController.deletePorId(id);
-//            fail();
-//        } catch (ExceptionAdvice e) {
-//            assertEquals("Restaurante não encontrado", e.getMessage());
-//            assertEquals(404, e.getCodigoError().getCodigo());
-//        }
-//    }
+    @Test
+    void testeDeletaRestaurantePorIdInexistente() {
+        var id = "idInexistente";
+
+        try {
+            deletaRestaurantePorIdController.deletePorId(id);
+            fail();
+        } catch (ExceptionAdvice e) {
+            assertEquals("Restaurante não encontrado", e.getMessage());
+            assertEquals(404, e.getCodigoError().getCodigo());
+        }
+    }
 
 }

@@ -4,6 +4,7 @@ import br.com.grupo27.tech.challenge.reserva.application.factory.restaurante.Del
 import br.com.grupo27.tech.challenge.reserva.config.TesteConfig;
 import br.com.grupo27.tech.challenge.reserva.domain.presenters.restaurante.RestaurantePresenter;
 import br.com.grupo27.tech.challenge.reserva.domain.useCase.restaurante.DeletaRestaurantePorIdUserCase;
+import br.com.grupo27.tech.challenge.reserva.infra.repository.reserva.ReservaRepository;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.restaurante.RestauranteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +37,16 @@ class DeletaRestaurantePorIdControllerTest extends TesteConfig {
     @MockBean
     private RestaurantePresenter restaurantePresenter;
 
+    @MockBean
+    private ReservaRepository reservaRepository;
+
     @Test
     void testeDeletePorId() throws Exception {
 
         var id = "44c67aa035ed1f735450b72a";
 
-        when(deletaRestaurantePorIdUserCaseFactory.buildDeletaRestaurantePorIdUserCase(restauranteRepository))
+        when(deletaRestaurantePorIdUserCaseFactory.buildDeletaRestaurantePorIdUserCase(
+                restauranteRepository, restaurantePresenter, reservaRepository))
                 .thenReturn(deletaRestaurantePorIdUserCase);
 
         doNothing().when(deletaRestaurantePorIdUserCase).deletaPorId(id);
@@ -49,7 +54,8 @@ class DeletaRestaurantePorIdControllerTest extends TesteConfig {
         mockMvc.perform(delete("/restaurantes/{id}", id))
                         .andExpect(status().isNoContent());
 
-        verify(deletaRestaurantePorIdUserCaseFactory, times(1)).buildDeletaRestaurantePorIdUserCase(restauranteRepository);
+        verify(deletaRestaurantePorIdUserCaseFactory, times(1)).buildDeletaRestaurantePorIdUserCase(
+                restauranteRepository, restaurantePresenter, reservaRepository);
         verify(deletaRestaurantePorIdUserCase, times(1)).deletaPorId(id);
 
     }

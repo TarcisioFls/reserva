@@ -16,4 +16,10 @@ public class DeletaRestaurantePorIdAdapter implements DeletaRestaurantePorIdGate
 
         restauranteRepository.deleteById(id);
     }
+
+    @Override
+    public void deletaPorProprietarioId(String proprietarioId) {
+
+        restauranteRepository.deleteByProprietarioId(proprietarioId);
+    }
 }

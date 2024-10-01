@@ -9,6 +9,7 @@ import io.gatling.javaapi.core.ScenarioBuilder;
 import org.springframework.http.HttpStatus;
 
 import static br.com.grupo27.tech.challenge.reserva.mock.cliente.CriarClienteDados.getCriarClienteUnicoRequest;
+import static br.com.grupo27.tech.challenge.reserva.mock.proprietario.CriarProprietarioDados.getCriarProprietarioUnicoRequest;
 import static br.com.grupo27.tech.challenge.reserva.mock.reserva.CriarReservaDados.getCriarReservaValidRequest;
 import static br.com.grupo27.tech.challenge.reserva.mock.restaurante.CriarRestauranteDados.getCriarRestauranteUnicoRequest;
 import static io.gatling.javaapi.core.CoreDsl.StringBody;
@@ -27,10 +28,17 @@ public class ReservaPerformanceSimulation implements GatlingSimulation {
             .check(status().is(HttpStatus.OK.value()))
             .check(jsonPath("$.id").saveAs("clienteId"));
 
+    ActionBuilder criarProprietarioRequest = http("request: criar proprietario")
+            .post("/proprietarios")
+            .body(StringBody(session -> gson.toJson(getCriarProprietarioUnicoRequest())))
+            .check(status().is(HttpStatus.OK.value()))
+            .check(jsonPath("$.id").saveAs("proprietarioId"));
+
     ActionBuilder criarRestauranteRequest = http("request: criar restaurante")
             .post("/restaurantes")
             .body(StringBody(session -> {
                 var request = getCriarRestauranteUnicoRequest();
+                request.setProprietarioId(session.get("proprietarioId"));
                 return gson.toJson(request);
             }))
             .check(status().is(HttpStatus.OK.value()))
@@ -74,6 +82,7 @@ public class ReservaPerformanceSimulation implements GatlingSimulation {
 
     ScenarioBuilder scenarioOperacoesReserva = scenario("operacoes reserva")
             .exec(criarClienteRequest)
+            .exec(criarProprietarioRequest)
             .exec(criarRestauranteRequest)
             .exec(criarReservaRequest)
             .exec(buscarReservaRequest)

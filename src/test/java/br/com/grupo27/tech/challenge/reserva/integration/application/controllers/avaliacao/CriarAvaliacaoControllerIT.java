@@ -2,6 +2,8 @@ package br.com.grupo27.tech.challenge.reserva.integration.application.controller
 
 import br.com.grupo27.tech.challenge.reserva.application.controllers.avaliacao.CriarAvaliacaoController;
 import br.com.grupo27.tech.challenge.reserva.infra.repository.avaliacao.AvaliacaoRepository;
+import br.com.grupo27.tech.challenge.reserva.infra.repository.reserva.ReservaRepository;
+import br.com.grupo27.tech.challenge.reserva.mock.reserva.ReservaDados;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,9 +39,16 @@ public class CriarAvaliacaoControllerIT {
     @Autowired
     private AvaliacaoRepository avaliacaoRepository;
 
+    @Autowired
+    private ReservaRepository reservaRepository;
+
     @BeforeEach
     void setUp() {
         avaliacaoRepository.deleteAll();
+
+        var reserva = ReservaDados.getReservaModel();
+        reserva.setId("11G91CC146fg2f846561b8c4");
+        reservaRepository.save(reserva);
     }
 
     @AfterEach

@@ -8,6 +8,7 @@ import br.com.grupo27.tech.challenge.reserva.domain.presenters.proprietario.Cria
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.CPF_JA_CADASTRADO;
 import static br.com.grupo27.tech.challenge.reserva.domain.exception.CodigoError.EMAIL_JA_CADASTRADO;
 
 @Getter
@@ -20,6 +21,10 @@ public class CriarProprietarioUserCase {
     public CriarProprietarioOutput criar(CriarProprietarioInput criarProprietarioInput) {
         if (criarProprietarioGateway.buscaPorEmail(criarProprietarioInput.getEmail()).isPresent()) {
             throw new ExceptionAdvice(EMAIL_JA_CADASTRADO);
+        }
+
+        if (criarProprietarioGateway.buscaPorCpf(criarProprietarioInput.getCpf()).isPresent()) {
+            throw new ExceptionAdvice(CPF_JA_CADASTRADO);
         }
 
         var proprietario = criarProprietarioPresenter.criarProprietarioInputEmProprietario(criarProprietarioInput);

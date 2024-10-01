@@ -28,6 +28,12 @@ public class AtualizarProprietarioUserCase {
             }
         });
 
+        atualizarProprietarioGateway.buscarPorCpf(atualizarProprietarioInput.getCpf()).ifPresent(result -> {
+            if (!result.getId().equals(atualizarProprietarioInput.getId())) {
+                throw new ExceptionAdvice(CodigoError.CPF_JA_CADASTRADO);
+            }
+        });
+
         proprietario = atualizarProprietarioPresenter.atualizarProprietarioInputEmProprietario(proprietario, atualizarProprietarioInput);
         proprietario = atualizarProprietarioGateway.atualizar(proprietario);
 
